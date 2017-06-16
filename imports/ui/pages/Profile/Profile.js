@@ -11,15 +11,12 @@ import { createContainer } from 'meteor/react-meteor-data';
 import InputHint from '../../components/InputHint/InputHint';
 import validate from '../../../modules/validate';
 
-import './Profile.scss';
-
 class Profile extends React.Component {
   constructor(props) {
     super(props);
 
     this.getUserType = this.getUserType.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderOAuthUser = this.renderOAuthUser.bind(this);
     this.renderPasswordUser = this.renderPasswordUser.bind(this);
     this.renderProfileForm = this.renderProfileForm.bind(this);
   }
@@ -74,13 +71,6 @@ class Profile extends React.Component {
     });
   }
 
-  getUserType(user) {
-    const userToCheck = user;
-    delete userToCheck.services.resume;
-    const service = Object.keys(userToCheck.services)[0];
-    return service === 'password' ? 'password' : 'oauth';
-  }
-
   handleSubmit() {
     const profile = {
       emailAddress: this.emailAddress.value,
@@ -101,17 +91,6 @@ class Profile extends React.Component {
         Bert.alert('Profile updated!', 'success');
       }
     });
-  }
-
-  renderOAuthUser(loading, user) {
-    return !loading ? (<div className="OAuthProfile">
-      {Object.keys(user.services).map(service => (
-        <div key={service} className={`LoggedInWith ${service}`}>
-          <div className="ServiceIcon"><i className={`fa fa-${service === 'facebook' ? 'facebook-official' : service}`} /></div>
-          <p>{`You're logged in with ${capitalize(service)} using the email address ${user.services[service].email}.`}</p>
-        </div>
-      ))}
-    </div>) : <div />;
   }
 
   renderPasswordUser(loading, user) {
@@ -175,13 +154,6 @@ class Profile extends React.Component {
     </div>) : <div />;
   }
 
-  renderProfileForm(loading, user) {
-    return !loading ? ({
-      password: this.renderPasswordUser,
-      oauth: this.renderOAuthUser,
-    }[this.getUserType(user)])(loading, user) : <div />;
-  }
-
   render() {
     const { loading, user } = this.props;
     return (<div className="Profile">
@@ -189,7 +161,7 @@ class Profile extends React.Component {
         <Col xs={12} sm={6} md={4}>
           <h4 className="page-header">Edit Profile</h4>
           <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-            {this.renderProfileForm(loading, user)}
+            {this.renderPasswordUser(loading, user)}
           </form>
         </Col>
       </Row>
