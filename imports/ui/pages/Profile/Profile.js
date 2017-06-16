@@ -14,11 +14,8 @@ import validate from '../../../modules/validate';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
-    this.getUserType = this.getUserType.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderPasswordUser = this.renderPasswordUser.bind(this);
-    this.renderProfileForm = this.renderProfileForm.bind(this);
   }
 
   componentDidMount() {
