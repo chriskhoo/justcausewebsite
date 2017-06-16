@@ -1,8 +1,11 @@
-### Pup
-A boilerplate for products.
+# justcausewebsite
+This is a prototype build for the JustCause website.
 
-[Read the Documentation](http://cleverbeagle.com/pup)
+## Technologies
+The decision to go with this stack was made with the assumptions of a limited user base (a few hundred to a thousand a month) who primarily read information. The creation and editing of content is to be done by the admin users only.
+- Meteor
+- Mongo
+- React
 
----
-
-Need help and want to stay accountable building your product? [Check out Clever Beagle](http://cleverbeagle.com).
+## Acknowledgements
+[Pup boilerplate](https://github.com/cleverbeagle/pup) by CleverBeagle. This helped me go beyond the basic understanding gained from the meteor "todo" tutorial and is an excellent way to jumpstart a project.
