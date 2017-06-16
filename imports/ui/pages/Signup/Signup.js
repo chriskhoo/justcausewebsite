@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
-import OAuthLoginButtons from '../../components/OAuthLoginButtons/OAuthLoginButtons';
 import InputHint from '../../components/InputHint/InputHint';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
@@ -82,17 +81,6 @@ class Signup extends React.Component {
       <Row>
         <Col xs={12} sm={6} md={5} lg={4}>
           <h4 className="page-header">Sign Up</h4>
-          <Row>
-            <Col xs={12}>
-              <OAuthLoginButtons
-                services={['facebook', 'github', 'google']}
-                emailMessage={{
-                  offset: 97,
-                  text: 'Sign Up with an Email Address',
-                }}
-              />
-            </Col>
-          </Row>
           <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
             <Row>
               <Col xs={6}>
