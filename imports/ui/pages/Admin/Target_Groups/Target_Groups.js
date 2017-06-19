@@ -6,28 +6,28 @@ import { timeago, monthDayYearAtTime } from '@cleverbeagle/dates';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
-import ReportsCollection from '../../../../api/Reports/Reports';
+import Target_GroupsCollection from '../../../../api/Target_Groups/Target_Groups';
 import Loading from '../../../components/Loading/Loading';
 
-const handleRemove = (reportId) => {
+const handleRemove = (target_groupId) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('reports.remove', reportId, (error) => {
+    Meteor.call('target_groups.remove', target_groupId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Report deleted!', 'success');
+        Bert.alert('Target_Group deleted!', 'success');
       }
     });
   }
 };
 
-const Reports = ({ loading, reports, match, history }) => (!loading ? (
-  <div className="Reports">
+const Target_Groups = ({ loading, target_groups, match, history }) => (!loading ? (
+  <div className="Target_Groups">
     <div className="page-header clearfix">
-      <h4 className="pull-left">Reports</h4>
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Report</Link>
+      <h4 className="pull-left">Target_Groups</h4>
+      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Target_Group</Link>
     </div>
-    {reports.length ? <Table responsive>
+    {target_groups.length ? <Table responsive>
       <thead>
         <tr>
           <th>Title</th>
@@ -38,7 +38,7 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {reports.map(({ _id, title, createdAt, updatedAt }) => (
+        {target_groups.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
@@ -60,21 +60,21 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No reports yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No target_groups yet!</Alert>}
   </div>
 ) : <Loading />);
 
-Reports.propTypes = {
+Target_Groups.propTypes = {
   loading: PropTypes.bool.isRequired,
-  reports: PropTypes.arrayOf(PropTypes.object).isRequired,
+  target_groups: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('reports');
+  const subscription = Meteor.subscribe('target_groups');
   return {
     loading: !subscription.ready(),
-    reports: ReportsCollection.find().fetch(),
+    target_groups: Target_GroupsCollection.find().fetch(),
   };
-}, Reports);
+}, Target_Groups);

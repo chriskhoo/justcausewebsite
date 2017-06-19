@@ -6,28 +6,28 @@ import { timeago, monthDayYearAtTime } from '@cleverbeagle/dates';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
-import ReportsCollection from '../../../../api/Reports/Reports';
+import ServicesCollection from '../../../../api/Services/Services';
 import Loading from '../../../components/Loading/Loading';
 
-const handleRemove = (reportId) => {
+const handleRemove = (serviceId) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('reports.remove', reportId, (error) => {
+    Meteor.call('services.remove', serviceId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Report deleted!', 'success');
+        Bert.alert('Service deleted!', 'success');
       }
     });
   }
 };
 
-const Reports = ({ loading, reports, match, history }) => (!loading ? (
-  <div className="Reports">
+const Services = ({ loading, services, match, history }) => (!loading ? (
+  <div className="Services">
     <div className="page-header clearfix">
-      <h4 className="pull-left">Reports</h4>
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Report</Link>
+      <h4 className="pull-left">Services</h4>
+      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Service</Link>
     </div>
-    {reports.length ? <Table responsive>
+    {services.length ? <Table responsive>
       <thead>
         <tr>
           <th>Title</th>
@@ -38,7 +38,7 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {reports.map(({ _id, title, createdAt, updatedAt }) => (
+        {services.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
@@ -60,21 +60,21 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No reports yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No services yet!</Alert>}
   </div>
 ) : <Loading />);
 
-Reports.propTypes = {
+Services.propTypes = {
   loading: PropTypes.bool.isRequired,
-  reports: PropTypes.arrayOf(PropTypes.object).isRequired,
+  services: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('reports');
+  const subscription = Meteor.subscribe('services');
   return {
     loading: !subscription.ready(),
-    reports: ReportsCollection.find().fetch(),
+    services: ServicesCollection.find().fetch(),
   };
-}, Reports);
+}, Services);

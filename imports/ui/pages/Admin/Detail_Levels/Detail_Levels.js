@@ -6,28 +6,28 @@ import { timeago, monthDayYearAtTime } from '@cleverbeagle/dates';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
-import ReportsCollection from '../../../../api/Reports/Reports';
+import Detail_LevelsCollection from '../../../../api/Detail_Levels/Detail_Levels';
 import Loading from '../../../components/Loading/Loading';
 
-const handleRemove = (reportId) => {
+const handleRemove = (detail_levelId) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('reports.remove', reportId, (error) => {
+    Meteor.call('detail_levels.remove', detail_levelId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Report deleted!', 'success');
+        Bert.alert('Detail_Level deleted!', 'success');
       }
     });
   }
 };
 
-const Reports = ({ loading, reports, match, history }) => (!loading ? (
-  <div className="Reports">
+const Detail_Levels = ({ loading, detail_levels, match, history }) => (!loading ? (
+  <div className="Detail_Levels">
     <div className="page-header clearfix">
-      <h4 className="pull-left">Reports</h4>
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Report</Link>
+      <h4 className="pull-left">Detail_Levels</h4>
+      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Detail_Level</Link>
     </div>
-    {reports.length ? <Table responsive>
+    {detail_levels.length ? <Table responsive>
       <thead>
         <tr>
           <th>Title</th>
@@ -38,7 +38,7 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {reports.map(({ _id, title, createdAt, updatedAt }) => (
+        {detail_levels.map(({ _id, title, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
@@ -60,21 +60,21 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
           </tr>
         ))}
       </tbody>
-    </Table> : <Alert bsStyle="warning">No reports yet!</Alert>}
+    </Table> : <Alert bsStyle="warning">No detail_levels yet!</Alert>}
   </div>
 ) : <Loading />);
 
-Reports.propTypes = {
+Detail_Levels.propTypes = {
   loading: PropTypes.bool.isRequired,
-  reports: PropTypes.arrayOf(PropTypes.object).isRequired,
+  detail_levels: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('reports');
+  const subscription = Meteor.subscribe('detail_levels');
   return {
     loading: !subscription.ready(),
-    reports: ReportsCollection.find().fetch(),
+    detail_levels: Detail_LevelsCollection.find().fetch(),
   };
-}, Reports);
+}, Detail_Levels);
