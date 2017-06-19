@@ -1,3 +1,6 @@
+import '../../api/Reports/methods';
+import '../../api/Reports/server/publications';
+
 import '../../api/Documents/methods';
 import '../../api/Documents/server/publications';
 

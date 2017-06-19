@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-const Public = ({ loggingIn, authenticated, component, ...rest }) => (
+const Unauthenticated = ({ loggingIn, authenticated, component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
@@ -14,10 +14,10 @@ const Public = ({ loggingIn, authenticated, component, ...rest }) => (
   />
 );
 
-Public.propTypes = {
+Unauthenticated.propTypes = {
   loggingIn: PropTypes.bool.isRequired,
   authenticated: PropTypes.bool.isRequired,
   component: PropTypes.func.isRequired,
 };
 
-export default Public;
+export default Unauthenticated;

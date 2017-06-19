@@ -10,14 +10,17 @@ const AuthenticatedNavigation = ({ name }) => (
       <LinkContainer to="/documents">
         <NavItem eventKey={1} href="/documents">Documents</NavItem>
       </LinkContainer>
+      <LinkContainer to="/admin/reports">
+        <NavItem eventKey={2} href="/admin/reports">Reports</NavItem>
+      </LinkContainer>
     </Nav>
     <Nav pullRight>
-      <NavDropdown eventKey={2} title={name} id="user-nav-dropdown">
+      <NavDropdown eventKey={3} title={name} id="user-nav-dropdown">
         <LinkContainer to="/profile">
-          <NavItem eventKey={2.1} href="/profile">Profile</NavItem>
+          <NavItem eventKey={3.1} href="/profile">Profile</NavItem>
         </LinkContainer>
         <MenuItem divider />
-        <MenuItem eventKey={2.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
+        <MenuItem eventKey={3.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>

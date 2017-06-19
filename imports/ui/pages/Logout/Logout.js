@@ -4,7 +4,7 @@ import './Logout.scss';
 
 const Logout = () => (
   <div className="Logout">
-    <h1>Stay safe out there.</h1>
+    <h1>You are logged out</h1>
   </div>
 );
 
