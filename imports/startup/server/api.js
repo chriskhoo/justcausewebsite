@@ -16,6 +16,21 @@ import '../../api/Services/server/publications';
 import '../../api/Target_Groups/methods';
 import '../../api/Target_Groups/server/publications';
 
+import '../../api/Badges/methods';
+import '../../api/Badges/server/publications';
+
+import '../../api/Charities/methods';
+import '../../api/Charities/server/publications';
+
+import '../../api/Financial_Checklists/methods';
+import '../../api/Financial_Checklists/server/publications';
+
+import '../../api/Governance_Checklists/methods';
+import '../../api/Governance_Checklists/server/publications';
+
+import '../../api/Programs/methods';
+import '../../api/Programs/server/publications';
+
 import '../../api/Documents/methods';
 import '../../api/Documents/server/publications';
 
