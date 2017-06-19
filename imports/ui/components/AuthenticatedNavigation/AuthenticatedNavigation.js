@@ -7,8 +7,8 @@ import { Meteor } from 'meteor/meteor';
 const AuthenticatedNavigation = ({ name }) => (
   <div>
     <Nav>
-      <LinkContainer to="/documents">
-        <NavItem eventKey={1} href="/documents">Documents</NavItem>
+      <LinkContainer to="/admin/articles">
+        <NavItem eventKey={2.2} href="/admin/articles">Articles</NavItem>
       </LinkContainer>
       <NavDropdown eventKey={2} title="Tags, lists" id="user-nav-dropdown">
         <LinkContainer to="/admin/article_types">
@@ -47,14 +47,17 @@ const AuthenticatedNavigation = ({ name }) => (
           <NavItem eventKey={3.3} href="/admin/reports">Reports</NavItem>
         </LinkContainer>
       </NavDropdown>
+      <LinkContainer to="/documents">
+        <NavItem eventKey={4} href="/documents">Documents</NavItem>
+      </LinkContainer>
     </Nav>
     <Nav pullRight>
-      <NavDropdown eventKey={5} title={name} id="user-nav-dropdown">
+      <NavDropdown eventKey={6} title={name} id="user-nav-dropdown">
         <LinkContainer to="/profile">
-          <NavItem eventKey={5.1} href="/profile">Profile</NavItem>
+          <NavItem eventKey={6.1} href="/profile">Profile</NavItem>
         </LinkContainer>
         <MenuItem divider />
-        <MenuItem eventKey={5.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
+        <MenuItem eventKey={6.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>

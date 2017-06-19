@@ -13,6 +13,10 @@ import Reports from '../../pages/Admin/Reports/Reports';
 import NewReport from '../../pages/Admin/NewReport/NewReport';
 import ViewReport from '../../pages/Admin/ViewReport/ViewReport';
 import EditReport from '../../pages/Admin/EditReport/EditReport';
+import Articles from '../../pages/Admin/Articles/Articles';
+import NewArticle from '../../pages/Admin/NewArticle/NewArticle';
+import ViewArticle from '../../pages/Admin/ViewArticle/ViewArticle';
+import EditArticle from '../../pages/Admin/EditArticle/EditArticle';
 
 import Article_Types from '../../pages/Admin/Article_Types/Article_Types';
 import NewArticle_Type from '../../pages/Admin/NewArticle_Type/NewArticle_Type';
@@ -84,6 +88,11 @@ const App = props => (
           <Authenticated exact path="/admin/reports/new" component={NewReport} {...props} />
           <Authenticated exact path="/admin/reports/:_id" component={ViewReport} {...props} />
           <Authenticated exact path="/admin/reports/:_id/edit" component={EditReport} {...props} />
+          <Authenticated exact path="/admin/articles" component={Articles} {...props} />
+          <Authenticated exact path="/admin/articles/new" component={NewArticle} {...props} />
+          <Authenticated exact path="/admin/articles/:_id" component={ViewArticle} {...props} />
+          <Authenticated exact path="/admin/articles/:_id/edit" component={EditArticle} {...props} />
+
           <Authenticated exact path="/admin/article_types" component={Article_Types} {...props} />
           <Authenticated exact path="/admin/article_types/new" component={NewArticle_Type} {...props} />
           <Authenticated exact path="/admin/article_types/:_id" component={ViewArticle_Type} {...props} />

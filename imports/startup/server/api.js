@@ -1,6 +1,9 @@
 import '../../api/Reports/methods';
 import '../../api/Reports/server/publications';
 
+import '../../api/Articles/methods';
+import '../../api/Articles/server/publications';
+
 import '../../api/Article_Types/methods';
 import '../../api/Article_Types/server/publications';
 
