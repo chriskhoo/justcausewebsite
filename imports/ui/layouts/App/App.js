@@ -19,9 +19,6 @@ import ViewArticle from '../../pages/Admin/ViewArticle/ViewArticle';
 import EditArticle from '../../pages/Admin/EditArticle/EditArticle';
 
 import Article_Types from '../../pages/Admin/Article_Types/Article_Types';
-import NewArticle_Type from '../../pages/Admin/NewArticle_Type/NewArticle_Type';
-import ViewArticle_Type from '../../pages/Admin/ViewArticle_Type/ViewArticle_Type';
-import EditArticle_Type from '../../pages/Admin/EditArticle_Type/EditArticle_Type';
 import Countries from '../../pages/Admin/Countries/Countries';
 import NewCountry from '../../pages/Admin/NewCountry/NewCountry';
 import ViewCountry from '../../pages/Admin/ViewCountry/ViewCountry';
@@ -94,9 +91,6 @@ const App = props => (
           <Authenticated exact path="/admin/articles/:_id/edit" component={EditArticle} {...props} />
 
           <Authenticated exact path="/admin/article_types" component={Article_Types} {...props} />
-          <Authenticated exact path="/admin/article_types/new" component={NewArticle_Type} {...props} />
-          <Authenticated exact path="/admin/article_types/:_id" component={ViewArticle_Type} {...props} />
-          <Authenticated exact path="/admin/article_types/:_id/edit" component={EditArticle_Type} {...props} />
           <Authenticated exact path="/admin/countries" component={Countries} {...props} />
           <Authenticated exact path="/admin/countries/new" component={NewCountry} {...props} />
           <Authenticated exact path="/admin/countries/:_id" component={ViewCountry} {...props} />

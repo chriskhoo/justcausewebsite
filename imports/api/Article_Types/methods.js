@@ -6,12 +6,11 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'article_types.insert': function article_typesInsert(a_type) {
     check(a_type, {
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {
-      return Article_Types.insert({ author: this.userId, ...a_type });
+      return Article_Types.insert({ ...a_type });
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }
@@ -19,8 +18,7 @@ Meteor.methods({
   'article_types.update': function article_typesUpdate(a_type) {
     check(a_type, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {

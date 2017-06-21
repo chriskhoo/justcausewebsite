@@ -18,10 +18,6 @@ Article_Types.deny({
 });
 
 Article_Types.schema = new SimpleSchema({
-  author: {
-    type: String,
-    label: 'The ID of the user this article_type was created by.',
-  },
   createdAt: {
     type: String,
     label: 'The date this article_type was created.',
@@ -36,13 +32,9 @@ Article_Types.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  name: {
     type: String,
-    label: 'The title of the article_type.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the article_type.',
+    label: 'The name of the article_type.',
   },
 });
 
