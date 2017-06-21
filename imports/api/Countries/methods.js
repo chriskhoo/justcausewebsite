@@ -6,8 +6,7 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'countries.insert': function countriesInsert(ctry) {
     check(ctry, {
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {
@@ -19,8 +18,7 @@ Meteor.methods({
   'countries.update': function countriesUpdate(ctry) {
     check(ctry, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {

@@ -18,10 +18,6 @@ Target_Groups.deny({
 });
 
 Target_Groups.schema = new SimpleSchema({
-  author: {
-    type: String,
-    label: 'The ID of the user this target_group was created by.',
-  },
   createdAt: {
     type: String,
     label: 'The date this target_group was created.',
@@ -36,13 +32,9 @@ Target_Groups.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  name: {
     type: String,
-    label: 'The title of the target_group.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the target_group.',
+    label: 'The name of the article_type.',
   },
 });
 

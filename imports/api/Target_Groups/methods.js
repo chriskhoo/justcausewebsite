@@ -6,8 +6,7 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'target_groups.insert': function target_groupsInsert(t_grp) {
     check(t_grp, {
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {
@@ -19,8 +18,7 @@ Meteor.methods({
   'target_groups.update': function target_groupsUpdate(t_grp) {
     check(t_grp, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {

@@ -20,21 +20,9 @@ import EditArticle from '../../pages/Admin/EditArticle/EditArticle';
 
 import Article_Types from '../../pages/Admin/Article_Types/Article_Types';
 import Countries from '../../pages/Admin/Countries/Countries';
-import NewCountry from '../../pages/Admin/NewCountry/NewCountry';
-import ViewCountry from '../../pages/Admin/ViewCountry/ViewCountry';
-import EditCountry from '../../pages/Admin/EditCountry/EditCountry';
 import Detail_Levels from '../../pages/Admin/Detail_Levels/Detail_Levels';
-import NewDetail_Level from '../../pages/Admin/NewDetail_Level/NewDetail_Level';
-import ViewDetail_Level from '../../pages/Admin/ViewDetail_Level/ViewDetail_Level';
-import EditDetail_Level from '../../pages/Admin/EditDetail_Level/EditDetail_Level';
 import Services from '../../pages/Admin/Services/Services';
-import NewService from '../../pages/Admin/NewService/NewService';
-import ViewService from '../../pages/Admin/ViewService/ViewService';
-import EditService from '../../pages/Admin/EditService/EditService';
 import Target_Groups from '../../pages/Admin/Target_Groups/Target_Groups';
-import NewTarget_Group from '../../pages/Admin/NewTarget_Group/NewTarget_Group';
-import ViewTarget_Group from '../../pages/Admin/ViewTarget_Group/ViewTarget_Group';
-import EditTarget_Group from '../../pages/Admin/EditTarget_Group/EditTarget_Group';
 
 import Badges from '../../pages/Admin/Badges/Badges';
 import NewBadge from '../../pages/Admin/NewBadge/NewBadge';
@@ -92,22 +80,10 @@ const App = props => (
 
           <Authenticated exact path="/admin/article_types" component={Article_Types} {...props} />
           <Authenticated exact path="/admin/countries" component={Countries} {...props} />
-          <Authenticated exact path="/admin/countries/new" component={NewCountry} {...props} />
-          <Authenticated exact path="/admin/countries/:_id" component={ViewCountry} {...props} />
-          <Authenticated exact path="/admin/countries/:_id/edit" component={EditCountry} {...props} />
           <Authenticated exact path="/admin/detail_levels" component={Detail_Levels} {...props} />
-          <Authenticated exact path="/admin/detail_levels/new" component={NewDetail_Level} {...props} />
-          <Authenticated exact path="/admin/detail_levels/:_id" component={ViewDetail_Level} {...props} />
-          <Authenticated exact path="/admin/detail_levels/:_id/edit" component={EditDetail_Level} {...props} />
           <Authenticated exact path="/admin/services" component={Services} {...props} />
-          <Authenticated exact path="/admin/services/new" component={NewService} {...props} />
-          <Authenticated exact path="/admin/services/:_id" component={ViewService} {...props} />
-          <Authenticated exact path="/admin/services/:_id/edit" component={EditService} {...props} />
           <Authenticated exact path="/admin/target_groups" component={Target_Groups} {...props} />
-          <Authenticated exact path="/admin/target_groups/new" component={NewTarget_Group} {...props} />
-          <Authenticated exact path="/admin/target_groups/:_id" component={ViewTarget_Group} {...props} />
-          <Authenticated exact path="/admin/target_groups/:_id/edit" component={EditTarget_Group} {...props} />
-
+          
           <Authenticated exact path="/admin/badges" component={Badges} {...props} />
           <Authenticated exact path="/admin/badges/new" component={NewBadge} {...props} />
           <Authenticated exact path="/admin/badges/:_id" component={ViewBadge} {...props} />

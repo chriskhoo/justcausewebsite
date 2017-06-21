@@ -18,10 +18,6 @@ Detail_Levels.deny({
 });
 
 Detail_Levels.schema = new SimpleSchema({
-  author: {
-    type: String,
-    label: 'The ID of the user this detail_level was created by.',
-  },
   createdAt: {
     type: String,
     label: 'The date this detail_level was created.',
@@ -36,13 +32,9 @@ Detail_Levels.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  name: {
     type: String,
-    label: 'The title of the detail_level.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the detail_level.',
+    label: 'The name of the article_type.',
   },
 });
 

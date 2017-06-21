@@ -6,8 +6,7 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'detail_levels.insert': function detail_levelsInsert(d_level) {
     check(d_level, {
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {
@@ -19,8 +18,7 @@ Meteor.methods({
   'detail_levels.update': function detail_levelsUpdate(d_level) {
     check(d_level, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {

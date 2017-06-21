@@ -18,10 +18,6 @@ Countries.deny({
 });
 
 Countries.schema = new SimpleSchema({
-  author: {
-    type: String,
-    label: 'The ID of the user this report was created by.',
-  },
   createdAt: {
     type: String,
     label: 'The date this report was created.',
@@ -36,13 +32,9 @@ Countries.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  name: {
     type: String,
-    label: 'The title of the report.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the report.',
+    label: 'The name of the article_type.',
   },
 });
 

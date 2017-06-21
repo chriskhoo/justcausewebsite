@@ -18,10 +18,6 @@ Services.deny({
 });
 
 Services.schema = new SimpleSchema({
-  author: {
-    type: String,
-    label: 'The ID of the user this service was created by.',
-  },
   createdAt: {
     type: String,
     label: 'The date this service was created.',
@@ -36,13 +32,9 @@ Services.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  name: {
     type: String,
-    label: 'The title of the service.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the service.',
+    label: 'The name of the article_type.',
   },
 });
 

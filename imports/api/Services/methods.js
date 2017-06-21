@@ -6,8 +6,7 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'services.insert': function servicesInsert(svcs) {
     check(svcs, {
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {
@@ -19,8 +18,7 @@ Meteor.methods({
   'services.update': function servicesUpdate(svcs) {
     check(svcs, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
     });
 
     try {
