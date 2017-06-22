@@ -20,29 +20,25 @@ Financial_Checklists.deny({
 Financial_Checklists.schema = new SimpleSchema({
   author: {
     type: String,
-    label: 'The ID of the user this financial_checklist was created by.',
+    label: 'The first name of the user who last updated this financial_checklist item.',
   },
   createdAt: {
     type: String,
-    label: 'The date this financial_checklist was created.',
+    label: 'The date this financial_checklist item was created.',
     autoValue() {
       if (this.isInsert) return (new Date()).toISOString();
     },
   },
   updatedAt: {
     type: String,
-    label: 'The date this financial_checklist was last updated.',
+    label: 'The date this financial_checklist item was last updated.',
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  description: {
     type: String,
-    label: 'The title of the financial_checklist.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the financial_checklist.',
+    label: 'The description of the financial_checklist item.',
   },
 });
 

@@ -10,7 +10,7 @@ Meteor.methods({
     });
 
     try {
-      return Target_Groups.insert({ author: this.userId, ...t_grp });
+      return Target_Groups.insert( t_grp );
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }

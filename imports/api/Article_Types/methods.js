@@ -10,7 +10,7 @@ Meteor.methods({
     });
 
     try {
-      return Article_Types.insert({ ...a_type });
+      return Article_Types.insert(a_type);
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }

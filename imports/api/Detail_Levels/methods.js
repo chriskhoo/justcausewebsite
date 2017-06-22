@@ -10,12 +10,12 @@ Meteor.methods({
     });
 
     try {
-      return Detail_Levels.insert({ author: this.userId, ...d_level });
+      return Detail_Levels.insert( d_level );
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }
   },
-  'detail_levels.update': function detail_levelsUpdate(d_level) {
+  'detail_levels.update': function detail_levelsUpdate( d_level ) {
     check(d_level, {
       _id: String,
       name: String,

@@ -10,7 +10,7 @@ Meteor.methods({
     });
 
     try {
-      return Services.insert({ author: this.userId, ...svcs });
+      return Services.insert( svcs );
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }

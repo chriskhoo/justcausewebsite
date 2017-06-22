@@ -6,12 +6,12 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'financial_checklists.insert': function financial_checklistsInsert(f_check) {
     check(f_check, {
-      title: String,
-      body: String,
+      description: String,
     });
 
     try {
-      return Financial_Checklists.insert({ author: this.userId, ...f_check });
+      const firstname = Meteor.user().profile.name.first;
+      return Financial_Checklists.insert({ author: firstname, ...f_check });
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }
@@ -19,12 +19,12 @@ Meteor.methods({
   'financial_checklists.update': function financial_checklistsUpdate(f_check) {
     check(f_check, {
       _id: String,
-      title: String,
-      body: String,
+      description: String,
     });
 
     try {
       const financial_checklistId = f_check._id;
+      f_check.author = Meteor.user().profile.name.first;
       Financial_Checklists.update(financial_checklistId, { $set: f_check });
       return financial_checklistId; // Return _id so we can redirect to financial_checklist after update.
     } catch (exception) {

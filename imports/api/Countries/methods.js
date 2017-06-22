@@ -10,7 +10,7 @@ Meteor.methods({
     });
 
     try {
-      return Countries.insert({ author: this.userId, ...ctry });
+      return Countries.insert(ctry);
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }

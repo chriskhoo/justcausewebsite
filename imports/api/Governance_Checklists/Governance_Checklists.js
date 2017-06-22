@@ -20,29 +20,25 @@ Governance_Checklists.deny({
 Governance_Checklists.schema = new SimpleSchema({
   author: {
     type: String,
-    label: 'The ID of the user this governance_checklist was created by.',
+    label: 'The first name of the user who last updated this governance_checklist item.',
   },
   createdAt: {
     type: String,
-    label: 'The date this governance_checklist was created.',
+    label: 'The date this governance_checklist item was created.',
     autoValue() {
       if (this.isInsert) return (new Date()).toISOString();
     },
   },
   updatedAt: {
     type: String,
-    label: 'The date this governance_checklist was last updated.',
+    label: 'The date this governance_checklist was item last updated.',
     autoValue() {
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
+  description: {
     type: String,
-    label: 'The title of the governance_checklist.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the governance_checklist.',
+    label: 'The description of the governance_checklist item.',
   },
 });
 

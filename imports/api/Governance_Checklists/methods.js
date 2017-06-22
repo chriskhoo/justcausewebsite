@@ -6,12 +6,12 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'governance_checklists.insert': function governance_checklistsInsert(g_check) {
     check(g_check, {
-      title: String,
-      body: String,
+      description: String,
     });
 
     try {
-      return Governance_Checklists.insert({ author: this.userId, ...g_check });
+      const firstname = Meteor.user().profile.name.first;
+      return Governance_Checklists.insert({ author: firstname, ...g_check });
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }
@@ -19,12 +19,12 @@ Meteor.methods({
   'governance_checklists.update': function governance_checklistsUpdate(g_check) {
     check(g_check, {
       _id: String,
-      title: String,
-      body: String,
+      description: String,
     });
 
     try {
       const governance_checklistId = g_check._id;
+      g_check.author = Meteor.user().profile.name.first;
       Governance_Checklists.update(governance_checklistId, { $set: g_check });
       return governance_checklistId; // Return _id so we can redirect to governance_checklist after update.
     } catch (exception) {
