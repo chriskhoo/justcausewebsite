@@ -6,12 +6,12 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'badges.insert': function badgesInsert(bdg) {
     check(bdg, {
-      title: String,
-      body: String,
+      name: String,
+      image: String,
     });
 
     try {
-      return Badges.insert({ author: this.userId, ...bdg });
+      return Badges.insert( bdg );
     } catch (exception) {
       throw new Meteor.Error('500', exception);
     }
@@ -19,8 +19,8 @@ Meteor.methods({
   'badges.update': function badgesUpdate(bdg) {
     check(bdg, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
+      image: String,
     });
 
     try {

@@ -75,7 +75,7 @@ class AdminTagRow extends React.Component {
                 <Button
                   type="submit"
                   bsStyle="warning"
-                  onClick={() => this.handleSubmit(tag._id, collection_name)}
+                  onClick={() => this.handleSubmit()}
                   >Update</Button>
               </span>
             </InputGroup>
@@ -84,7 +84,7 @@ class AdminTagRow extends React.Component {
         <td>
           <Button
             bsStyle="danger"
-            onClick={() => this.handleRemove(tag._id, collection_name, tag.name)}
+            onClick={() => this.handleRemove()}
           >Delete</Button>
         </td>
       </tr>

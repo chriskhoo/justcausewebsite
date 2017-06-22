@@ -1,0 +1,17 @@
+tr{
+  td{
+    .form-inline{
+      .form-group{
+        .control-label{
+          display: inline-block;
+        }
+        .form-control{
+          min-width: 20em;
+        }
+      }
+      .btn-warning{
+        vertical-align: top;
+      }
+    }
+  }
+}

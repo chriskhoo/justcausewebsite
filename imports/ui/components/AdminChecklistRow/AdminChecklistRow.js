@@ -76,7 +76,7 @@ class AdminChecklistRow extends React.Component {
                 <Button
                   type="submit"
                   bsStyle="warning"
-                  onClick={() => this.handleSubmit(checklist._id, collection_name)}
+                  onClick={() => this.handleSubmit()}
                   >Update</Button>
               </span>
             </InputGroup>
@@ -87,7 +87,7 @@ class AdminChecklistRow extends React.Component {
         <td>
           <Button
             bsStyle="danger"
-            onClick={() => this.handleRemove(checklist._id, collection_name, checklist.description)}
+            onClick={() => this.handleRemove()}
           >Delete</Button>
         </td>
       </tr>
