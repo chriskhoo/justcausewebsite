@@ -74,6 +74,34 @@ Reports.schema = new SimpleSchema({
     type: String,
     label: 'The name of the country tagged to the report.',
   },
+  target_group_ids: {
+    type: Array,
+    label: 'The list of target_groups tagged to the report.',
+  },
+  "target_group_ids.$": {
+    type: Object,
+    label: 'The object of target_groups tagged to the report.',
+  },
+  "target_group_ids.$._id": {
+    type: String,
+    label: 'The id of target_group tagged to the report.',
+  },
+  "target_group_ids.$.name": {
+    type: String,
+    label: 'The name of target_group tagged to the report.',
+  },
+  detail_level_id: {
+    type: Object,
+    label: 'The detail_level object tagged to the report.',
+  },
+  "detail_level_id._id": {
+    type: String,
+    label: 'The id of the detail_level tagged to the report.',
+  },
+  "detail_level_id.name": {
+    type: String,
+    label: 'The name of the detail_level tagged to the report.',
+  },
 });
 
 Reports.attachSchema(Reports.schema);

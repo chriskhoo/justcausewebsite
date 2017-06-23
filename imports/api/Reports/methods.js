@@ -10,6 +10,8 @@ Meteor.methods({
       body: String,
       service_ids: Array,
       country_id: Object,
+      target_group_ids: Array,
+      detail_level_id: Object,
     });
     try {
       return Reports.insert({ author: this.userId, ...rept });
@@ -24,6 +26,8 @@ Meteor.methods({
       body: String,
       service_ids: Array,
       country_id: Object,
+      target_group_ids: Array,
+      detail_level_id: Object,
     });
     try {
       const reportId = rept._id;
