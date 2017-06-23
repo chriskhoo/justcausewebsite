@@ -8,8 +8,9 @@ Meteor.methods({
     check(rept, {
       title: String,
       body: String,
+      service_ids: Array,
+      country_id: Object,
     });
-
     try {
       return Reports.insert({ author: this.userId, ...rept });
     } catch (exception) {
@@ -21,8 +22,9 @@ Meteor.methods({
       _id: String,
       title: String,
       body: String,
+      service_ids: Array,
+      country_id: Object,
     });
-
     try {
       const reportId = rept._id;
       Reports.update(reportId, { $set: rept });
@@ -33,7 +35,6 @@ Meteor.methods({
   },
   'reports.remove': function reportsRemove(reportId) {
     check(reportId, String);
-
     try {
       return Reports.remove(reportId);
     } catch (exception) {

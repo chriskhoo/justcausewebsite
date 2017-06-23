@@ -39,10 +39,40 @@ Reports.schema = new SimpleSchema({
   title: {
     type: String,
     label: 'The title of the report.',
+    optional: false,
   },
   body: {
     type: String,
     label: 'The body of the report.',
+    optional: false,
+  },
+  service_ids: {
+    type: Array,
+    label: 'The list of services tagged to the report.',
+  },
+  "service_ids.$": {
+    type: Object,
+    label: 'The object of services tagged to the report.',
+  },
+  "service_ids.$._id": {
+    type: String,
+    label: 'The id of service tagged to the report.',
+  },
+  "service_ids.$.name": {
+    type: String,
+    label: 'The name of service tagged to the report.',
+  },
+  country_id: {
+    type: Object,
+    label: 'The country object tagged to the report.',
+  },
+  "country_id._id": {
+    type: String,
+    label: 'The id of the country tagged to the report.',
+  },
+  "country_id.name": {
+    type: String,
+    label: 'The name of the country tagged to the report.',
   },
 });
 

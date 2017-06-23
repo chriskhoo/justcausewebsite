@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import Reports from '../../../../api/Reports/Reports';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
+import ReportsCollection from '../../../../api/Reports/Reports';
 
 const handleRemove = (reportId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -34,7 +34,17 @@ const renderReport = (rept, match, history) => (rept ? (
         </ButtonGroup>
       </ButtonToolbar>
     </div>
-    { rept && rept.body }
+    <div>
+      <Panel header='Body'>
+        { rept.body }
+      </Panel>
+      <Panel header='Services'>
+        { rept.service_ids.map( service => service.name ).join(', ') }
+      </Panel>
+      <Panel header='Country'>
+        { rept.country_id.name }
+      </Panel>
+    </div>
   </div>
 ) : <NotFound />);
 
@@ -55,6 +65,6 @@ export default createContainer(({ match }) => {
 
   return {
     loading: !subscription.ready(),
-    rept: Reports.findOne(reportId),
+    rept: ReportsCollection.findOne(reportId),
   };
 }, ViewReport);

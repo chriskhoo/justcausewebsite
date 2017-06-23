@@ -2,10 +2,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
+import { FormSelectMultiple, getSelectedObjects } from '../../componentElements/FormSelectMultiple/FormSelectMultiple';
+import { FormSelectSingle, getSelectedObject } from '../../componentElements/FormSelectSingle/FormSelectSingle';
 
 class ReportEditor extends React.Component {
   componentDidMount() {
@@ -18,13 +20,25 @@ class ReportEditor extends React.Component {
         body: {
           required: true,
         },
+        service_ids: {
+          required: true,
+        },
+        country_id: {
+          required: true,
+        },
       },
       messages: {
         title: {
-          required: 'Need a title in here, Seuss.',
+          required: 'Please enter a title',
         },
         body: {
-          required: 'This thneeds a body, please.',
+          required: 'Please enter a body',
+        },
+        service_ids: {
+          required: 'Please select the appropriate service tag(s)',
+        },
+        country_id: {
+          required: 'Please select one country tag',
         },
       },
       submitHandler() { component.handleSubmit(); },
@@ -32,16 +46,19 @@ class ReportEditor extends React.Component {
   }
 
   handleSubmit() {
-    const { history } = this.props;
+    const { svcs, ctrys, history } = this.props;
+    const { title, body, service_ids, country_id } = this.form;
     const existingReport = this.props.rept && this.props.rept._id;
     const methodToCall = existingReport ? 'reports.update' : 'reports.insert';
+    const selectedServices = getSelectedObjects(service_ids, svcs);
+    const selectedCountry = getSelectedObject(country_id, ctrys);
     const rept = {
-      title: this.title.value.trim(),
-      body: this.body.value.trim(),
+      title: title.value.trim(),
+      body: body.value.trim(),
+      service_ids: selectedServices,
+      country_id: selectedCountry,
     };
-
     if (existingReport) rept._id = existingReport;
-
     Meteor.call(methodToCall, rept, (error, reportId) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
@@ -55,7 +72,7 @@ class ReportEditor extends React.Component {
   }
 
   render() {
-    const { rept } = this.props;
+    const { svcs, rept, ctrys } = this.props;
     return (<form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
       <FormGroup>
         <ControlLabel>Title</ControlLabel>
@@ -78,6 +95,19 @@ class ReportEditor extends React.Component {
           placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
         />
       </FormGroup>
+
+      <FormSelectMultiple
+        fieldName="Services"
+        fieldType="service_ids"
+        optionsList= {svcs}
+        defaultVal = {rept && rept.service_ids && rept.service_ids[0]._id && rept.service_ids.map( ids => ids._id )} />
+
+      <FormSelectSingle
+        fieldName="Country"
+        fieldType="country_id"
+        optionsList= {ctrys}
+        defaultVal = {rept && rept.country_id && rept.country_id._id} />
+
       <Button type="submit" bsStyle="success">
         {rept && rept._id ? 'Save Changes' : 'Add Report'}
       </Button>
@@ -90,8 +120,10 @@ ReportEditor.defaultProps = {
 };
 
 ReportEditor.propTypes = {
-  rept: PropTypes.object,
   history: PropTypes.object.isRequired,
+  rept: PropTypes.object,
+  svcs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  ctrys: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ReportEditor;

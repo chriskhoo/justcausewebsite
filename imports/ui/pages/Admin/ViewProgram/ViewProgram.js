@@ -4,9 +4,9 @@ import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import Programs from '../../../../api/Programs/Programs';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
+import Programs from '../../../../api/Programs/Programs';
 
 const handleRemove = (programId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
