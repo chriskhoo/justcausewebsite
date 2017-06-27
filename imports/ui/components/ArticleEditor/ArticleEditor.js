@@ -2,10 +2,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
+import { FormSelectMultiple, getSelectedObjects } from '../../componentElements/FormSelectMultiple/FormSelectMultiple';
+import { FormSelectSingle, getSelectedObject } from '../../componentElements/FormSelectSingle/FormSelectSingle';
+import FormTextInput from '../../componentElements/FormTextInput/FormTextInput';
+import FormTextArea from '../../componentElements/FormTextArea/FormTextArea';
 
 class ArticleEditor extends React.Component {
   componentDidMount() {
@@ -18,13 +22,39 @@ class ArticleEditor extends React.Component {
         body: {
           required: true,
         },
+        service_ids: {
+          required: true,
+        },
+        country_id: {
+          valueNotEquals: undefined,
+          required: true,
+        },
+        target_group_ids: {
+          required: true,
+        },
+        article_type_id: {
+          valueNotEquals: undefined,
+          required: true,
+        },
       },
       messages: {
         title: {
-          required: 'Need a title in here, Seuss.',
+          required: 'Please enter a title',
         },
         body: {
-          required: 'This thneeds a body, please.',
+          required: 'Please enter a body',
+        },
+        service_ids: {
+          required: 'Please select the appropriate service tag(s)',
+        },
+        country_id: {
+          required: 'Please select one country tag',
+        },
+        target_group_ids: {
+          required: 'Please select the appropriate target group tag(s)',
+        },
+        article_type_id: {
+          required: 'Please select one detail level tag',
         },
       },
       submitHandler() { component.handleSubmit(); },
@@ -32,16 +62,24 @@ class ArticleEditor extends React.Component {
   }
 
   handleSubmit() {
-    const { history } = this.props;
+    const { history, svcs, ctrys, t_grps, a_types } = this.props;
+    const { title, body, service_ids, country_id } = this.form;
     const existingArticle = this.props.art && this.props.art._id;
     const methodToCall = existingArticle ? 'articles.update' : 'articles.insert';
+    const selectedServices = getSelectedObjects(service_ids, svcs);
+    const selectedCountry = getSelectedObject(country_id, ctrys);
+    const selectedTarget_Groups = getSelectedObjects(target_group_ids, t_grps);
+    const selectedArticle_Type = getSelectedObject(article_type_id, a_types);
     const art = {
-      title: this.title.value.trim(),
-      body: this.body.value.trim(),
+      title: title.value.trim(),
+      body: body.value.trim(),
+      service_ids: selectedServices,
+      country_id: selectedCountry,
+      target_group_ids: selectedTarget_Groups,
+      article_type_id: selectedArticle_Type,
+
     };
-
     if (existingArticle) art._id = existingArticle;
-
     Meteor.call(methodToCall, art, (error, articleId) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
@@ -55,29 +93,34 @@ class ArticleEditor extends React.Component {
   }
 
   render() {
-    const { art } = this.props;
+    const { svcs, art, ctrys, t_grps, a_types } = this.props;
     return (<form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-      <FormGroup>
-        <ControlLabel>Title</ControlLabel>
-        <input
-          type="text"
-          className="form-control"
-          name="title"
-          ref={title => (this.title = title)}
-          defaultValue={art && art.title}
-          placeholder="Oh, The Places You'll Go!"
-        />
-      </FormGroup>
-      <FormGroup>
-        <ControlLabel>Body</ControlLabel>
-        <textarea
-          className="form-control"
-          name="body"
-          ref={body => (this.body = body)}
-          defaultValue={art && art.body}
-          placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
-        />
-      </FormGroup>
+      <FormTextInput fieldType="title" fieldName="Title" defaultVal={art && art.title} />
+      <FormTextArea fieldType="body" fieldName="Body" defaultVal={art && art.body} />
+      <FormSelectMultiple
+        fieldName="Services"
+        fieldType="service_ids"
+        optionsList= {svcs}
+        defaultVal = {art && art.service_ids && art.service_ids[0]._id && art.service_ids.map( ids => ids._id )} />
+
+      <FormSelectSingle
+        fieldName="Country"
+        fieldType="country_id"
+        optionsList= {ctrys}
+        defaultVal = {art && art.country_id && art.country_id._id} />
+
+      <FormSelectMultiple
+        fieldName="Target Groups"
+        fieldType="target_group_ids"
+        optionsList= {t_grps}
+        defaultVal = {art && art.target_group_ids && art.target_group_ids[0]._id && art.target_group_ids.map( ids => ids._id )} />
+
+      <FormSelectSingle
+        fieldName="Article Type"
+        fieldType="article_type_id"
+        optionsList= {a_types}
+        defaultVal = {art && art.article_type_id && art.article_type_id._id} />
+
       <Button type="submit" bsStyle="success">
         {art && art._id ? 'Save Changes' : 'Add Article'}
       </Button>
@@ -90,8 +133,12 @@ ArticleEditor.defaultProps = {
 };
 
 ArticleEditor.propTypes = {
-  art: PropTypes.object,
   history: PropTypes.object.isRequired,
+  art: PropTypes.object,
+  svcs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  ctrys: PropTypes.arrayOf(PropTypes.object).isRequired,
+  t_grps: PropTypes.arrayOf(PropTypes.object).isRequired,
+  a_types: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ArticleEditor;

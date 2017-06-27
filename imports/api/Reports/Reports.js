@@ -48,6 +48,7 @@ Reports.schema = new SimpleSchema({
   },
   service_ids: {
     type: Array,
+    minCount: 1,
     label: 'The list of services tagged to the report.',
   },
   "service_ids.$": {
@@ -76,6 +77,7 @@ Reports.schema = new SimpleSchema({
   },
   target_group_ids: {
     type: Array,
+    minCount: 1,
     label: 'The list of target_groups tagged to the report.',
   },
   "target_group_ids.$": {

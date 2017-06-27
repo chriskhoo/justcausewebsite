@@ -8,6 +8,10 @@ Meteor.methods({
     check(art, {
       title: String,
       body: String,
+      service_ids: Array,
+      country_id: Object,
+      target_group_ids: Array,
+      article_type_id: Object,
     });
 
     try {
@@ -21,6 +25,10 @@ Meteor.methods({
       _id: String,
       title: String,
       body: String,
+      service_ids: Array,
+      country_id: Object,
+      target_group_ids: Array,
+      article_type_id: Object,
     });
 
     try {

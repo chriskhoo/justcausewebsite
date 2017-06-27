@@ -44,6 +44,64 @@ Articles.schema = new SimpleSchema({
     type: String,
     label: 'The body of the article.',
   },
+  service_ids: {
+    type: Array,
+    minCount: 1,
+    label: 'The list of services tagged to the report.',
+  },
+  "service_ids.$": {
+    type: Object,
+    label: 'The object of services tagged to the report.',
+  },
+  "service_ids.$._id": {
+    type: String,
+    label: 'The id of service tagged to the report.',
+  },
+  "service_ids.$.name": {
+    type: String,
+    label: 'The name of service tagged to the report.',
+  },
+  country_id: {
+    type: Object,
+    label: 'The country object tagged to the report.',
+  },
+  "country_id._id": {
+    type: String,
+    label: 'The id of the country tagged to the report.',
+  },
+  "country_id.name": {
+    type: String,
+    label: 'The name of the country tagged to the report.',
+  },
+  target_group_ids: {
+    type: Array,
+    minCount: 1,
+    label: 'The list of target_groups tagged to the report.',
+  },
+  "target_group_ids.$": {
+    type: Object,
+    label: 'The object of target_groups tagged to the report.',
+  },
+  "target_group_ids.$._id": {
+    type: String,
+    label: 'The id of target_group tagged to the report.',
+  },
+  "target_group_ids.$.name": {
+    type: String,
+    label: 'The name of target_group tagged to the report.',
+  },
+  article_type_id: {
+    type: Object,
+    label: 'The article_type object tagged to the report.',
+  },
+  "article_type_id._id": {
+    type: String,
+    label: 'The id of the article_type tagged to the report.',
+  },
+  "article_type_id.name": {
+    type: String,
+    label: 'The name of the article_type tagged to the report.',
+  },
 });
 
 Articles.attachSchema(Articles.schema);

@@ -44,11 +44,11 @@ const renderReport = (rept, match, history) => (rept ? (
       <Panel header='Country'>
         { rept.country_id.name }
       </Panel>
-      <Panel header='Detail Level'>
-        { rept.detail_level_id.name }
-      </Panel>
       <Panel header='Taret Groups'>
         { rept.target_group_ids.map( target_group => target_group.name ).join(', ') }
+      </Panel>
+      <Panel header='Detail Level'>
+        { rept.detail_level_id.name }
       </Panel>
     </div>
   </div>

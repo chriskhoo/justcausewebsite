@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Table, Alert, Button } from 'react-bootstrap';
-import { timeago, monthDayYearAtTime } from '@cleverbeagle/dates';
+import { timeago, monthDayYear } from '@cleverbeagle/dates';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -42,7 +42,7 @@ const Articles = ({ loading, articles, match, history }) => (!loading ? (
           <tr key={_id}>
             <td>{title}</td>
             <td>{timeago(updatedAt)}</td>
-            <td>{monthDayYearAtTime(createdAt)}</td>
+            <td>{monthDayYear(createdAt)}</td>
             <td>
               <Button
                 bsStyle="primary"

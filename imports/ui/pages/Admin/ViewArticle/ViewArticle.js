@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonToolbar, ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import Articles from '../../../../api/Articles/Articles';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
+import ArticlesCollection from '../../../../api/Articles/Articles';
 
 const handleRemove = (articleId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -34,7 +34,23 @@ const renderArticle = (art, match, history) => (art ? (
         </ButtonGroup>
       </ButtonToolbar>
     </div>
-    { art && art.body }
+    <div>
+      <Panel header='Body'>
+        { art.body }
+      </Panel>
+      <Panel header='Services'>
+        { art.service_ids.map( service => service.name ).join(', ') }
+      </Panel>
+      <Panel header='Country'>
+        { art.country_id.name }
+      </Panel>
+      <Panel header='Taret Groups'>
+        { art.target_group_ids.map( target_group => target_group.name ).join(', ') }
+      </Panel>
+      <Panel header='Article Type'>
+        { art.article_type_id.name }
+      </Panel>
+    </div>
   </div>
 ) : <NotFound />);
 
@@ -55,6 +71,6 @@ export default createContainer(({ match }) => {
 
   return {
     loading: !subscription.ready(),
-    art: Articles.findOne(articleId),
+    art: ArticlesCollection.findOne(articleId),
   };
 }, ViewArticle);
