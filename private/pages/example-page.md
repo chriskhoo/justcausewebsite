@@ -11,3 +11,6 @@ To do list:
 - more detailed validation when doing the initial checks on the server and the client side
 - Write tests
 - is there a safe way to parse the markdown data vs using the code in components > Page?
+- work out mechanism for timestamps on things like badge awards
+- Do we need bullet points if we have MD?
+- do we need timestamp for impact output / outcome / quotes?

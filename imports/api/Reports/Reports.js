@@ -36,16 +36,6 @@ Reports.schema = new SimpleSchema({
       if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
     },
   },
-  title: {
-    type: String,
-    label: 'The title of the report.',
-    optional: false,
-  },
-  body: {
-    type: String,
-    label: 'The body of the report.',
-    optional: false,
-  },
   service_ids: {
     type: Array,
     minCount: 1,
@@ -115,6 +105,88 @@ Reports.schema = new SimpleSchema({
     type: String,
     label: 'The name of the detail_level tagged to the report.',
     optional: false,
+  },
+  report_description: {
+    type: String,
+    label: 'This is a brief description displayed in the search cards.',
+    optional: false,
+  },
+  report_charity_id: {
+    type: String,
+    label: 'The id of the charity linked to this report.',
+  },
+  report_type: {
+    type: String,
+    label: 'This is a choice between a program report or a charity report.',
+    optional: false,
+  },
+  report_program_id: {
+    type: String,
+    label: 'The id of the program tagged to the report.',
+  },
+  report_completed: {
+    type: Boolean,
+    label: 'Completed reports marked as true will be publically released.',
+  },
+  impact_info: {
+    type: Object,
+    label: 'The impact_info object tagged to the report.',
+  },
+  "impact_info.data_collection": {
+    type: String,
+    label: 'Description of data collection for impact assessment.',
+  },
+  "impact_info.continuous_improvement": {
+    type: String,
+    label: 'Description of continuous improvement efforts.',
+  },
+  "impact_info.impact_framework": {
+    type: String,
+    label: 'Description of impact framework used.',
+  },
+  "impact_info.commentary": {
+    type: String,
+    label: "Just Cause's commentary about the program or charity's impact assessment.",
+  },
+  "impact_info.outputs": {
+    type: Array,
+    label: "Impact outputs for this program or charity.",
+  },
+  "impact_info.outputs.$": {
+    type: Object,
+    label: 'The impact output object.',
+  },
+  "impact_info.outputs.$.number": {
+    type: Number,
+    label: 'The measured output figure for this object.',
+    optional: false,
+  },
+  "impact_info.outputs.$.description": {
+    type: String,
+    label: 'The unit of output measured for this object.',
+    optional: false,
+  },
+  "impact_info.outcome": {
+    type: Array,
+    label: "Impact outcome for this program or charity.",
+  },
+  "impact_info.outcome.$": {
+    type: Object,
+    label: 'The impact outcome object.',
+  },
+  "impact_info.outcome.$.number": {
+    type: Number,
+    label: 'The measured outcome figure for this object.',
+    optional: false,
+  },
+  "impact_info.outcome.$.description": {
+    type: String,
+    label: 'The unit of outcome measured for this object.',
+    optional: false,
+  },
+  "impact_info.outcome_quotes": {
+    type: String,
+    label: "Additional pure text description of outcome.",
   },
 });
 
