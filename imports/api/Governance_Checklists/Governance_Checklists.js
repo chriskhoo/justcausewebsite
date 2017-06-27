@@ -39,6 +39,7 @@ Governance_Checklists.schema = new SimpleSchema({
   description: {
     type: String,
     label: 'The description of the governance_checklist item.',
+    optional: false,
   },
 });
 

@@ -35,6 +35,7 @@ Detail_Levels.schema = new SimpleSchema({
   name: {
     type: String,
     label: 'The name of the article_type.',
+    optional: false,
   },
 });
 

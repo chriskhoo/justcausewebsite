@@ -39,6 +39,7 @@ Financial_Checklists.schema = new SimpleSchema({
   description: {
     type: String,
     label: 'The description of the financial_checklist item.',
+    optional: false,
   },
 });
 

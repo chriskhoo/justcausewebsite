@@ -35,10 +35,12 @@ Badges.schema = new SimpleSchema({
   name: {
     type: String,
     label: 'The name of the badge.',
+    optional: false,
   },
   image: {
     type: SimpleSchema.RegEx.Url,
     label: 'Link to the badge image.',
+    optional: false,
   },
 });
 
