@@ -4,7 +4,7 @@ import { Table, Alert, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AdminChecklistRow from '../AdminChecklistRow/AdminChecklistRow';
-import processTagString from '../../../modules/process-strings';
+import {processTagString} from '../../../modules/process-strings';
 
 
 class AdminChecklistTable extends React.Component {

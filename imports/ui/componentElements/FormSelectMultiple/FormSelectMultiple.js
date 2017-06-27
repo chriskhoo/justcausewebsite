@@ -3,13 +3,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { capitalize } from '../../../modules/process-strings';
 
 class FormSelectMultiple extends React.Component {
   render() {
-    const { fieldName, fieldType, optionsList, defaultVal } = this.props;
+    const { fieldName, optionsList, defaultVal } = this.props;
+    const label = fieldName.split('_').map(capitalize).join(' ');
     return(
-      <FormGroup controlId= {fieldType}>
-        <ControlLabel>{fieldName}</ControlLabel>
+      <FormGroup controlId= {fieldName}>
+        <ControlLabel>{label}</ControlLabel>
         <small>Hold ctrl (windows-users) or cmd (mac-users) to select multiple options</small>
         <FormControl
           multiple
@@ -29,7 +31,6 @@ class FormSelectMultiple extends React.Component {
 };
 
 FormSelectMultiple.propTypes = {
-  fieldType: PropTypes.string,
   fieldName: PropTypes.string,
   optionsList: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultVal: PropTypes.any,

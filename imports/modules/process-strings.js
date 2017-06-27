@@ -1,8 +1,9 @@
 import pluralize from 'pluralize';
 
-const processTagString = (str) => {
+const capitalize = (str) => str.length? str[0].toUpperCase() + str.slice(1).toLowerCase():'';
+
+function processTagString(str) {
   str = str.toLowerCase();
-  const capitalize = (str) => str.length? str[0].toUpperCase() + str.slice(1).toLowerCase():'';
   const titleCaseSnake = str => str.split('_').map(capitalize).join('_');
 
   return {
@@ -13,4 +14,7 @@ const processTagString = (str) => {
   }
 };
 
-export default processTagString;
+
+
+export {processTagString as processTagString};
+export {capitalize as capitalize};

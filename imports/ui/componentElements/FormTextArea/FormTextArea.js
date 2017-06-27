@@ -2,15 +2,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { capitalize } from '../../../modules/process-strings';
 
 class FormTextArea extends React.Component {
   render() {
-    const { fieldName, fieldType, defaultVal } = this.props;
+    const { fieldName, defaultVal } = this.props;
+    const label = fieldName.split('_').map(capitalize).join(' ');
     return(
-      <FormGroup controlId= {fieldType}>
-        <ControlLabel>{fieldName}</ControlLabel>
+      <FormGroup controlId= {fieldName}>
+        <ControlLabel>{label}</ControlLabel>
         <textarea
-          name={fieldType}
+          name={fieldName}
           className="form-control"
           defaultValue= {defaultVal}
           placeholder="Enter text"
@@ -21,7 +23,6 @@ class FormTextArea extends React.Component {
 };
 
 FormTextArea.propTypes = {
-  fieldType: PropTypes.string,
   fieldName: PropTypes.string,
   defaultVal: PropTypes.any,
 };

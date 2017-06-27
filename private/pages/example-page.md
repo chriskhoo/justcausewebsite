@@ -10,3 +10,4 @@ To do list:
 - responsive database (i.e. embedded data gets updated with source data gets updated)
 - more detailed validation when doing the initial checks on the server and the client side
 - Write tests
+- is there a safe way to parse the markdown data vs using the code in components > Page?

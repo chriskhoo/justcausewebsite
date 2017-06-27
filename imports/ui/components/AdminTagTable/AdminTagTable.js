@@ -4,7 +4,7 @@ import { Table, Alert, Button } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import AdminTagRow from '../AdminTagRow/AdminTagRow';
-import processTagString from '../../../modules/process-strings';
+import {processTagString} from '../../../modules/process-strings';
 
 
 class AdminTagTable extends React.Component {

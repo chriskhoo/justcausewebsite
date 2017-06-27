@@ -3,17 +3,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { capitalize } from '../../../modules/process-strings';
 
 class FormTextInput extends React.Component {
   render() {
-    const { fieldName, fieldType, defaultVal } = this.props;
+    const { fieldName, defaultVal, type } = this.props;
+    const label = fieldName.split('_').map(capitalize).join(' ');
     return(
-      <FormGroup controlId= {fieldType}>
-        <ControlLabel>{fieldName}</ControlLabel>
+      <FormGroup controlId= {fieldName}>
+        <ControlLabel>{label}</ControlLabel>
         <input
-          type= "text"
+          type= {type}
           className= "form-control"
-          name= {fieldType}
+          name= {fieldName}
           defaultValue= {defaultVal}
           placeholder="Enter text"
         />
@@ -22,10 +24,14 @@ class FormTextInput extends React.Component {
   }
 };
 
+FormTextInput.defaultProps = {
+  type: 'text',
+};
+
 FormTextInput.propTypes = {
-  fieldType: PropTypes.string,
-  fieldName: PropTypes.string,
+  fieldName: PropTypes.string.isRequired,
   defaultVal: PropTypes.any,
+  type: PropTypes.string,
 };
 
 export default FormTextInput;

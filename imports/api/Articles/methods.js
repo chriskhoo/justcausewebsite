@@ -8,6 +8,7 @@ Meteor.methods({
     check(art, {
       title: String,
       body: String,
+      summary: String,
       service_ids: Array,
       country_id: Object,
       target_group_ids: Array,
@@ -24,6 +25,7 @@ Meteor.methods({
     check(art, {
       _id: String,
       title: String,
+      summary: String,
       body: String,
       service_ids: Array,
       country_id: Object,

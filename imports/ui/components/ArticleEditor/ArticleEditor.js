@@ -70,8 +70,10 @@ class ArticleEditor extends React.Component {
     const selectedCountry = getSelectedObject(country_id, ctrys);
     const selectedTarget_Groups = getSelectedObjects(target_group_ids, t_grps);
     const selectedArticle_Type = getSelectedObject(article_type_id, a_types);
+    const articleSummary = body.value.trim().substring(0,140);
     const art = {
       title: title.value.trim(),
+      summary: articleSummary,
       body: body.value.trim(),
       service_ids: selectedServices,
       country_id: selectedCountry,
@@ -95,29 +97,25 @@ class ArticleEditor extends React.Component {
   render() {
     const { svcs, art, ctrys, t_grps, a_types } = this.props;
     return (<form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-      <FormTextInput fieldType="title" fieldName="Title" defaultVal={art && art.title} />
-      <FormTextArea fieldType="body" fieldName="Body" defaultVal={art && art.body} />
+      <FormTextInput fieldName="title" defaultVal={art && art.title}/>
+      <FormTextArea fieldName="body" defaultVal={art && art.body} />
       <FormSelectMultiple
-        fieldName="Services"
-        fieldType="service_ids"
+        fieldName="service_ids"
         optionsList= {svcs}
         defaultVal = {art && art.service_ids && art.service_ids[0]._id && art.service_ids.map( ids => ids._id )} />
 
       <FormSelectSingle
-        fieldName="Country"
-        fieldType="country_id"
+        fieldName="country_id"
         optionsList= {ctrys}
         defaultVal = {art && art.country_id && art.country_id._id} />
 
       <FormSelectMultiple
-        fieldName="Target Groups"
-        fieldType="target_group_ids"
+        fieldName="target_group_ids"
         optionsList= {t_grps}
         defaultVal = {art && art.target_group_ids && art.target_group_ids[0]._id && art.target_group_ids.map( ids => ids._id )} />
 
       <FormSelectSingle
-        fieldName="Article Type"
-        fieldType="article_type_id"
+        fieldName="article_type_id"
         optionsList= {a_types}
         defaultVal = {art && art.article_type_id && art.article_type_id._id} />
 
@@ -129,7 +127,7 @@ class ArticleEditor extends React.Component {
 }
 
 ArticleEditor.defaultProps = {
-  art: { title: '', body: '' },
+  art: { title: '', body: ''},
 };
 
 ArticleEditor.propTypes = {

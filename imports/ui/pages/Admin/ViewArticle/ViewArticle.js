@@ -6,7 +6,9 @@ import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
+import parseMarkdown from '../../../../modules/parse-markdown';
 import ArticlesCollection from '../../../../api/Articles/Articles';
+import Content from '../../../components/Content/Content';
 
 const handleRemove = (articleId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -35,8 +37,11 @@ const renderArticle = (art, match, history) => (art ? (
       </ButtonToolbar>
     </div>
     <div>
+      <Panel header='Summary'>
+        { art.summary }
+      </Panel>
       <Panel header='Body'>
-        { art.body }
+        <Content content={ parseMarkdown(art.body) } />
       </Panel>
       <Panel header='Services'>
         { art.service_ids.map( service => service.name ).join(', ') }

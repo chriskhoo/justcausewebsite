@@ -31,6 +31,7 @@ const Articles = ({ loading, articles, match, history }) => (!loading ? (
       <thead>
         <tr>
           <th>Title</th>
+          <th>Summary</th>
           <th>Last Updated</th>
           <th>Created</th>
           <th />
@@ -38,9 +39,10 @@ const Articles = ({ loading, articles, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {articles.map(({ _id, title, createdAt, updatedAt }) => (
+        {articles.map(({ _id, title, summary, createdAt, updatedAt }) => (
           <tr key={_id}>
             <td>{title}</td>
+            <td>{summary}</td>
             <td>{timeago(updatedAt)}</td>
             <td>{monthDayYear(createdAt)}</td>
             <td>

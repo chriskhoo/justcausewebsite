@@ -1,4 +1,4 @@
-/* eslint-disable max-len, no-return-assign */ 
+/* eslint-disable max-len, no-return-assign */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -95,29 +95,25 @@ class ReportEditor extends React.Component {
   render() {
     const { svcs, rept, ctrys, t_grps, d_levels } = this.props;
     return (<form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-      <FormTextInput fieldType="title" fieldName="Title" defaultVal={rept && rept.title} />
-      <FormTextArea fieldType="body" fieldName="Body" defaultVal={rept && rept.body} />
+      <FormTextInput fieldName="title" defaultVal={rept && rept.title} />
+      <FormTextArea fieldName="body" defaultVal={rept && rept.body} />
       <FormSelectMultiple
-        fieldName="Services"
-        fieldType="service_ids"
+        fieldName="service_ids"
         optionsList= {svcs}
         defaultVal = {rept && rept.service_ids && rept.service_ids[0]._id && rept.service_ids.map( ids => ids._id )} />
 
       <FormSelectSingle
-        fieldName="Country"
-        fieldType="country_id"
+        fieldName="country_id"
         optionsList= {ctrys}
         defaultVal = {rept && rept.country_id && rept.country_id._id} />
 
       <FormSelectMultiple
-        fieldName="Target Groups"
-        fieldType="target_group_ids"
+        fieldName="target_group_ids"
         optionsList= {t_grps}
         defaultVal = {rept && rept.target_group_ids && rept.target_group_ids[0]._id && rept.target_group_ids.map( ids => ids._id )} />
 
       <FormSelectSingle
-        fieldName="Detail Level"
-        fieldType="detail_level_id"
+        fieldName="detail_level_id"
         optionsList= {d_levels}
         defaultVal = {rept && rept.detail_level_id && rept.detail_level_id._id} />
 

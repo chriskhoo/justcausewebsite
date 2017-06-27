@@ -40,6 +40,10 @@ Articles.schema = new SimpleSchema({
     type: String,
     label: 'The title of the article.',
   },
+  summary: {
+    type: String,
+    label: 'A summary extract of the article.',
+  },
   body: {
     type: String,
     label: 'The body of the article.',

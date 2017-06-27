@@ -3,13 +3,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { capitalize } from '../../../modules/process-strings';
 
 class FormSelectSingle extends React.Component {
   render() {
-    const { fieldName, fieldType, optionsList, defaultVal } = this.props;
+    const { fieldName, optionsList, defaultVal } = this.props;
+    const label = fieldName.split('_').map(capitalize).join(' ');
     return(
-      <FormGroup controlId= {fieldType}>
-        <ControlLabel>{fieldName}</ControlLabel>
+      <FormGroup controlId= {fieldName}>
+        <ControlLabel>{label}</ControlLabel>
         <FormControl
           componentClass="select"
           defaultValue= {defaultVal}>
@@ -30,7 +32,6 @@ class FormSelectSingle extends React.Component {
 };
 
 FormSelectSingle.propTypes = {
-  fieldType: PropTypes.string,
   fieldName: PropTypes.string,
   optionsList: PropTypes.arrayOf(PropTypes.object).isRequired,
   defaultVal: PropTypes.any,
