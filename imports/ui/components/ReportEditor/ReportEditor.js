@@ -8,6 +8,8 @@ import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
 import { FormSelectMultiple, getSelectedObjects } from '../../componentElements/FormSelectMultiple/FormSelectMultiple';
 import { FormSelectSingle, getSelectedObject } from '../../componentElements/FormSelectSingle/FormSelectSingle';
+import FormTextInput from '../../componentElements/FormTextInput/FormTextInput';
+import FormTextArea from '../../componentElements/FormTextArea/FormTextArea';
 
 class ReportEditor extends React.Component {
   componentDidMount() {
@@ -24,12 +26,14 @@ class ReportEditor extends React.Component {
           required: true,
         },
         country_id: {
+          valueNotEquals: undefined,
           required: true,
         },
         target_group_ids: {
           required: true,
         },
         detail_level_id: {
+          valueNotEquals: undefined,
           required: true,
         },
       },
@@ -47,10 +51,10 @@ class ReportEditor extends React.Component {
           required: 'Please select one country tag',
         },
         target_group_ids: {
-          required: true,
+          required: 'Please select the appropriate target group tag(s)',
         },
         detail_level_id: {
-          required: true,
+          required: 'Please select one detail level tag',
         },
       },
       submitHandler() { component.handleSubmit(); },
@@ -91,28 +95,8 @@ class ReportEditor extends React.Component {
   render() {
     const { svcs, rept, ctrys, t_grps, d_levels } = this.props;
     return (<form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-      <FormGroup>
-        <ControlLabel>Title</ControlLabel>
-        <input
-          type="text"
-          className="form-control"
-          name="title"
-          ref={title => (this.title = title)}
-          defaultValue={rept && rept.title}
-          placeholder="Oh, The Places You'll Go!"
-        />
-      </FormGroup>
-      <FormGroup>
-        <ControlLabel>Body</ControlLabel>
-        <textarea
-          className="form-control"
-          name="body"
-          ref={body => (this.body = body)}
-          defaultValue={rept && rept.body}
-          placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
-        />
-      </FormGroup>
-
+      <FormTextInput fieldType="title" fieldName="Title" defaultVal={rept && rept.title} />
+      <FormTextArea fieldType="body" fieldName="Body" defaultVal={rept && rept.body} />
       <FormSelectMultiple
         fieldName="Services"
         fieldType="service_ids"
