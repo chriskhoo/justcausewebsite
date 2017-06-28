@@ -6,12 +6,16 @@ import rateLimit from '../../modules/rate-limit';
 Meteor.methods({
   'reports.insert': function reportsInsert(rept) {
     check(rept, {
-      title: String,
-      body: String,
       service_ids: Array,
       country_id: Object,
       target_group_ids: Array,
       detail_level_id: Object,
+      description: String,
+      charity_id: String,
+      type:  String,
+      completed: Boolean,
+      impact_info: Match.Optional(Object),
+      program_id: Match.Optional(String),
     });
     try {
       return Reports.insert({ author: this.userId, ...rept });
@@ -22,12 +26,16 @@ Meteor.methods({
   'reports.update': function reportsUpdate(rept) {
     check(rept, {
       _id: String,
-      title: String,
-      body: String,
       service_ids: Array,
       country_id: Object,
       target_group_ids: Array,
       detail_level_id: Object,
+      description: String,
+      charity_id: String,
+      type:  String,
+      completed: Boolean,
+      impact_info: Match.Optional(Object),
+      program_id: Match.Optional(String),
     });
     try {
       const reportId = rept._id;

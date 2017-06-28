@@ -106,27 +106,28 @@ Reports.schema = new SimpleSchema({
     label: 'The name of the detail_level tagged to the report.',
     optional: false,
   },
-  report_description: {
+  description: {
     type: String,
     label: 'This is a brief description displayed in the search cards.',
     optional: false,
   },
-  report_charity_id: {
+  charity_id: {
     type: String,
     label: 'The id of the charity linked to this report.',
   },
-  report_type: {
+  type: {
     type: String,
     label: 'This is a choice between a program report or a charity report.',
     optional: false,
   },
-  report_program_id: {
+  program_id: {
     type: String,
     label: 'The id of the program tagged to the report.',
   },
-  report_completed: {
+  completed: {
     type: Boolean,
     label: 'Completed reports marked as true will be publically released.',
+    optional: false,
   },
   impact_info: {
     type: Object,

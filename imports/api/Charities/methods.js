@@ -1,13 +1,30 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
+import { check, Match } from 'meteor/check';
 import Charities from './Charities';
 import rateLimit from '../../modules/rate-limit';
 
 Meteor.methods({
   'charities.insert': function charitiesInsert(chty) {
     check(chty, {
-      title: String,
-      body: String,
+      name: String,
+      year_established: String,
+      website_link:  String,
+      donation_link: Match.Optional(String),
+      logo: String,
+      summary: String,
+      revenue_model: String,
+      religious_affiliation: String,
+      registration_status: String,
+      jc_opinion_justcauseloves: Match.Optional([String]),
+      jc_opinion_donate_if: Match.Optional([String]),
+      jc_opinion_broadentheirwork: Match.Optional([String]),
+      jc_opinion_strengthentheteam: Match.Optional([String]),
+      badges_awarded: Match.Optional([String]),
+      programs: Match.Optional([String]),
+      staff_info: Match.Optional(Object),
+      reputation_info: Object,
+      leadership_info: Object,
+      financial_info: Object,
     });
 
     try {
@@ -19,8 +36,25 @@ Meteor.methods({
   'charities.update': function charitiesUpdate(chty) {
     check(chty, {
       _id: String,
-      title: String,
-      body: String,
+      name: String,
+      year_established: String,
+      website_link:  String,
+      donation_link: Match.Optional(String),
+      logo: String,
+      summary: String,
+      revenue_model: String,
+      religious_affiliation: String,
+      registration_status: String,
+      jc_opinion_justcauseloves: Match.Optional([String]),
+      jc_opinion_donate_if: Match.Optional([String]),
+      jc_opinion_broadentheirwork: Match.Optional([String]),
+      jc_opinion_strengthentheteam: Match.Optional([String]),
+      badges_awarded: Match.Optional([String]),
+      programs: Match.Optional([String]),
+      staff_info: Match.Optional(Object),
+      reputation_info: Object,
+      leadership_info: Object,
+      financial_info: Object,
     });
 
     try {
