@@ -6,11 +6,11 @@ import { capitalize } from '../../../modules/process-strings';
 
 class FormTextArea extends React.Component {
   render() {
-    const { fieldName, defaultVal } = this.props;
-    const label = fieldName.split('_').map(capitalize).join(' ');
+    const { fieldName, defaultVal, label } = this.props;
+    const newLabel = label || fieldName.split('_').map(capitalize).join(' ');
     return(
       <FormGroup controlId= {fieldName}>
-        <ControlLabel>{label}</ControlLabel>
+        <ControlLabel>{newLabel}</ControlLabel>
         <textarea
           name={fieldName}
           className="form-control"
@@ -25,6 +25,7 @@ class FormTextArea extends React.Component {
 FormTextArea.propTypes = {
   fieldName: PropTypes.string,
   defaultVal: PropTypes.any,
+  label: PropTypes.string,
 };
 
 export default FormTextArea;

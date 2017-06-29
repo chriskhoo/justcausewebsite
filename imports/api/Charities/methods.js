@@ -7,7 +7,7 @@ Meteor.methods({
   'charities.insert': function charitiesInsert(chty) {
     check(chty, {
       name: String,
-      year_established: String,
+      year_established: Number,
       website_link:  String,
       donation_link: Match.Optional(String),
       logo: String,

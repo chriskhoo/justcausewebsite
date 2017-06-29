@@ -42,7 +42,7 @@ Charities.schema = new SimpleSchema({
     optional: false,
   },
   year_established: {
-    type: String,
+    type: Number,
     label: 'The body of the charity.',
     optional: false,
   },
@@ -412,25 +412,25 @@ Charities.schema = new SimpleSchema({
     type: Number,
     label: "The reporting year the revenue model is based on.",
   },
-  "financial_info.rev_model_cash_donations_%": {
+  "financial_info.rev_model_cash_donations_percent": {
     type: Number,
-    label: "The % of cash donations.",
+    label: "The percent of cash donations.",
   },
-  "financial_info.rev_model_govt_grants_subsidies_%": {
+  "financial_info.rev_model_govt_grants_subsidies_percent": {
     type: Number,
-    label: "The % of government grants or subsidies.",
+    label: "The percent of government grants or subsidies.",
   },
-  "financial_info.rev_model_activity_income_%": {
+  "financial_info.rev_model_activity_income_percent": {
     type: Number,
-    label: "The % of activity generated income.",
+    label: "The percent of activity generated income.",
   },
-  "financial_info.rev_model_investment_income_%": {
+  "financial_info.rev_model_investment_income_percent": {
     type: Number,
-    label: "The % of investment generated income.",
+    label: "The percent of investment generated income.",
   },
-  "financial_info.rev_model_others_%": {
+  "financial_info.rev_model_others_percent": {
     type: Number,
-    label: "The % income from other sources.",
+    label: "The percent income from other sources.",
   },
   "financial_info.major_donors_year": {
     type: Number,
