@@ -14,7 +14,6 @@ class CharityBadgesEditor extends React.Component {
     badges.forEach(function(badge){
       let newBadge = {...badge};
       let existing = charity_badges.filter((charity_badge)=> charity_badge._id == badge._id);
-
       if(existing.length >= 1){
         newBadge.charity_awarded = true;
         newBadge.reason = existing[0].reason
@@ -23,7 +22,6 @@ class CharityBadgesEditor extends React.Component {
       }
       companyBadgeList.push(newBadge);
     })
-    
     return(
       <Table responsive>
         <thead>
@@ -41,7 +39,9 @@ class CharityBadgesEditor extends React.Component {
                key={badge._id}
                _id={badge._id}
                name={badge.name}
-               image={badge.image} charity_awarded={badge.charity_awarded} reason={badge.reason} />)
+               image={badge.image}
+               charity_awarded={badge.charity_awarded}
+               reason={badge.reason} />)
           }
         </tbody>
       </Table>

@@ -24,7 +24,7 @@ const renderEditCharity = ( history, chty, bdgs, f_checks, g_checks ) => (chty ?
 ) : <NotFound />);
 
 const EditCharity = ({ loading, history, chty, bdgs, f_checks, g_checks }) => (
-  !loading ?  renderEditCharity( history, chty, bdgs, f_checks, g_checks ) : <NotFound /> );
+  !loading ?  renderEditCharity( history, chty, bdgs, f_checks, g_checks ) : <Loading /> );
 
 EditCharity.propTypes = {
   chty: PropTypes.object.isRequired,

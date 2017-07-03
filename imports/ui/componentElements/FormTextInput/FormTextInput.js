@@ -12,23 +12,14 @@ class FormTextInput extends React.Component {
     return(
       <FormGroup controlId= {fieldName}>
         <ControlLabel>{newLabel}</ControlLabel>
-        {checked ?
           <input
             type= {type}
             className= "form-control"
             name= {fieldName}
             defaultValue= {defaultVal}
             placeholder= {`Enter ${type}`}
-            checked
-          />:
-          <input
-            type= {type}
-            className= "form-control"
-            name= {fieldName}
-            defaultValue= {defaultVal}
-            placeholder= {`Enter ${type}`}
-          />}
-
+            defaultChecked = {checked}
+          />
       </FormGroup>
     )
   }

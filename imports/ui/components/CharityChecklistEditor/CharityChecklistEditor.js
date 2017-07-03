@@ -32,9 +32,8 @@ class CharityChecklistEditor extends React.Component {
                 <td>
                   <FormTextInput
                     type="checkbox"
-                    fieldName={`${checklist_type}-charity_awarded`}
+                    fieldName={`${checklist_type}-${checklist._id}-charity_awarded`}
                     label=" "
-                    value={checklist._id}
                     checked={checklist.charity_awarded} />
                 </td>
                 <td>

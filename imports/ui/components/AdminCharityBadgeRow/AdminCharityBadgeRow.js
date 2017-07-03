@@ -22,7 +22,6 @@ class AdminCharityBadgeRow extends React.Component {
             type="checkbox"
             fieldName={`badge-${_id}-charity_awarded`}
             label=" "
-            value={_id}
             checked={charity_awarded} />
         </td>
         <td>

@@ -7,9 +7,6 @@ import { Meteor } from 'meteor/meteor';
 const AuthenticatedNavigation = ({ name }) => (
   <div>
     <Nav>
-      <LinkContainer to="/admin/articles">
-        <NavItem eventKey={2.2} href="/admin/articles">Articles</NavItem>
-      </LinkContainer>
       <NavDropdown eventKey={2} title="Tags, lists" id="user-nav-dropdown">
         <LinkContainer to="/admin/article_types">
           <NavItem eventKey={2.1} href="/admin/article_types">Article_Types</NavItem>
@@ -36,19 +33,17 @@ const AuthenticatedNavigation = ({ name }) => (
           <NavItem eventKey={2.8} href="/admin/governance_checklists">Governance_checklists</NavItem>
         </LinkContainer>
       </NavDropdown>
-      <NavDropdown eventKey={3} title="Report Items" id="user-nav-dropdown">
-        <LinkContainer to="/admin/charities">
-          <NavItem eventKey={3.1} href="/admin/charities">Charities</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/admin/programs">
-          <NavItem eventKey={3.2} href="/admin/programs">Programs</NavItem>
-        </LinkContainer>
-        <LinkContainer to="/admin/reports">
-          <NavItem eventKey={3.3} href="/admin/reports">Reports</NavItem>
-        </LinkContainer>
-      </NavDropdown>
+      <LinkContainer to="/admin/charities">
+        <NavItem eventKey={3} href="/admin/charities">Charities</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/admin/reports">
+        <NavItem eventKey={4} href="/admin/reports">Reports</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/admin/articles">
+        <NavItem eventKey={5} href="/admin/articles">Articles</NavItem>
+      </LinkContainer>
       <LinkContainer to="/documents">
-        <NavItem eventKey={4} href="/documents">Documents</NavItem>
+        <NavItem eventKey={5} href="/documents">Documents</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>

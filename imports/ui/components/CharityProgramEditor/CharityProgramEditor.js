@@ -48,7 +48,7 @@ CharityProgramEditor.propTypes = {
 
 function populateExistingPrograms(programs, handleRemove){
   if(programs){
-    return programs.map((program) => <CharityProgramEditor _id={program._id} name={program.name} summary={program.summary} revenue_model={program.revenue_model} handleRemove={handleRemove}/>)
+    return programs.map((program) => <CharityProgramEditor key={program._id} _id={program._id} name={program.name} summary={program.summary} revenue_model={program.revenue_model} handleRemove={handleRemove}/>)
   }else{
     return "Just Cause has no recorded programs for this charity."
   }

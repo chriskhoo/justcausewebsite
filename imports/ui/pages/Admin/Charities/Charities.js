@@ -30,7 +30,7 @@ const Charities = ({ loading, charities, match, history }) => (!loading ? (
     {charities.length ? <Table responsive>
       <thead>
         <tr>
-          <th>Title</th>
+          <th>Name</th>
           <th>Last Updated</th>
           <th>Created</th>
           <th />
@@ -38,9 +38,9 @@ const Charities = ({ loading, charities, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {charities.map(({ _id, title, createdAt, updatedAt }) => (
+        {charities.map(({ _id, name, createdAt, updatedAt }) => (
           <tr key={_id}>
-            <td>{title}</td>
+            <td>{name}</td>
             <td>{timeago(updatedAt)}</td>
             <td>{monthDayYearAtTime(createdAt)}</td>
             <td>

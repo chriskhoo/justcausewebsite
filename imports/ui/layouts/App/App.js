@@ -23,10 +23,6 @@ import Charities from '../../pages/Admin/Charities/Charities';
 import NewCharity from '../../pages/Admin/NewCharity/NewCharity';
 import ViewCharity from '../../pages/Admin/ViewCharity/ViewCharity';
 import EditCharity from '../../pages/Admin/EditCharity/EditCharity';
-import Programs from '../../pages/Admin/Programs/Programs';
-import NewProgram from '../../pages/Admin/NewProgram/NewProgram';
-import ViewProgram from '../../pages/Admin/ViewProgram/ViewProgram';
-import EditProgram from '../../pages/Admin/EditProgram/EditProgram';
 import Reports from '../../pages/Admin/Reports/Reports';
 import NewReport from '../../pages/Admin/NewReport/NewReport';
 import ViewReport from '../../pages/Admin/ViewReport/ViewReport';
@@ -73,10 +69,6 @@ const App = props => (
           <Authenticated exact path="/admin/charities/new" component={NewCharity} {...props} />
           <Authenticated exact path="/admin/charities/:_id" component={ViewCharity} {...props} />
           <Authenticated exact path="/admin/charities/:_id/edit" component={EditCharity} {...props} />
-          <Authenticated exact path="/admin/programs" component={Programs} {...props} />
-          <Authenticated exact path="/admin/programs/new" component={NewProgram} {...props} />
-          <Authenticated exact path="/admin/programs/:_id" component={ViewProgram} {...props} />
-          <Authenticated exact path="/admin/programs/:_id/edit" component={EditProgram} {...props} />
         
           <Authenticated exact path="/admin/reports" component={Reports} {...props} />
           <Authenticated exact path="/admin/reports/new" component={NewReport} {...props} />
