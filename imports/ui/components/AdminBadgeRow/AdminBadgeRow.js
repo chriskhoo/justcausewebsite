@@ -6,9 +6,29 @@ import { Button, Form, FormGroup, ControlLabel, FormControl, Thumbnail} from 're
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
+import valid from '../../../modules/valid';
 import './AdminBadgeRow.scss';
+import FormThumbnailUpload from '../../componentElements/FormThumbnailUpload/FormThumbnailUpload'
+import FormTextInput from '../../componentElements/FormTextInput/FormTextInput'
 
 class AdminBadgeRow extends React.Component {
+  constructor(props) {
+   super(props);
+   const { badge } = this.props;
+   this.state = {
+     image: badge && badge.image,
+   }
+   this.handleUpload = this.handleUpload.bind(this);
+  }
+
+  componentWillMount(){
+    // rule created on client and server
+    Slingshot.fileRestrictions("Thumbnails", {
+      allowedFileTypes: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
+      maxSize: 2 * 1024 * 1024 // 2 MB (use null for unlimited)
+    });
+  }
+
   componentDidMount() {
     const component = this;
     validate(component.form, {
@@ -16,20 +36,31 @@ class AdminBadgeRow extends React.Component {
         name: {
           required: true,
         },
-        image: {
-          required: true,
-        },
       },
       messages: {
         name: {
           required: `Must enter a name for the badge.`,
         },
-        image: {
-          required: `Must enter a url for the badge image.`,
-        },
       },
-      submitHandler() { component.handleSubmit(); },
     });
+  }
+
+  handleUpload(metaContext, fieldName){
+    let nextState = this.state;
+    const uploader = new Slingshot.Upload("Thumbnails", metaContext);
+
+    // update the element ID
+    uploader.send(this.form[fieldName].files[0], function (error, downloadUrl) {
+      if (error) {
+        // Log service detailed response
+        Bert.alert(error.message, 'danger');
+      }
+      else {
+        nextState[fieldName] = downloadUrl;
+      }
+      // update the sample image
+      this.setState(nextState);
+    }.bind(this));
   }
 
   handleRemove() {
@@ -46,10 +77,11 @@ class AdminBadgeRow extends React.Component {
   }
 
   handleSubmit() {
+    valid(this.form);
     const { _id } = this.props.badge;
     const badge = {
-      name: this.name.value.trim(),
-      image: this.image.value.trim(),
+      name: this.form.name.value.trim(),
+      image: this.state.image,
       _id: _id,
     };
     Meteor.call('badges.update', badge, (error, response) => {
@@ -65,45 +97,20 @@ class AdminBadgeRow extends React.Component {
     const { badge } = this.props;
     return (
       <tr>
-        <td><Thumbnail alt="65x65" className="thumbnail" src={badge.image} /></td>
+        <td><Thumbnail alt="65x65" className="thumbnail_custom" src={this.state.image} /></td>
         <td>
           <form className="form-inline" ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-            <FormGroup>
-              <ControlLabel>Name:</ControlLabel>
-              {'     '}
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                ref={name => (this.name = name)}
-                defaultValue={badge.name}
-                placeholder="Enter badge name"
-              />
-            </FormGroup>
-            {'     '}
-            <FormGroup>
-              <ControlLabel>Image URL:</ControlLabel>
-              {'     '}
-              <input
-                type="text"
-                className="form-control"
-                name="image"
-                ref={image => (this.image = image)}
-                defaultValue={badge.image}
-                placeholder="Enter image url"
-              />
-            </FormGroup>
-            {'     '}
-            <Button
-              type="submit"
-              bsStyle="warning"
-              onClick={() => this.handleSubmit()}
-              > Update
-            </Button>
+            <FormThumbnailUpload fieldName="image" metaContext={ {type: "badge"} } handleUpload={this.handleUpload} />
+            <FormTextInput fieldName="name" defaultVal={badge && badge.name} />
           </form>
         </td>
         <td>
           <div>
+            <Button
+              bsStyle="warning"
+              onClick={() => this.handleSubmit()}
+              > Update
+            </Button>
             <Button
               bsStyle="danger"
               onClick={() => this.handleRemove()}

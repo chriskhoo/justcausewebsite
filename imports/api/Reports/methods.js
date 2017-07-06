@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
+import { check, Match } from 'meteor/check';
 import Reports from './Reports';
 import rateLimit from '../../modules/rate-limit';
 

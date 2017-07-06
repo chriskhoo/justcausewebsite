@@ -7,24 +7,21 @@ import { capitalize } from '../../../modules/process-strings';
 
 class FormSelectSingle extends React.Component {
   render() {
-    const { fieldName, optionsList, defaultVal } = this.props;
+    const { fieldName, optionsList, defaultVal, handleChange } = this.props;
     const label = fieldName.split('_').map(capitalize).join(' ');
     return(
       <FormGroup controlId= {fieldName}>
         <ControlLabel>{label}</ControlLabel>
         <FormControl
           componentClass="select"
-          defaultValue= {defaultVal}>
+          defaultValue= {defaultVal}
+          onChange={ () => handleChange && handleChange() }
+          >
           <option
             key='select'
             value={undefined}
             >Select</option>
-          { optionsList.map((optionObject) =>
-            <option
-              key={optionObject._id}
-              value={optionObject._id}
-              >{optionObject.name}</option>
-          )}
+          { optionsList.map( (optionObject) => mapOption(optionObject) ) }
         </FormControl>
       </FormGroup>
     )
@@ -33,8 +30,9 @@ class FormSelectSingle extends React.Component {
 
 FormSelectSingle.propTypes = {
   fieldName: PropTypes.string,
-  optionsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  optionsList: PropTypes.arrayOf(PropTypes.any).isRequired,
   defaultVal: PropTypes.any,
+  handleChange: PropTypes.func,
 };
 
 function getSelectedObject(domSelectElement, objectArray){
@@ -44,3 +42,26 @@ function getSelectedObject(domSelectElement, objectArray){
 
 export { FormSelectSingle as FormSelectSingle};
 export { getSelectedObject as getSelectedObject};
+
+// private functions
+function mapOption(optionObject){
+  if(typeof(optionObject) == "object"){
+    return(
+      <option
+        key={optionObject._id}
+        value={optionObject._id}
+        >{optionObject.name}</option>
+    );
+  } else if(typeof(optionObject) == "string") {
+    return(
+      <option
+        key={optionObject}
+        value={optionObject}
+        >{optionObject}</option>
+    );
+  };
+}
+
+function bob(){
+  console.log('bob')
+}

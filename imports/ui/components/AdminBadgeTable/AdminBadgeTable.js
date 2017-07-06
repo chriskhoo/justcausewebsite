@@ -9,7 +9,7 @@ import AdminBadgeRow from '../AdminBadgeRow/AdminBadgeRow';
 class AdminBadgeTable extends React.Component {
   handleCreate() {
     exampleThumbnail = 'http://lorempixel.com/65/65';
-    Meteor.call('badges.insert', {name: 'Example name', image: exampleThumbnail}, (error, res) => {
+    Meteor.call('badges.insert', {name: 'example name', image: exampleThumbnail}, (error, res) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {

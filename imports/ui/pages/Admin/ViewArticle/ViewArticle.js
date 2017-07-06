@@ -6,9 +6,9 @@ import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
+import Content from '../../../components/Content/Content';
 import parseMarkdown from '../../../../modules/parse-markdown';
 import ArticlesCollection from '../../../../api/Articles/Articles';
-import Content from '../../../components/Content/Content';
 
 const handleRemove = (articleId, history) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -40,9 +40,6 @@ const renderArticle = (art, match, history) => (art ? (
       <Panel header='Summary'>
         { art.summary }
       </Panel>
-      <Panel header='Body'>
-        <Content content={ parseMarkdown(art.body) } />
-      </Panel>
       <Panel header='Services'>
         { art.service_ids.map( service => service.name ).join(', ') }
       </Panel>
@@ -54,6 +51,9 @@ const renderArticle = (art, match, history) => (art ? (
       </Panel>
       <Panel header='Article Type'>
         { art.article_type_id.name }
+      </Panel>
+      <Panel header='Body'>
+        <div className="article_image"><img src={art.body} alt="body_preview" /></div>
       </Panel>
     </div>
   </div>

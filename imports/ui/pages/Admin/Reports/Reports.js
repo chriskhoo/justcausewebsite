@@ -8,6 +8,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
 import ReportsCollection from '../../../../api/Reports/Reports';
 import Loading from '../../../components/Loading/Loading';
+import CharitiesCollection from '../../../../api/Charities/Charities';
 
 const handleRemove = (reportId) => {
   if (confirm('Are you sure? This is permanent!')) {
@@ -21,16 +22,17 @@ const handleRemove = (reportId) => {
   }
 };
 
-const Reports = ({ loading, reports, match, history }) => (!loading ? (
+const Reports = ({ loading, rpts, chtys, match, history }) => (!loading ? (
   <div className="Reports">
     <div className="page-header clearfix">
       <h4 className="pull-left">Reports</h4>
       <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Report</Link>
     </div>
-    {reports.length ? <Table responsive>
+    {rpts.length ? <Table responsive>
       <thead>
         <tr>
-          <th>Title</th>
+          <th>Charity</th>
+          <th>Program</th>
           <th>Last Updated</th>
           <th>Created</th>
           <th />
@@ -38,9 +40,16 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
         </tr>
       </thead>
       <tbody>
-        {reports.map(({ _id, title, createdAt, updatedAt }) => (
+        {rpts.map(({ _id, type, charity_id, program_id, createdAt, updatedAt }) => {
+          const charity = chtys && chtys.filter(({_id})=>_id == charity_id)[0];
+          const charityName = charity && charity.name;
+          const charityPrograms = charity && charity.programs;
+          const reportProgram = charityPrograms && charityPrograms.filter(({_id})=>_id == program_id)[0];
+          const reportProgramName = reportProgram && reportProgram.name;
+          return(
           <tr key={_id}>
-            <td>{title}</td>
+            <td>{charityName}</td>
+            <td>{reportProgramName}</td>
             <td>{timeago(updatedAt)}</td>
             <td>{monthDayYear(createdAt)}</td>
             <td>
@@ -58,7 +67,7 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
               >Delete</Button>
             </td>
           </tr>
-        ))}
+        )})}
       </tbody>
     </Table> : <Alert bsStyle="warning">No reports yet!</Alert>}
   </div>
@@ -66,15 +75,18 @@ const Reports = ({ loading, reports, match, history }) => (!loading ? (
 
 Reports.propTypes = {
   loading: PropTypes.bool.isRequired,
-  reports: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rpts: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
+  chtys: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('reports');
+  const rptsSubscription = Meteor.subscribe('reports');
+  const chtysSubscription = Meteor.subscribe('charities');
   return {
-    loading: !subscription.ready(),
-    reports: ReportsCollection.find().fetch(),
+    loading: !chtysSubscription.ready() || !rptsSubscription.ready(),
+    rpts: ReportsCollection.find().fetch(),
+    chtys: CharitiesCollection.find().fetch(),
   };
 }, Reports);

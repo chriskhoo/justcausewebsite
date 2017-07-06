@@ -1,16 +1,21 @@
 tr{
   td{
     .form-inline{
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
       .form-group{
+        vertical-align: top;
+        // flex: auto;
         .control-label{
-          display: inline-block;
+          display: block;
         }
         .form-control{
-          min-width: 20em;
+          width: 100%;
         }
       }
       .btn-warning{
-        vertical-align: top;
+        vertical-align: middle;
       }
     }
   }

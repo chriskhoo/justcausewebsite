@@ -10,16 +10,17 @@ import ServicesCollection from '../../../../api/Services/Services';
 import CountriesCollection from '../../../../api/Countries/Countries';
 import Target_GroupsCollection from '../../../../api/Target_Groups/Target_Groups';
 import Detail_LevelsCollection from '../../../../api/Detail_Levels/Detail_Levels';
+import CharitiesCollection from '../../../../api/Charities/Charities';
 
-const renderEditReport = ( history, rept, svcs, ctrys, t_grps, d_levels ) => (rept ? (
+const renderEditReport = ( history, rept, svcs, ctrys, t_grps, d_levels, chtys ) => (rept ? (
   <div className="EditReport">
     <h4 className="page-header">{`Editing "${rept.title}"`}</h4>
-    <ReportEditor rept={rept} history={history} svcs={svcs} ctrys={ctrys} t_grps={t_grps} d_levels={d_levels}/>
+    <ReportEditor rept={rept} history={history} svcs={svcs} ctrys={ctrys} t_grps={t_grps} d_levels={d_levels} chtys={chtys}/>
   </div>
 ) : <NotFound />);
 
-const EditReport = ({ loading, history, rept, svcs, ctrys, t_grps, d_levels }) => (
-  !loading ? renderEditReport( history, rept, svcs, ctrys, t_grps, d_levels ) : <Loading />
+const EditReport = ({ loading, history, rept, svcs, ctrys, t_grps, d_levels, chtys }) => (
+  !loading ? renderEditReport( history, rept, svcs, ctrys, t_grps, d_levels, chtys ) : <Loading />
 );
 
 EditReport.propTypes = {
@@ -29,6 +30,7 @@ EditReport.propTypes = {
   ctrys: PropTypes.arrayOf(PropTypes.object).isRequired,
   t_grps: PropTypes.arrayOf(PropTypes.object).isRequired,
   d_levels: PropTypes.arrayOf(PropTypes.object).isRequired,
+  chtys: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default createContainer(({ match }) => {
@@ -38,12 +40,14 @@ export default createContainer(({ match }) => {
   const ctrySubscription = Meteor.subscribe('countries');
   const t_grpsSubscription = Meteor.subscribe('target_groups');
   const d_levelsSubscription = Meteor.subscribe('detail_levels');
+  const chtysSubscription = Meteor.subscribe('charities');
   return {
-    loading: !reptSubscription.ready() ||  !svcsSubscription.ready() || !ctrySubscription.ready() || !t_grpsSubscription.ready() || !d_levelsSubscription.ready(),
+    loading: !chtysSubscription.ready() || !reptSubscription.ready() ||  !svcsSubscription.ready() || !ctrySubscription.ready() || !t_grpsSubscription.ready() || !d_levelsSubscription.ready(),
     rept: ReportsCollection.findOne(reportId),
     svcs: ServicesCollection.find().fetch(),
     ctrys: CountriesCollection.find().fetch(),
     t_grps: Target_GroupsCollection.find().fetch(),
     d_levels: Detail_LevelsCollection.find().fetch(),
+    chtys: CharitiesCollection.find().fetch(),
   };
 }, EditReport);

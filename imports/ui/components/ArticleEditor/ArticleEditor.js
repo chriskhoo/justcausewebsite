@@ -10,8 +10,26 @@ import { FormSelectMultiple, getSelectedObjects } from '../../componentElements/
 import { FormSelectSingle, getSelectedObject } from '../../componentElements/FormSelectSingle/FormSelectSingle';
 import FormTextInput from '../../componentElements/FormTextInput/FormTextInput';
 import FormTextArea from '../../componentElements/FormTextArea/FormTextArea';
+import FormThumbnailUpload from '../../componentElements/FormThumbnailUpload/FormThumbnailUpload';
 
 class ArticleEditor extends React.Component {
+  constructor(props) {
+   super(props);
+   const { art } = this.props;
+   this.state = {
+     body: art && art.body,
+   }
+   this.handleUpload = this.handleUpload.bind(this);
+  }
+
+  componentWillMount(){
+    // rule created on client and server
+    Slingshot.fileRestrictions("Article_Image", {
+      allowedFileTypes: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
+      maxSize: 10 * 1024 * 1024 // 10 MB (use null for unlimited)
+    });
+  }
+
   componentDidMount() {
     const component = this;
     validate(component.form, {
@@ -19,7 +37,7 @@ class ArticleEditor extends React.Component {
         title: {
           required: true,
         },
-        body: {
+        summary: {
           required: true,
         },
         service_ids: {
@@ -41,8 +59,8 @@ class ArticleEditor extends React.Component {
         title: {
           required: 'Please enter a title',
         },
-        body: {
-          required: 'Please enter a body',
+        summary: {
+          required: 'Please enter a summary',
         },
         service_ids: {
           required: 'Please select the appropriate service tag(s)',
@@ -61,20 +79,37 @@ class ArticleEditor extends React.Component {
     });
   }
 
+  handleUpload(metaContext, fieldName){
+    let nextState = this.state;
+    const uploader = new Slingshot.Upload("Article_Image", metaContext);
+
+    // update the element ID
+    uploader.send(this.form[fieldName].files[0], function (error, downloadUrl) {
+      if (error) {
+        // Log service detailed response
+        Bert.alert(error.message, 'danger');
+      }
+      else {
+        nextState[fieldName] = downloadUrl;
+      }
+      // update the sample image
+      this.setState(nextState);
+    }.bind(this));
+  }
+
   handleSubmit() {
     const { history, svcs, ctrys, t_grps, a_types } = this.props;
-    const { title, body, service_ids, country_id } = this.form;
+    const { title, summary, service_ids, country_id } = this.form;
     const existingArticle = this.props.art && this.props.art._id;
     const methodToCall = existingArticle ? 'articles.update' : 'articles.insert';
     const selectedServices = getSelectedObjects(service_ids, svcs);
     const selectedCountry = getSelectedObject(country_id, ctrys);
     const selectedTarget_Groups = getSelectedObjects(target_group_ids, t_grps);
     const selectedArticle_Type = getSelectedObject(article_type_id, a_types);
-    const articleSummary = body.value.trim().substring(0,140);
     const art = {
       title: title.value.trim(),
-      summary: articleSummary,
-      body: body.value.trim(),
+      summary: summary.value.trim(),
+      body: this.state.body,
       service_ids: selectedServices,
       country_id: selectedCountry,
       target_group_ids: selectedTarget_Groups,
@@ -98,7 +133,7 @@ class ArticleEditor extends React.Component {
     const { svcs, art, ctrys, t_grps, a_types } = this.props;
     return (<form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
       <FormTextInput fieldName="title" defaultVal={art && art.title}/>
-      <FormTextArea fieldName="body" defaultVal={art && art.body} />
+      <FormTextArea fieldName="summary" defaultVal={art && art.summary} />
       <FormSelectMultiple
         fieldName="service_ids"
         optionsList= {svcs}
@@ -119,9 +154,14 @@ class ArticleEditor extends React.Component {
         optionsList= {a_types}
         defaultVal = {art && art.article_type_id && art.article_type_id._id} />
 
+      <FormThumbnailUpload fieldName="body" metaContext={ {type: "article"} } handleUpload={this.handleUpload} />
+
       <Button type="submit" bsStyle="success">
         {art && art._id ? 'Save Changes' : 'Add Article'}
       </Button>
+
+      <div className="article_image"><img src={this.state.body} alt="body_preview" /></div>
+
     </form>);
   }
 }

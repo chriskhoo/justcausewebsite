@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonToolbar, ButtonGroup, Button, Panel, Table } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button, Panel, Table, Thumbnail } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -28,7 +28,7 @@ const handleRemove = (charityId, history) => {
 const renderCharity = (chty, bdgs, match, history) => (chty ? (
   <div className="ViewCharity">
     <div className="page-header clearfix">
-      <img className="pull-left" src={chty.logo} alt="Charity Logo"/>
+      <Thumbnail className="pull-left thumbnail_custom" src={chty.logo} alt="logo" />
       <h4 className="pull-left">{ chty.name } (Est. {chty.year_established} )</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
@@ -42,6 +42,13 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
     <div>
       <Panel header='Badges'>
           <Table responsive>
+            <thead>
+              <tr>
+                <th>Badge</th>
+                <th>Name</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
             <tbody>
               {returnBadges(bdgs, chty.badges_awarded)}
             </tbody>
@@ -173,7 +180,7 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
           <tbody>
             <tr>
               <td>
-                <img src={chty.leadership_info.person_1_face} alt="person 1 face" />
+                <div className='thumbnail_custom'><img src={chty.leadership_info.person_1_face} alt="person 1 face" /></div>
               </td>
               <td>{chty.leadership_info.person_1_name}</td>
               <td>{chty.leadership_info.person_1_position}</td>
@@ -181,7 +188,7 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
             </tr>
             <tr>
               <td>
-                <img src={chty.leadership_info.person_2_face} alt="person 2 face" />
+                <div className='thumbnail_custom'><img src={chty.leadership_info.person_2_face} alt="person 2 face" /></div>
               </td>
               <td>{chty.leadership_info.person_2_name}</td>
               <td>{chty.leadership_info.person_2_position}</td>
@@ -310,10 +317,11 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
             </tr>
           </thead>
           <tbody>
-            {chty.financial_info.financial_checklist_ids.map((checklistObj)=>
-              <tr key={checklistObj._id}>
+            {chty.financial_info.financial_checklist_ids.map((checklistObj)=>{
+              return (<tr key={checklistObj._id}>
                 <td>{checklistObj.description}</td>
               </tr>)}
+            )}
           </tbody>
         </Table>
         <br/>
@@ -358,13 +366,9 @@ function returnBadges(bdgs, charity_badges){
     const {image, name} = bdgs.filter((bdg)=>bdg._id == _id)[0];
     formattedBadges.push(
       <tr key={_id}>
-        <td>
-          <img src={image} alt="badge"/>
-        </td>
-        <td>
-          <p>{name}</p>
-          <p>Reason: {reason}</p>
-        </td>
+        <td><div className="thumbnail_custom"><img src={image} alt={`${name} logo`} /></div></td>
+        <td><p>{name}</p></td>
+        <td><p>{reason}</p></td>
       </tr>)
   });
   return formattedBadges;

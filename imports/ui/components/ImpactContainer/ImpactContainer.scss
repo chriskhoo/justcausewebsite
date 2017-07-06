@@ -1,0 +1,32 @@
+.panel-group {
+  display: flex;
+  .group-elements{
+    align-items: stretch;
+    vertical-align: top;
+  }
+}
+
+.half-width{
+  width: 45%;
+}
+.full-width{
+  width: 100%;
+}
+
+.ten1-width{
+  width: 10%;
+}
+
+.ten8-width{
+  width: 80%;
+}
+
+.number{
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
+
+.inline-block{
+    display: inline-block;
+}
