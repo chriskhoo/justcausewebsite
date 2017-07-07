@@ -10,7 +10,7 @@ import './FormThumbnailUpload.scss';
 class FormThumbnailUpload extends React.Component {
 
   render() {
-    const { fieldName, metaContext, handleUpload } = this.props;
+    const { fieldName, metaContext, handleUpload, type } = this.props;
     const newLabel = fieldName.split('_').map(capitalize).join(' ');
     return(
       <FormGroup>
@@ -24,7 +24,8 @@ class FormThumbnailUpload extends React.Component {
               name= {fieldName}
               onChange = {() => handleUpload(metaContext, fieldName) }
             />
-            <span className="help-block">Image max restriction: 2.5MB, 500x500.</span>
+            { (metaContext.type == "article") ? <span className="help-block">Image max restriction: 10 MB</span> : <span className="help-block">Image max restriction: 2.5 MB</span> }
+
           </p>
         </div>
       </FormGroup>

@@ -13,7 +13,7 @@ class ReportOutputOutcomeEditor extends React.Component {
       <div className="panel-group">
         <Panel bsStyle="info">
           <div className="group-elements half-width">
-            <FormTextInput fieldName={`${field}-${_id}-number`} defaultVal={number} label="Number" type="Number"/>
+            <FormTextInput fieldName={`${field}-${_id}-number`} defaultVal={number} label="Number" />
           </div>
           <div className="group-elements spacer">
           </div>

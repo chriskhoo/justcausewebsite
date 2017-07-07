@@ -52,7 +52,7 @@ Meteor.methods({
       badges_awarded: Match.Optional([Object]),
       programs: Match.Optional([Object]),
       staff_info: Match.Optional(Object),
-      reputation_info: Object,
+      reputation_info: Match.Optional(Object),
       leadership_info: Object,
       financial_info: Object,
     });

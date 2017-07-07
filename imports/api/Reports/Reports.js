@@ -173,7 +173,7 @@ Reports.schema = new SimpleSchema({
     optional: true,
   },
   "impact_info.outputs.$.number": {
-    type: Number,
+    type: String,
     label: 'The measured output figure for this object.',
     optional: true,
   },
@@ -198,7 +198,7 @@ Reports.schema = new SimpleSchema({
     optional: true,
   },
   "impact_info.outcomes.$.number": {
-    type: Number,
+    type: String,
     label: 'The measured outcome figure for this object.',
     optional: true,
   },

@@ -204,6 +204,7 @@ Charities.schema = new SimpleSchema({
   reputation_info: {
     type: Object,
     label: "Information about the charity's reputation.",
+    optional: true,
   },
   "reputation_info.quote_1": {
     type: String,
@@ -233,62 +234,67 @@ Charities.schema = new SimpleSchema({
   "reputation_info.media_article_1_title": {
     type: String,
     label: "Title of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_1_source": {
     type: String,
     label: "Source of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_1_date": {
     type: String,
     label: "Date of the media article's publication.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_1_summary": {
     type: String,
     label: "Summary of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_2_title": {
     type: String,
     label: "Title of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_2_source": {
     type: String,
     label: "Source of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_2_date": {
     type: String,
     label: "Date of the media article's publication.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_2_summary": {
     type: String,
     label: "Summary of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_3_title": {
     type: String,
     label: "Title of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_3_source": {
     type: String,
     label: "Source of the media article.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_3_date": {
     type: String,
     label: "Date of the media article's publication.",
-    optional: false,
+    optional: true,
   },
   "reputation_info.media_article_3_summary": {
     type: String,
     label: "Summary of the media article.",
-    optional: false,
+    optional: true,
+  },
+  "reputation_info.commentary": {
+    type: String,
+    label: "Just Cause's commentary about reputation",
+    optional: true,
   },
   leadership_info: {
     type: Object,
@@ -449,6 +455,11 @@ Charities.schema = new SimpleSchema({
     label: "The income reported for Y-2.",
     optional: true,
   },
+  "financial_info.expenditure_year_1_amt": {
+    type: Number,
+    label: "The expenditure reported for Y-2.",
+    optional: true,
+  },
   "financial_info.income_year_2": {
     type: Number,
     label: "The Y-1 year of reporting.",
@@ -457,6 +468,11 @@ Charities.schema = new SimpleSchema({
   "financial_info.income_year_2_amt": {
     type: Number,
     label: "The income reported for Y-1.",
+    optional: true,
+  },
+  "financial_info.expenditure_year_2_amt": {
+    type: Number,
+    label: "The expenditure reported for Y-1.",
     optional: true,
   },
   "financial_info.income_year_3": {
@@ -469,14 +485,19 @@ Charities.schema = new SimpleSchema({
     label: "The income reported for year of reporting.",
     optional: true,
   },
+  "financial_info.expenditure_year_3_amt": {
+    type: Number,
+    label: "The expenditure reported for year of reporting.",
+    optional: true,
+  },
   "financial_info.revenue_model_reporting_year": {
     type: Number,
     label: "The reporting year the revenue model is based on.",
     optional: true,
   },
-  "financial_info.rev_model_cash_donations_percent": {
+  "financial_info.rev_model_cash_donations_and_fundraised_income_percent": {
     type: Number,
-    label: "The percent of cash donations.",
+    label: "The percent of cash donations and fundraised income.",
     optional: true,
   },
   "financial_info.rev_model_govt_grants_subsidies_percent": {

@@ -285,7 +285,7 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
           <tbody>
             <tr>
               <td>Cash Donations</td>
-              <td>{chty.financial_info.rev_model_cash_donations_percent}</td>
+              <td>{chty.financial_info.rev_model_cash_donations_and_fundraised_income_percent}</td>
             </tr>
             <tr>
               <td>Government Grants and Subsidies</td>

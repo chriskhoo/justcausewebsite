@@ -12,7 +12,7 @@ class AdminCharityBadgeRow extends React.Component {
     return(
       <tr className="admin-charity-badge-row">
         <td>
-          <img src={image} />
+          <div className="thumbnail_custom"> <img src={image} alt="badge image"/> </div>
         </td>
         <td>
           {name}

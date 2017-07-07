@@ -39,7 +39,7 @@ class ImpactContainer extends React.Component {
                 <div className="ten8-width inline-block">{outcome.description}</div>
               </div>)}
               <p></p>
-              {data_collection?<Content content={ parseMarkdown(outcome_quotes) } />:''}
+              {outcome_quotes?<Content content={ parseMarkdown(outcome_quotes) } />:''}
             </div>
           </div>
         </div>
