@@ -109,7 +109,17 @@ Reports.schema = new SimpleSchema({
   },
   description: {
     type: String,
-    label: 'This is a brief description displayed in the search cards.',
+    label: 'This is a brief description displayed in the search cards and is taken from the charity or program.',
+    optional: false,
+  },
+  name: {
+    type: String,
+    label: 'This is the name of the charity or the program the report is from.',
+    optional: false,
+  },
+  logo: {
+    type: String,
+    label: 'This is the logo of charity that the report is written about.',
     optional: false,
   },
   type: {

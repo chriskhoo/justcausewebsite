@@ -11,7 +11,7 @@ class ImpactContainer extends React.Component {
   render() {
     const { data_collection, continuous_improvement, impact_framework, commentary, outcome_quotes, outputs, outcomes } = this.props.impact_info;
     return (
-      <Panel header='Impact Info'>
+      <Panel className='ImpactContainer' header='Impact Info'>
         {data_collection?(<div><strong>Data Collection</strong><Content content={ parseMarkdown(data_collection) } /></div>):''}
         {continuous_improvement?(<div><strong>Continuous Improvement</strong><Content content={ parseMarkdown(continuous_improvement) } /></div>):''}
         {impact_framework?(<div><strong>Impact Framework</strong><Content content={ parseMarkdown(impact_framework) } /></div>):''}

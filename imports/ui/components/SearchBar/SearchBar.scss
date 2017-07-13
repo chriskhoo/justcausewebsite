@@ -1,0 +1,33 @@
+@import '../../stylesheets/colors';
+.searchbar {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  border: 2px solid $primary;
+  margin: 3em auto 1em auto;
+  height: 3em;
+  padding: 0;
+  border-radius: 3em;
+  overflow: hidden;
+
+  .glyphicon.glyphicon-search{
+    padding: 0 1rem;
+    height: 100%;
+    line-height: 3rem;
+    font-size: 2rem;
+    color: $primary;
+  }
+  input {
+    border: none;
+    height: 100%;
+    min-width: 300px;
+    color: $primary;
+  }
+  button{
+    padding: 0 1em;
+    height: 100%;
+    border: none;
+    background-color: $primary;
+    color: $white-lighter;
+  }
+}

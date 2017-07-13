@@ -3,20 +3,27 @@ import { check, Match } from 'meteor/check';
 import Reports from './Reports';
 import rateLimit from '../../modules/rate-limit';
 
+const checkObject = {
+  service_ids: Array,
+  country_id: Object,
+  target_group_ids: Array,
+  detail_level_id: Object,
+  description: String, // note this is a derived field
+  name: String, // note this is a derived field
+  logo: String, // note this is a derived field
+  charity_id: String,
+  type:  String,
+  completed: Boolean,
+  impact_info: Match.Optional(Object),
+  program_id: Match.Optional(String),
+}
+
+let checkObjectID = Object.assign({}, checkObject);
+checkObjectID._id = String;
+
 Meteor.methods({
   'reports.insert': function reportsInsert(rept) {
-    check(rept, {
-      service_ids: Array,
-      country_id: Object,
-      target_group_ids: Array,
-      detail_level_id: Object,
-      description: String,
-      charity_id: String,
-      type:  String,
-      completed: Boolean,
-      impact_info: Match.Optional(Object),
-      program_id: Match.Optional(String),
-    });
+    check(rept, checkObject);
     try {
       return Reports.insert({ author: this.userId, ...rept });
     } catch (exception) {
@@ -24,19 +31,7 @@ Meteor.methods({
     }
   },
   'reports.update': function reportsUpdate(rept) {
-    check(rept, {
-      _id: String,
-      service_ids: Array,
-      country_id: Object,
-      target_group_ids: Array,
-      detail_level_id: Object,
-      description: String,
-      charity_id: String,
-      type:  String,
-      completed: Boolean,
-      impact_info: Match.Optional(Object),
-      program_id: Match.Optional(String),
-    });
+    check(rept, checkObjectID);
     try {
       const reportId = rept._id;
       Reports.update(reportId, { $set: rept });

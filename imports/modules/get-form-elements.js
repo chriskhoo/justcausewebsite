@@ -18,6 +18,12 @@ function getFormElementsWithNewButton(type, fields, form){
   return elementsArray;
 }
 
+function getCheckedIdArray(type, form){
+  let checkedIdArray = [];
+  [...form.getElementsByTagName("input")].filter(element=>element.name.split('-')[0]==type).filter(box=>box.checked).map(boxElement=>checkedIdArray.push(boxElement.name.split('-')[1]));
+  return checkedIdArray;
+}
+
 function getCheckedFormElements(type, form, fields = {}, listOptions = [], importedFields = []){
   const fieldKeys = Object.keys(fields);
   const checkedIdArray = getCheckedIdArray(type, form);
@@ -41,6 +47,7 @@ function scrubObject(obj){
 export {getFormElementsWithNewButton as getFormElementsWithNewButton};
 export {getCheckedFormElements as getCheckedFormElements};
 export {scrubObject as scrubObject};
+export {getCheckedIdArray as getCheckedIdArray}
 
 // Private functions for inputs that can add new inputs
 function getIdArray(type, fieldName, form){
@@ -63,11 +70,4 @@ function getFormValue(fieldName, fieldType, type, _id, form){
     formValue = Number(form[`${type}-${_id}-${fieldName}`].value);
   }
   return formValue;
-}
-
-// Private functions for checklists
-function getCheckedIdArray(type, form){
-  let checkedIdArray = [];
-  [...form.getElementsByTagName("input")].filter(element=>element.name.split('-')[0]==type).filter(box=>box.checked).map(boxElement=>checkedIdArray.push(boxElement.name.split('-')[1]));
-  return checkedIdArray;
 }

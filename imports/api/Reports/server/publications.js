@@ -11,3 +11,14 @@ Meteor.publish('reports.view', function reportsView(reportId) {
   check(reportId, String);
   return Reports.find({ _id: reportId });
 });
+
+// Note: used by public, publishes only completed reports
+Meteor.publish('reports.public', function reports() {
+  return Reports.find({ completed: true }, {sort: {updatedAt: -1}});
+});
+
+// Note: used by public, publishes only completed reports
+Meteor.publish('reports.public.view', function reportsView(reportId) {
+  check(reportId, String);
+  return Reports.find({ _id: reportId, completed: true });
+});

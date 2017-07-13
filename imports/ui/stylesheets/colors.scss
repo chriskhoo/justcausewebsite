@@ -1,14 +1,38 @@
-$primary: #337ab7;
-$success: #5cb85c;
-$info:    #5bc0de;
-$warning: #f0ad4e;
+$primary: #002060;
+$primary-darker: darken($primary, 10%);
+$primary-lighter: lighten($primary, 15%);
+
+$secondary: #00B050;
+$secondary-darker: darken($secondary, 20%);
+$secondary-lighter: lighten($secondary, 20%);
+
+$tertiary: #0AB8C7;
+$tertiary-darker: darken($tertiary, 20%);
+$tertiary-lighter: lighten($tertiary, 20%);
+
+$quaternary: #FFC000;
+$quaternary-darker: darken($quaternary, 20%);
+$quaternary-lighter: lighten($quaternary, 20%);
+
+$grey: #2b2b2b;
+$grey-darker: darken($grey, 10%);
+$grey-lighter: lighten($grey, 10%);
+
+$white: #d7d7d7;
+$white-darker: darken($white, 20%);
+$white-lighter: lighten($white, 20%);
+
+// mapping into existing colours used by templates
+$success: $secondary;
+$info:    $tertiary;
+$warning: $quaternary;
 $danger:  #d9534f;
 
-$gray-darker: #222;
-$gray-dark: #333;
-$gray: #555;
-$gray-light: #777;
-$gray-lighter: #eee;
+$gray-darker: $grey-darker;
+$gray-dark: $grey;
+$gray: $grey-lighter;
+$gray-light: $white-darker;
+$gray-lighter: $white;
 
 $facebook: #3b5998;
 $google: #ea4335;

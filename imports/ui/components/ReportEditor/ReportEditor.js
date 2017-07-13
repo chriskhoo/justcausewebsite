@@ -97,7 +97,6 @@ class ReportEditor extends React.Component {
       type: (type.value=='Select')? undefined : type.value,
       charity_id: (charity_id.value=='Select')? undefined : charity_id.value,
       program_id: program_id && ((program_id.value=='Select')? undefined : program_id.value),
-      completed: completed.checked,
       impact_info: {},
     };
 
@@ -115,11 +114,14 @@ class ReportEditor extends React.Component {
       outcomes: outcomes.length ? outcomes : undefined,
     }
 
-    rept.description = _getDescription(rept, chtys);
+    rept.description = _getField('summary', rept, chtys);
+    rept.name = _getField('name', rept, chtys);
+    rept.logo = _getLogo(rept, chtys)
 
     scrubObject(rept.impact_info);
     if(_.isEmpty(rept.impact_info)){rept.impact_info = undefined};
     scrubObject(rept);
+    rept.completed = completed.checked;
 
     if (existingReport) rept._id = existingReport;
     Meteor.call(methodToCall, rept, (error, reportId) => {
@@ -277,23 +279,27 @@ ReportEditor.propTypes = {
 
 export default ReportEditor;
 
-function _getDescription(report, charities){
-  let summary = '';
+function _getField(field, report, charities){
+  let fieldVal = '';
   const {type, charity_id, program_id } = report
   const charity = charities.filter( ({_id}) => _id == charity_id )[0];
 
   if(type == 'charity'){
-    summary = charity.summary
+    fieldVal = charity[field]
   } else if(type == 'program') {
-    summary = charity.programs.filter( ({_id}) => _id == program_id )[0].summary
+    fieldVal = charity.programs.filter( ({_id}) => _id == program_id )[0][field]
   } else {
     return undefined
   }
 
-  const length = summary.length
+  const length = fieldVal && fieldVal.length
   if(length > 120){
-    return summary.substring(0,120)
+    return fieldVal.substring(0,120)
   }else{
-    return summary.substring(0,length)
+    return fieldVal.substring(0,length)
   }
+}
+
+function _getLogo(report, charities){
+  return charities.filter( ({_id}) => _id == report.charity_id )[0].logo;
 }

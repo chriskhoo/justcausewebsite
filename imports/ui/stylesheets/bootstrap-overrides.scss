@@ -13,3 +13,26 @@
 .Documents table tbody tr td {
   vertical-align: middle;
 }
+
+body{
+  color: $grey;
+  background-color: $white-lighter;
+}
+
+.panel-primary {
+  border-color: $primary-darker;
+  .panel-heading {
+    color: $white-lighter;
+    background-color: $primary-darker;
+    border-color: $primary-darker;
+  }
+}
+
+.panel-secondary {
+  border-color: $secondary-darker;
+  .panel-heading {
+    color: $white-lighter;
+    background-color: $secondary-darker;
+    border-color: $secondary-darker;
+  }
+}

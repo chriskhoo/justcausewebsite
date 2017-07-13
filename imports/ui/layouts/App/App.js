@@ -18,7 +18,6 @@ import Target_Groups from '../../pages/Admin/Target_Groups/Target_Groups';
 import Badges from '../../pages/Admin/Badges/Badges';
 import Financial_Checklists from '../../pages/Admin/Financial_Checklists/Financial_Checklists';
 import Governance_Checklists from '../../pages/Admin/Governance_Checklists/Governance_Checklists';
-
 import Charities from '../../pages/Admin/Charities/Charities';
 import NewCharity from '../../pages/Admin/NewCharity/NewCharity';
 import ViewCharity from '../../pages/Admin/ViewCharity/ViewCharity';
@@ -31,6 +30,8 @@ import Articles from '../../pages/Admin/Articles/Articles';
 import NewArticle from '../../pages/Admin/NewArticle/NewArticle';
 import ViewArticle from '../../pages/Admin/ViewArticle/ViewArticle';
 import EditArticle from '../../pages/Admin/EditArticle/EditArticle';
+
+import ReportsHome from '../../pages/Public/ReportsHome/ReportsHome';
 
 import Documents from '../../pages/Documents/Documents';
 import NewDocument from '../../pages/NewDocument/NewDocument';
@@ -69,7 +70,7 @@ const App = props => (
           <Authenticated exact path="/admin/charities/new" component={NewCharity} {...props} />
           <Authenticated exact path="/admin/charities/:_id" component={ViewCharity} {...props} />
           <Authenticated exact path="/admin/charities/:_id/edit" component={EditCharity} {...props} />
-        
+
           <Authenticated exact path="/admin/reports" component={Reports} {...props} />
           <Authenticated exact path="/admin/reports/new" component={NewReport} {...props} />
           <Authenticated exact path="/admin/reports/:_id" component={ViewReport} {...props} />
@@ -84,12 +85,15 @@ const App = props => (
           <Authenticated exact path="/documents/:_id" component={ViewDocument} {...props} />
           <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...props} />
           <Authenticated exact path="/profile" component={Profile} {...props} />
+
           <Unauthenticated path="/signup" component={Signup} {...props} />
           <Unauthenticated path="/login" component={Login} {...props} />
           <Unauthenticated path="/logout" component={Logout} {...props} />
           <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
           <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
           <Route name="examplePage" path="/example-page" component={ExamplePage} />
+
+          <Route name="reports" path="/reports" component={ReportsHome} {...props} />
           <Route component={NotFound} />
         </Switch>
       </Grid>
