@@ -28,39 +28,31 @@ class SearchBlock extends React.Component {
 
   handleSubmit(svcs, ctrys, t_grps, d_levels, history, match){
     const search = this.form.search.value.trim();
-    const d_levels_array = getCheckedIdArray('detail_level', this.form).toString();
-    const ctrys_array = getCheckedIdArray('country', this.form).toString();
-    const t_grps_array = getCheckedIdArray('target_group', this.form).toString();
-    const svcs_array = getCheckedIdArray('service', this.form).toString();
-    history.push(`${match.url}/search?q=${search}&svcs=${svcs_array}&ctrys=${ctrys_array}&t_grps=${t_grps_array}&d_levels=${d_levels_array}`);
+    const d_levels_insert = _searchparameter('detail_level', this.form);
+    const ctrys_insert = _searchparameter('country', this.form);
+    const t_grps_insert = _searchparameter('target_group', this.form);
+    const svcs_insert = _searchparameter('service', this.form);
+    history.push(`${match.url}/results?q=${search}${d_levels_insert}${ctrys_insert}${t_grps_insert}${svcs_insert}`);
   }
 
   render() {
     const { svcs, ctrys, t_grps, d_levels, history, match } = this.props;
     return (
-      <form className='searchblock' ref={form => (this.form = form)}>
+      <form className='searchblock' ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
         <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, history, match)} />
         <p className='caption'>Find the charity that matches your values and impact goals</p>
-        {
-          this.state.aSearch?
-          (<div className='advance-search open'>
-            <div onClick={this.toggleSearch}>
-              <p>Advanced Search</p>
-              <Glyphicon glyph="chevron-up"></Glyphicon>
-            </div>
-            <div className='tag-panel'>
-              <TagChecklist tag_name='detail_level' tag_object={d_levels} />
-              <TagChecklist tag_name='country' tag_object={ctrys} />
-              <TagChecklist tag_name='target_group' tag_object={t_grps} />
-              <TagChecklist tag_name='service' tag_object={svcs} />
-            </div>
-          </div>)
-          :
-          (<div className='advance-search' onClick={this.toggleSearch}>
+        <div className= {this.state.aSearch?'advance-search open':'advance-search'} >
+          <div onClick={this.toggleSearch}>
             <p>Advanced Search</p>
-            <Glyphicon glyph="chevron-down"></Glyphicon>
-          </div>)
-        }
+            <Glyphicon glyph={this.state.aSearch?'chevron-up':'chevron-down'}></Glyphicon>
+          </div>
+          <div className={this.state.aSearch?'tag-panel':'tag-panel hidden'}>
+            <TagChecklist tag_name='detail_level' tag_object={d_levels} page='home'/>
+            <TagChecklist tag_name='country' tag_object={ctrys} page='home'/>
+            <TagChecklist tag_name='target_group' tag_object={t_grps} page='home'/>
+            <TagChecklist tag_name='service' tag_object={svcs} page='home'/>
+          </div>
+        </div>
       </form>
     );
   }
@@ -76,3 +68,13 @@ SearchBlock.propTypes = {
 };
 
 export default SearchBlock;
+
+// Private functions
+function _searchparameter(field, form){
+  const value_array= getCheckedIdArray(field, form).toString();
+  if(value_array){
+    return `&${field}=${value_array}`;
+  }else{
+    return '';
+  }
+}

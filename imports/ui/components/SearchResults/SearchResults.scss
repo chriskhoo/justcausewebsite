@@ -1,0 +1,39 @@
+@import '../../stylesheets/colors';
+
+.search-results{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .caption{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3em;
+  }
+
+  .search-results-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+
+    .search-filters{
+      min-width: 20em;
+      .tag-checklist:first-of-type{
+        border-top: 1px solid $grey;
+      }
+      .tag-checklist{
+        border-bottom: 1px solid $grey;
+      }
+    }
+
+    .search-results-panel{
+      flex-grow: 1;
+      margin-left: 3em;
+      .report_cards_holder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+  }
+}

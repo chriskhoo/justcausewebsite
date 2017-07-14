@@ -32,6 +32,7 @@ import ViewArticle from '../../pages/Admin/ViewArticle/ViewArticle';
 import EditArticle from '../../pages/Admin/EditArticle/EditArticle';
 
 import ReportsHome from '../../pages/Public/ReportsHome/ReportsHome';
+import ReportsResults from '../../pages/Public/ReportsResults/ReportsResults';
 
 import Documents from '../../pages/Documents/Documents';
 import NewDocument from '../../pages/NewDocument/NewDocument';
@@ -93,7 +94,8 @@ const App = props => (
           <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
           <Route name="examplePage" path="/example-page" component={ExamplePage} />
 
-          <Route name="reports" path="/reports" component={ReportsHome} {...props} />
+          <Route name="reports" exact path="/reports" component={ReportsHome} {...props} />
+          <Route name="reports-results" exact path="/reports/results" component={ReportsResults} {...props} />
           <Route component={NotFound} />
         </Switch>
       </Grid>

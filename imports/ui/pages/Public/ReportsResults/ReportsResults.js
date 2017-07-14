@@ -1,56 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Alert, PanelGroup } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import Loading from '../../../components/Loading/Loading';
-import SearchBlock from '../../../components/SearchBlock/SearchBlock';
-import ReportCard from '../../../components/ReportCard/ReportCard';
 import ServicesCollection from '../../../../api/Services/Services';
 import CountriesCollection from '../../../../api/Countries/Countries';
 import Target_GroupsCollection from '../../../../api/Target_Groups/Target_Groups';
 import Detail_LevelsCollection from '../../../../api/Detail_Levels/Detail_Levels';
 import ReportsCollection from '../../../../api/Reports/Reports';
-import './ReportsHome.scss';
+import SearchResults from '../../../components/SearchResults/SearchResults';
 
-const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, match }) => (!loading ? (
-  <div className="ReportsHome">
+const ReportsResults = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, match }) => (!loading ? (
+  <div className="ReportsResults">
     <div className="page-header clearfix">
       <h3 className="pull-left">Charity Reports</h3>
     </div>
-    <SearchBlock
+    <SearchResults
+      rpts={rpts}
       svcs={svcs}
       ctrys={ctrys}
       t_grps={t_grps}
       d_levels={d_levels}
       history={history}
-      match={match} />
-
-    <PanelGroup>
-      <Panel collapsible header='Methodology' bsStyle="primary"> Methodology Stuff goes in here </Panel>
-      <Panel collapsible header='Glossary' bsStyle="secondary"> Glossary Stuff goes in here </Panel>
-    </PanelGroup>
-
-    <h4>Recent Updates</h4>
-    {rpts.length ?
-      <div className="report_cards_holder">
-        {rpts.slice(0,6).map(({ _id, detail_level_id, description, name, logo }) => {
-        return(
-          <ReportCard
-            key = {_id}
-            detail_level_name={detail_level_id.name}
-            _id = {_id}
-            name= {name}
-            logo= {logo}
-            description={description}
-            history= {history}
-            match= {match}
-          />)})}
-      </div> : <Alert bsStyle="warning">No reports yet!</Alert>}
+      match={match}/>
   </div>
 ) : <Loading />);
 
-ReportsHome.propTypes = {
+ReportsResults.propTypes = {
   loading: PropTypes.bool.isRequired,
   rpts: PropTypes.arrayOf(PropTypes.object).isRequired,
   svcs: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -75,4 +51,4 @@ export default createContainer(() => {
     d_levels: Detail_LevelsCollection.find().fetch(),
     rpts: ReportsCollection.find().fetch(),
   };
-}, ReportsHome);
+}, ReportsResults);

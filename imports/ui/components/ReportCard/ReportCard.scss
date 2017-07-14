@@ -1,0 +1,68 @@
+@import '../../stylesheets/colors';
+
+.report_wrapper{
+  margin: 2em;
+  .report_card{
+    position: relative;
+    width: 310px;
+    height: 310px;
+    border: solid 2px;
+    border-radius: 5%;
+    padding: 2em 1em;
+    text-align: center;
+    overflow: hidden;
+    .report_detail_level{
+      position: absolute;
+      top: 30px;
+      right: -30px;
+      width: 140px;
+      -ms-transform: rotate(45deg); /* IE 9 */
+      -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+      transform: rotate(45deg);
+      color: $white-lighter;
+      z-index: 10;
+      border: solid 1px $white-lighter;
+    }
+    .report_detail_level.long {
+      background-color: $primary;
+    }
+    .report_detail_level.medium {
+      background-color: $secondary;
+    }
+    .report_detail_level.short {
+      background-color: $tertiary;
+    }
+    .thumbnail_custom{
+      position: relative;
+      height: 100px;
+      width: 100%;
+      margin: 0.3em;
+      img {
+        position: absolute;
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+    p {
+      text-align: justify;
+    }
+  }
+  .long{
+    border-color: $primary;
+  }
+
+  .medium{
+    border-color: $secondary;
+  }
+
+  .short{
+    border-color: $tertiary;
+  }
+}
