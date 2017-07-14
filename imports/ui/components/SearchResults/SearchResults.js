@@ -49,7 +49,7 @@ class SearchResults extends React.Component {
     const rpts_filtered = _reportfilter(filter_object, rpts)
     return (
       <form className='search-results' ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-        <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, history, match)} />
+        <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, history, match)} query = {filter_object.q}/>
         <p className='caption'>Find the charity that matches your values and impact goals</p>
 
         <div className='search-results-wrapper'>
@@ -61,7 +61,7 @@ class SearchResults extends React.Component {
             <TagChecklist tag_name='service' tag_object={svcs} filtered_options={filter_object.service} handleFilters={this.handleFilters} />
           </div>
           <div className='search-results-panel'>
-            <h4>Results for ""</h4>
+            <h4>Results for "{filter_object.q}"</h4>
             {rpts_filtered.length ?
               <div className="report_cards_holder">
                 {rpts_filtered.map(({ _id, detail_level_id, description, name, logo }) => {

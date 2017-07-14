@@ -8,7 +8,7 @@ import './SearchBar.scss';
 
 class SearchBar extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, query } = this.props;
     return (
       <div className='searchbar'>
         <Glyphicon glyph="search"></Glyphicon>
@@ -16,6 +16,7 @@ class SearchBar extends React.Component {
           type="text"
           name="search"
           placeholder="Search"
+          defaultValue = {query}
         />
         <button
           type='button'
@@ -26,8 +27,13 @@ class SearchBar extends React.Component {
   }
 }
 
+SearchBar.defaultProps = {
+  query: undefined,
+};
+
 SearchBar.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  query: PropTypes.string,
 };
 
 export default SearchBar;

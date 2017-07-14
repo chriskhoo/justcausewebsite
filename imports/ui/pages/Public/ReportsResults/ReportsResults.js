@@ -22,7 +22,8 @@ const ReportsResults = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history,
       t_grps={t_grps}
       d_levels={d_levels}
       history={history}
-      match={match}/>
+      match={match} 
+    />
   </div>
 ) : <Loading />);
 
@@ -37,8 +38,9 @@ ReportsResults.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-export default createContainer(() => {
-  const rptsSubscription = Meteor.subscribe('reports.public');
+export default createContainer(({history}) => {
+  const searchQuery = _extractQuery(history);
+  const rptsSubscription = Meteor.subscribe('reports.search', searchQuery);
   const svcsSubscription = Meteor.subscribe('services');
   const ctrySubscription = Meteor.subscribe('countries');
   const t_grpsSubscription = Meteor.subscribe('target_groups');
@@ -52,3 +54,10 @@ export default createContainer(() => {
     rpts: ReportsCollection.find().fetch(),
   };
 }, ReportsResults);
+
+//private function
+function _extractQuery(history){
+  const search = history.location.search.substring(1);
+  let search_object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+  return search_object.q
+}

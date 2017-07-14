@@ -14,3 +14,6 @@ To do list:
 - work out mechanism for timestamps on things like badge awards
 - Do we need bullet points if we have MD?
 - do we need timestamp for impact output / outcome / quotes?
+- Search currently limited to report title and description do we need to extend this to other fields? if so which?
+- Can't seem to index (and weight collection)
+-
