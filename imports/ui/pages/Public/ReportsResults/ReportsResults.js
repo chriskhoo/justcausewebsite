@@ -22,7 +22,7 @@ const ReportsResults = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history,
       t_grps={t_grps}
       d_levels={d_levels}
       history={history}
-      match={match} 
+      match={match}
     />
   </div>
 ) : <Loading />);

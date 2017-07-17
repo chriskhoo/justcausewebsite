@@ -28,7 +28,7 @@ const handleRemove = (reportId, history) => {
 const renderReport = (rept, chtys, match, history) => (rept ? (
   <div className="ViewReport">
     <div className="page-header clearfix">
-      <h4 className="pull-left">{ rept && rept.title }</h4>
+      <h4 className="pull-left">{ rept && rept.name }</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">
           <Button onClick={() => history.push(`${match.url}/edit`)}>Edit</Button>

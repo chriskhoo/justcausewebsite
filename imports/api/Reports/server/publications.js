@@ -18,7 +18,7 @@ Meteor.publish('reports.public', function reports() {
 });
 
 // Note: used by public, publishes only completed reports
-Meteor.publish('reports.search', (searchTerm) => {
+Meteor.publish('reports.search', function (searchTerm) {
   check(searchTerm, Match.OneOf(String, null, undefined));
   let query = {};
   const projection = { limit: 10, sort: {title: 1} };
@@ -31,7 +31,6 @@ Meteor.publish('reports.search', (searchTerm) => {
         { name: regex },
       ],
     };
-
     projection.limit = 100;
   }
 
@@ -41,5 +40,6 @@ Meteor.publish('reports.search', (searchTerm) => {
 // Note: used by public, publishes only completed reports
 Meteor.publish('reports.public.view', function reportsView(reportId) {
   check(reportId, String);
+
   return Reports.find({ _id: reportId, completed: true });
 });

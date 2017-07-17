@@ -8,8 +8,8 @@ import './ReportCard.scss';
 
 class ReportCard extends React.Component {
   render() {
-    const { detail_level_name, _id, name, logo, description, history, match } = this.props;
-    const url = (match.url == '/reports/results')? _id : `reports/${_id}`
+    const { detail_level_name, _id, charity_id, name, logo, description, history, match } = this.props;
+    const url = (match.url == '/reports/results')? `${_id}?charity_id=${charity_id}` : `reports/${_id}?charity_id=${charity_id}`
     return(
       <div className="report_wrapper" key={_id}>
         <div className= {`report_card ${detail_level_name}`}>
@@ -31,6 +31,7 @@ class ReportCard extends React.Component {
 ReportCard.propTypes = {
   detail_level_name: PropTypes.string.isRequired,
   _id: PropTypes.string.isRequired,
+  charity_id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

@@ -1,0 +1,23 @@
+.report-view{
+  display: flex;
+  flex-direction: column;
+  .report-header{
+    width: 100%;
+  }
+  .report-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    .report-panel{
+      display: flex;
+      min-width: 640px;
+      min-height: 730px;
+    }
+    .report-aside{
+      display: flex;
+      min-width: 300px;
+    }
+  }
+}
