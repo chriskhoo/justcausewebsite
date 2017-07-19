@@ -20,7 +20,7 @@ class ReportPanel extends React.Component {
     const { jc_opinion_justcauseloves, jc_opinion_donate_if, jc_opinion_broadentheirwork, jc_opinion_strengthentheteam, badges_awarded, strategy, financial_info, leadership_info, staff_info, reputation_info } = chty || {};
     return ((rept && chty)?
       <div className='report-panel'>
-        <Tabs defaultActiveKey={7} id='report-body'>
+        <Tabs defaultActiveKey={1} id='report-body'>
           <Tab eventKey={1} title="In a nutshell"><ReportPanelNutshell rept={rept} chty={chty} /></Tab>
 
           { rept.impact_info?

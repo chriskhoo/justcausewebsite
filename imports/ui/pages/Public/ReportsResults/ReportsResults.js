@@ -13,7 +13,7 @@ import SearchResults from '../../../components/SearchResults/SearchResults';
 const ReportsResults = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, match }) => (!loading ? (
   <div className="ReportsResults">
     <div className="page-header clearfix">
-      <h3 className="pull-left">Charity Reports</h3>
+      <h3 className="pull-left">Charity reports</h3>
     </div>
     <SearchResults
       rpts={rpts}

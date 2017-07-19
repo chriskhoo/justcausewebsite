@@ -5,78 +5,78 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import Loading from '../../../components/Loading/Loading';
 import SearchBlock from '../../../components/SearchBlock/SearchBlock';
-import ReportCard from '../../../components/ReportCard/ReportCard';
+import ArticleCard from '../../../components/ArticleCard/ArticleCard';
+
 import ServicesCollection from '../../../../api/Services/Services';
 import CountriesCollection from '../../../../api/Countries/Countries';
 import Target_GroupsCollection from '../../../../api/Target_Groups/Target_Groups';
-import Detail_LevelsCollection from '../../../../api/Detail_Levels/Detail_Levels';
-import ReportsCollection from '../../../../api/Reports/Reports';
-import './ReportsHome.scss';
+import Article_TypesCollection from '../../../../api/Article_Types/Article_Types';
+import ArticlesCollection from '../../../../api/Articles/Articles';
+import './ArticlesHome.scss';
 
-const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, match }) => (!loading ? (
-  <div className="ReportsHome">
+const ArticlesHome = ({ loading, arts, svcs, ctrys, t_grps, a_types, history, match }) => (!loading ? (
+  <div className="ArticlesHome">
     <div className="page-header clearfix">
-      <h3 className="pull-left">Charity reports</h3>
+      <h3 className="pull-left">Philantrophy insights</h3>
     </div>
     <SearchBlock
       svcs={svcs}
       ctrys={ctrys}
       t_grps={t_grps}
-      d_levels={d_levels}
+      a_types={a_types}
       history={history}
       match={match} />
 
     <PanelGroup>
-      <Panel collapsible header='Methodology' bsStyle="primary"> Methodology Stuff goes in here </Panel>
-      <Panel collapsible header='Glossary' bsStyle="secondary"> Glossary Stuff goes in here </Panel>
+      <Panel collapsible header='About Philantrophy Insights' bsStyle="secondary"> Stuff about philantrophy insights go here </Panel>
     </PanelGroup>
 
-    <h4>Recent Updates</h4>
-    {rpts.length ?
-      <div className="report_cards_holder">
-        {rpts.slice(0,6).map(({ _id, detail_level_id, description, charity_id, name, logo, target_group_ids, service_ids, country_id}) => {
+    <h4>Featured Articles</h4>
+    {arts.length ?
+      <div className="article_cards_holder">
+        {arts.slice(0,6).map(({ _id, article_type_id, title, thumbnail, summary, target_group_ids, service_ids, country_id}) => {
         return(
-          <ReportCard
+          <ArticleCard
             key = {_id}
-            detail_level_name={detail_level_id.name}
-            charity_id = {charity_id}
+            article_type_name={article_type_id.name}
             _id = {_id}
-            name= {name}
-            logo= {logo}
-            description={description}
+            title= {title}
+            thumbnail= {thumbnail}
+            summary={summary}
             target_group_ids ={target_group_ids}
             service_ids ={service_ids}
             country_id={country_id}
             history= {history}
             match= {match}
-          />)})}
-      </div> : <Alert bsStyle="warning">No reports yet!</Alert>}
+          />
+        )})}
+      </div> : <Alert bsStyle="warning">No articles yet!</Alert>}
   </div>
 ) : <Loading />);
 
-ReportsHome.propTypes = {
+ArticlesHome.propTypes = {
   loading: PropTypes.bool.isRequired,
-  rpts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  arts: PropTypes.arrayOf(PropTypes.object).isRequired,
   svcs: PropTypes.arrayOf(PropTypes.object).isRequired,
   ctrys: PropTypes.arrayOf(PropTypes.object).isRequired,
   t_grps: PropTypes.arrayOf(PropTypes.object).isRequired,
-  d_levels: PropTypes.arrayOf(PropTypes.object).isRequired,
+  a_types: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 
 export default createContainer(() => {
-  const rptsSubscription = Meteor.subscribe('reports.public');
+  const artsSubscription = Meteor.subscribe('articles');
   const svcsSubscription = Meteor.subscribe('services');
   const ctrySubscription = Meteor.subscribe('countries');
   const t_grpsSubscription = Meteor.subscribe('target_groups');
-  const d_levelsSubscription = Meteor.subscribe('detail_levels');
+  const a_typesSubscription = Meteor.subscribe('article_types');
   return {
-    loading: !rptsSubscription.ready() ||  !svcsSubscription.ready() || !ctrySubscription.ready() || !t_grpsSubscription.ready() || !d_levelsSubscription.ready(),
+    loading: !artsSubscription.ready() ||  !svcsSubscription.ready() || !ctrySubscription.ready() || !t_grpsSubscription.ready() || !a_typesSubscription.ready(),
     svcs: ServicesCollection.find().fetch(),
     ctrys: CountriesCollection.find().fetch(),
     t_grps: Target_GroupsCollection.find().fetch(),
-    d_levels: Detail_LevelsCollection.find().fetch(),
-    rpts: ReportsCollection.find().fetch(),
+    a_types: Article_TypesCollection.find().fetch(),
+    arts: ArticlesCollection.find().fetch(),
   };
-}, ReportsHome);
+}, ArticlesHome);

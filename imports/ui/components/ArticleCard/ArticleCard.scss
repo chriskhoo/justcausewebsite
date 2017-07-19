@@ -1,0 +1,95 @@
+@import '../../stylesheets/colors';
+
+.article_wrapper{
+  margin: 2em;
+  .data {
+    border-color: $primary-darker;
+  }
+  .million {
+    border-color: $secondary-darker;
+  }
+  .perspectives {
+    border-color: $tertiary-darker;
+  }
+  .heliview {
+    border-color: $grey-lighter;
+  }
+  .article_card{
+    width: 650px;
+    display: flex;
+    border: solid 2px;
+    border-radius: 2em;
+    padding: 2em 0;
+    position: relative;
+    overflow: hidden;
+    .article_type{
+      text-align: center;
+      position: absolute;
+      top: 30px;
+      right: -30px;
+      width: 140px;
+      -ms-transform: rotate(45deg); /* IE 9 */
+      -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+      transform: rotate(45deg);
+      color: $white-lighter;
+      z-index: 10;
+      border: solid 1px $white-lighter;
+    }
+    .article_type.data {
+      background-color: $primary-darker;
+    }
+    .article_type.million {
+      background-color: $secondary-darker;
+    }
+    .article_type.perspectives {
+      background-color: $tertiary-darker;
+    }
+    .article_type.heliview {
+      background-color: $grey-lighter;
+    }
+    .article-row{
+      width: 100%;
+      text-align: left;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: space-between;
+      .article-column{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin: 0 2em;
+      }
+      .article-column.small{
+        max-width: 20%;
+      }
+      .article-column.large{
+        max-width: 80%;
+      }
+      .btn-success{
+        border-radius: 5em;
+        margin: 0.5em 0;
+      }
+    }
+    .thumbnail_custom{
+      position: relative;
+      height: 100px;
+      width: 100%;
+      margin: 0.3em;
+      img {
+        position: absolute;
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+  }
+}
