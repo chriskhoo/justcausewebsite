@@ -3,17 +3,23 @@ import { check } from 'meteor/check';
 import Articles from './Articles';
 import rateLimit from '../../modules/rate-limit';
 
+const checkObject = {
+  title: String,
+  summary: String,
+  body: String,
+  thumbnail: String,
+  service_ids: Array,
+  country_id: Object,
+  target_group_ids: Array,
+  article_type_id: Object,
+}
+
+let checkObjectID = Object.assign({}, checkObject);
+checkObjectID._id = String;
+
 Meteor.methods({
   'articles.insert': function articlesInsert(art) {
-    check(art, {
-      title: String,
-      body: String,
-      summary: String,
-      service_ids: Array,
-      country_id: Object,
-      target_group_ids: Array,
-      article_type_id: Object,
-    });
+    check(art, checkObject);
 
     try {
       return Articles.insert({ author: this.userId, ...art });
@@ -22,16 +28,7 @@ Meteor.methods({
     }
   },
   'articles.update': function articlesUpdate(art) {
-    check(art, {
-      _id: String,
-      title: String,
-      summary: String,
-      body: String,
-      service_ids: Array,
-      country_id: Object,
-      target_group_ids: Array,
-      article_type_id: Object,
-    });
+    check(art, checkObjectID);
 
     try {
       const articleId = art._id;

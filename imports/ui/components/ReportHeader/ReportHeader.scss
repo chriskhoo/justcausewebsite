@@ -1,0 +1,49 @@
+@import '../../stylesheets/colors';
+
+.report-header{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2em;
+  .report_detail_level{
+    text-align: center;
+    position: absolute;
+    top: 30px;
+    right: -30px;
+    width: 140px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    color: $white-lighter;
+    z-index: 10;
+    border: solid 1px $white-lighter;
+  }
+  .report_detail_level.long {
+    background-color: $primary;
+  }
+  .report_detail_level.medium {
+    background-color: $secondary;
+  }
+  .report_detail_level.short {
+    background-color: $tertiary;
+  }
+  .charity-logo{
+    width: 150px;
+    height: 150px;
+    margin-right: 1em;
+    display: flex;
+    vertical-align: middle;
+    overflow: hidden;
+    .charity-image{
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+    }
+  }
+  .header-container{
+    margin-left: 1em;
+  }
+
+}

@@ -10,11 +10,11 @@ import './FormThumbnailUpload.scss';
 class FormThumbnailUpload extends React.Component {
 
   render() {
-    const { fieldName, metaContext, handleUpload, type } = this.props;
+    const { fieldName, metaContext, handleUpload } = this.props;
     const newLabel = fieldName.split('_').map(capitalize).join(' ');
     return(
       <FormGroup>
-        <ControlLabel>Image Upload:</ControlLabel>
+        <ControlLabel>{newLabel} Image Upload:</ControlLabel>
         <div className ="upload-area">
           <p className ="alert alert-success text-center">
             <span>Click or drag an image file here to upload</span>

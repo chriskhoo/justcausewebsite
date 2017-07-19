@@ -1,0 +1,14 @@
+@import '../../stylesheets/colors';
+
+.report-panel-staff{
+  .report-section{
+    .report-row{
+      .fact-container{
+        justify-content: flex-start;
+        .report-icon-image.large{
+          margin: 1em;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.report-icon-image{
+  display: flex;
+  max-height: 100px;
+  width: 25%;
+  margin: 0 1em;
+  text-align: center;
+  img{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+}
+
+.report-icon-image.small{
+  width: 10%;
+}
+
+.report-icon-image.large{
+  width: 80%;
+}

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button, Thumbnail } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
 import validate from '../../../modules/validate';
@@ -18,6 +18,7 @@ class ArticleEditor extends React.Component {
    const { art } = this.props;
    this.state = {
      body: art && art.body,
+     thumbnail: art && art.thumbnail,
    }
    this.handleUpload = this.handleUpload.bind(this);
   }
@@ -110,6 +111,7 @@ class ArticleEditor extends React.Component {
       title: title.value.trim(),
       summary: summary.value.trim(),
       body: this.state.body,
+      thumbnail: this.state.thumbnail,
       service_ids: selectedServices,
       country_id: selectedCountry,
       target_group_ids: selectedTarget_Groups,
@@ -153,6 +155,9 @@ class ArticleEditor extends React.Component {
         fieldName="article_type_id"
         optionsList= {a_types}
         defaultVal = {art && art.article_type_id && art.article_type_id._id} />
+
+      <FormThumbnailUpload fieldName="thumbnail" metaContext={ {type: "thumbnail"} } handleUpload={this.handleUpload} />
+      <Thumbnail className="thumbnail_custom" src={this.state.thumbnail} alt="thumbnail_preview" />
 
       <FormThumbnailUpload fieldName="body" metaContext={ {type: "article"} } handleUpload={this.handleUpload} />
 

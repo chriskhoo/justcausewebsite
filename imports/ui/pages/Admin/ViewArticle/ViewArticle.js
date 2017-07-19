@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ButtonToolbar, ButtonGroup, Button, Panel } from 'react-bootstrap';
+import { ButtonToolbar, ButtonGroup, Button, Panel, Thumbnail } from 'react-bootstrap';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
@@ -26,6 +26,7 @@ const handleRemove = (articleId, history) => {
 const renderArticle = (art, match, history) => (art ? (
   <div className="ViewArticle">
     <div className="page-header clearfix">
+      <Thumbnail className="thumbnail_custom pull-left" src={art.thumbnail} alt="thumbnail_preview" />
       <h4 className="pull-left">{ art && art.title }</h4>
       <ButtonToolbar className="pull-right">
         <ButtonGroup bsSize="small">

@@ -52,6 +52,11 @@ Articles.schema = new SimpleSchema({
     label: 'The body of the article.',
     optional: false,
   },
+  thumbnail: {
+    type: String,
+    label: 'The body of the article.',
+    optional: false,
+  },
   service_ids: {
     type: Array,
     minCount: 1,

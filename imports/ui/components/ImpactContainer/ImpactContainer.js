@@ -22,7 +22,7 @@ class ImpactContainer extends React.Component {
               <h4>Outputs</h4>
               {outputs.map((output)=>
                 <div key={output._id}>
-                  <div className="ten1-width inline-block number">{output.number}</div>
+                  <div className="ten1-width inline-block key-figure">{output.number}</div>
                   <div className='ten1-width inline-block'></div>
                   <div className="ten8-width inline-block">{output.description}</div>
                 </div>)}
@@ -34,7 +34,7 @@ class ImpactContainer extends React.Component {
               <h4>Outcomes</h4>
               {outcomes.map((outcome)=>
               <div key={outcome._id}>
-                <div className="ten1-width inline-block number">{outcome.number}</div>
+                <div className="ten1-width inline-block key-figure">{outcome.number}</div>
                 <div className='ten1-width inline-block'></div>
                 <div className="ten8-width inline-block">{outcome.description}</div>
               </div>)}

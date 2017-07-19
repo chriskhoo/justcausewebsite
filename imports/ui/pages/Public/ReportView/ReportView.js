@@ -6,49 +6,73 @@ import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
 import ReportsCollection from '../../../../api/Reports/Reports';
 import CharitiesCollection from '../../../../api/Charities/Charities';
+import BadgesCollection from '../../../../api/Badges/Badges';
+import ServicesCollection from '../../../../api/Services/Services';
+import CountriesCollection from '../../../../api/Countries/Countries';
+import Target_GroupsCollection from '../../../../api/Target_Groups/Target_Groups';
+import ArticlesCollection from '../../../../api/Articles/Articles';
+
 import ReportHeader from '../../../components/ReportHeader/ReportHeader';
 import ReportPanel from '../../../components/ReportPanel/ReportPanel';
 import ReportAside from '../../../components/ReportAside/ReportAside';
 
 import './ReportView.scss';
 
-const renderReport = (rept, chty, match, history) => ( (rept && chty) ? (
+const renderReport = (rept, chty, bdgs, svcs, ctrys, t_grps, arts_rel, match, history) => ( (rept && chty) ? (
   <div className="report-view">
-    <ReportHeader rept={rept} chty={chty} />
+    <ReportHeader rept={rept} chty={chty} bdgs={bdgs}/>
     <div className="report-body">
-      <ReportPanel rept={rept} chty={chty} />
-      <ReportAside rept={rept} chty={chty} />
+      <ReportPanel rept={rept} chty={chty} bdgs={bdgs}/>
+      <ReportAside rept={rept} chty={chty} svcs={svcs} ctrys={ctrys} t_grps={t_grps} arts_rel={arts_rel}/>
     </div>
   </div>
 ) : <NotFound />);
 
-const ReportView = ({ loading, rept, chty, match, history }) => (
-  !loading ? renderReport(rept, chty, match, history) : <Loading />
+const ReportView = ({ loading, rept, chty, bdgs, svcs, ctrys, t_grps, arts_rel, match, history }) => (
+  !loading ? renderReport(rept, chty, bdgs, svcs, ctrys, t_grps, arts_rel, match, history) : <Loading />
 );
 
 ReportView.propTypes = {
   loading: PropTypes.bool.isRequired,
   rept: PropTypes.object.isRequired,
   chty: PropTypes.object.isRequired,
+  bdgs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  svcs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  ctrys: PropTypes.arrayOf(PropTypes.object).isRequired,
+  t_grps: PropTypes.arrayOf(PropTypes.object).isRequired,
+  arts_rel: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default createContainer(({ match, history }) => {
   const reportId = match.params._id;
-  const searchQuery = _extractQuery(history);
-  const charityId = searchQuery.charity_id;
+  const searchQuery = _extractQueryObj(history);
+  const {charity_id, target_groups, services} = searchQuery;
+  const charityId = charity_id;
+  const target_groupsIds = target_groups? target_groups.split(',') : [];
+  const servicesIds = services? services.split(',') : [];
   const reptSubscription = Meteor.subscribe('reports.public.view', reportId);
   const chtySubscription = Meteor.subscribe('charities.view', charityId);
+  const bdgsSubscription = Meteor.subscribe('badges');
+  const svcsSubscription = Meteor.subscribe('services');
+  const ctrySubscription = Meteor.subscribe('countries');
+  const t_grpsSubscription = Meteor.subscribe('target_groups');
+  const artsSubscription = Meteor.subscribe('articles.related', target_groupsIds, servicesIds)
   return {
-    loading: !chtySubscription.ready() || !reptSubscription.ready() ,
+    loading: !chtySubscription.ready() || !reptSubscription.ready() || !bdgsSubscription.ready() ||  !svcsSubscription.ready() || !ctrySubscription.ready() || !t_grpsSubscription.ready() || ! artsSubscription.ready(),
     rept: ReportsCollection.findOne(reportId),
-    chty: CharitiesCollection.findOne(charityId)
+    chty: CharitiesCollection.findOne(charityId),
+    bdgs: BadgesCollection.find().fetch(),
+    svcs: ServicesCollection.find().fetch(),
+    ctrys: CountriesCollection.find().fetch(),
+    t_grps: Target_GroupsCollection.find().fetch(),
+    arts_rel: ArticlesCollection.find().fetch(),
   };
 }, ReportView);
 
 //private function
-function _extractQuery(history){
+function _extractQueryObj(history){
   const search = history.location.search.substring(1);
   let search_object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
   return search_object;

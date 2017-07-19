@@ -34,7 +34,7 @@ const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, ma
     <h4>Recent Updates</h4>
     {rpts.length ?
       <div className="report_cards_holder">
-        {rpts.slice(0,6).map(({ _id, detail_level_id, description, charity_id, name, logo }) => {
+        {rpts.slice(0,6).map(({ _id, detail_level_id, description, charity_id, name, logo, target_group_ids, service_ids}) => {
         return(
           <ReportCard
             key = {_id}
@@ -44,6 +44,8 @@ const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, ma
             name= {name}
             logo= {logo}
             description={description}
+            target_group_ids ={target_group_ids}
+            service_ids ={service_ids}
             history= {history}
             match= {match}
           />)})}

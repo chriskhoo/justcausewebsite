@@ -101,6 +101,11 @@ Charities.schema = new SimpleSchema({
     label: "Description about how donations might help the organization to strengthen their team.",
     optional: true,
   },
+  strategy: {
+    type: String,
+    label: "Description about the charity's strategy and what it really invests in.",
+    optional: true,
+  },
   badges_awarded: {
     type: Array,
     label: 'The badges awarded to the charity.',

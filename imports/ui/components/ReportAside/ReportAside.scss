@@ -1,0 +1,53 @@
+@import '../../stylesheets/colors';
+
+.report-aside{
+  display: flex;
+  flex-direction: column;
+  .report-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .btn{
+      flex-grow: 1;
+    }
+  }
+  .btn{
+    border-radius: 30px;
+    margin: 0.5em 0.5em;
+  }
+  .report-aside-container{
+    margin-top: 1em;
+    h4{
+      margin-bottom: 1em;
+    }
+    padding: 0.5em 1em;
+    border: 1px solid $white-darker;
+    .report-tag-section{
+      border-top: 2px solid $white-darker;
+      padding: 1em 0;
+      .tag-button{
+        background-color: $white;
+      }
+    }
+    .related-row{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 1em 0;
+      .related-image{
+        display: flex;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        img{
+          max-width: 100%;
+          max-height: 100%;
+          margin: auto;
+        }
+      }
+      .related-text{
+        margin-left: 1em;
+      }
+    }
+  }
+}

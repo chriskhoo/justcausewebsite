@@ -44,10 +44,18 @@ function scrubObject(obj){
   Object.keys(obj).forEach((key) => (obj[key]) || delete obj[key]);
 }
 
+function extract_values(objs, key){
+  let array = []
+  objs.map((obj)=>array.push(obj[key]))
+  return array;
+}
+
+
 export {getFormElementsWithNewButton as getFormElementsWithNewButton};
 export {getCheckedFormElements as getCheckedFormElements};
 export {scrubObject as scrubObject};
 export {getCheckedIdArray as getCheckedIdArray}
+export {extract_values as extract_values}
 
 // Private functions for inputs that can add new inputs
 function getIdArray(type, fieldName, form){

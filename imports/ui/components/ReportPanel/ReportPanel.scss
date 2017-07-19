@@ -1,0 +1,78 @@
+@import '../../stylesheets/colors';
+
+.report-panel{
+  .nav.nav-tabs{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 800px;
+    li{
+      a{
+        height: 100%;
+        padding: 10px 10px;
+        color: $primary;
+      }
+    }
+    li.active{
+      a{
+        color: $white-lighter;
+        background: $secondary;
+      }
+    }
+  }
+  .tab-content{
+    .active{
+      height: 700px;
+      width: 800px;
+      border: 1px solid $white-darker;
+      padding: 1em;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .report-section{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2em;
+      .report-row{
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        margin: 1em 0;
+        .text-beside{
+          flex-grow: 1;
+          max-width: 80%;
+          margin: 0 1em;
+        }
+        .key-figure.glyphicon.glyphicon-ok{
+          display: inline-flex;
+          align-items: center;
+          font-size: 1.5em;
+        }
+      }
+    }
+    .opinion-box{
+      background-color: $quaternary-pale;
+      padding: 1em;
+    }
+    .blue-box{
+      padding: 1em;
+      flex-grow: 1;
+      background-color: $primary-pale;
+    }
+
+    .fact-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid $secondary;
+      min-height: 240px;
+      min-width: 130px;
+      margin: 0.5em;
+      flex-grow: 1;
+      padding: 1em;
+    }
+  }
+}

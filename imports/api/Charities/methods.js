@@ -3,29 +3,35 @@ import { check, Match } from 'meteor/check';
 import Charities from './Charities';
 import rateLimit from '../../modules/rate-limit';
 
+const checkObject = {
+  name: String,
+  year_established: Number,
+  website_link: String,
+  donation_link: Match.Optional(String),
+  logo: String,
+  summary: String,
+  revenue_model: String,
+  religious_affiliation: String,
+  registration_status: String,
+  strategy: Match.Optional(String),
+  jc_opinion_justcauseloves: Match.Optional(String),
+  jc_opinion_donate_if: Match.Optional(String),
+  jc_opinion_broadentheirwork: Match.Optional(String),
+  jc_opinion_strengthentheteam: Match.Optional(String),
+  badges_awarded: Match.Optional([Object]),
+  programs: Match.Optional([Object]),
+  staff_info: Match.Optional(Object),
+  reputation_info: Object,
+  leadership_info: Object,
+  financial_info: Object,
+}
+
+let checkObjectID = Object.assign({}, checkObject);
+checkObjectID._id = String;
+
 Meteor.methods({
   'charities.insert': function charitiesInsert(chty) {
-    check(chty, {
-      name: String,
-      year_established: Number,
-      website_link: String,
-      donation_link: Match.Optional(String),
-      logo: String,
-      summary: String,
-      revenue_model: String,
-      religious_affiliation: String,
-      registration_status: String,
-      jc_opinion_justcauseloves: Match.Optional(String),
-      jc_opinion_donate_if: Match.Optional(String),
-      jc_opinion_broadentheirwork: Match.Optional(String),
-      jc_opinion_strengthentheteam: Match.Optional(String),
-      badges_awarded: Match.Optional([Object]),
-      programs: Match.Optional([Object]),
-      staff_info: Match.Optional(Object),
-      reputation_info: Object,
-      leadership_info: Object,
-      financial_info: Object,
-    });
+    check(chty, checkObject);
 
     try {
       return Charities.insert({ author: this.userId, ...chty });
@@ -34,28 +40,7 @@ Meteor.methods({
     }
   },
   'charities.update': function charitiesUpdate(chty) {
-    check(chty, {
-      _id: String,
-      name: String,
-      year_established: Number,
-      website_link: String,
-      donation_link: Match.Optional(String),
-      logo: String,
-      summary: String,
-      revenue_model: String,
-      religious_affiliation: String,
-      registration_status: String,
-      jc_opinion_justcauseloves: Match.Optional(String),
-      jc_opinion_donate_if: Match.Optional(String),
-      jc_opinion_broadentheirwork: Match.Optional(String),
-      jc_opinion_strengthentheteam: Match.Optional(String),
-      badges_awarded: Match.Optional([Object]),
-      programs: Match.Optional([Object]),
-      staff_info: Match.Optional(Object),
-      reputation_info: Match.Optional(Object),
-      leadership_info: Object,
-      financial_info: Object,
-    });
+    check(chty, checkObjectID);
 
     try {
       const charityId = chty._id;

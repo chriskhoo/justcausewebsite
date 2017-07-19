@@ -1,0 +1,12 @@
+@import '../../stylesheets/colors';
+
+.report-panel-finances{
+  .report-section{
+    .report-row{
+      flex-wrap: wrap;
+      .fact-container{
+        max-width: 48%;
+      }
+    }
+  }
+}

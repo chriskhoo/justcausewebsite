@@ -40,19 +40,23 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
       </ButtonToolbar>
     </div>
     <div>
-      <Panel header='Badges'>
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>Badge</th>
-                <th>Name</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              {returnBadges(bdgs, chty.badges_awarded)}
-            </tbody>
-          </Table>
+      <Panel header='Strategy & Character'>
+        {chty.strategy?<div>
+          <strong>Strategy: </strong>
+          <Content content={ parseMarkdown(chty.strategy) } />
+        </div>: ''}
+        {(chty.badges_awarded &&bdgs)? <Table responsive>
+          <thead>
+            <tr>
+              <th>Badge</th>
+              <th>Name</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            {returnBadges(bdgs, chty.badges_awarded)}
+          </tbody>
+        </Table>:''}
       </Panel>
       <Panel header='Core Information'>
         <p>
@@ -70,35 +74,42 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
         <p>
           <strong>Registration Status: </strong>{chty.registration_status}
         </p>
-        <strong>Summary: </strong>
-        <Content content={ parseMarkdown(chty.summary) } />
+        {chty.summary? <div>
+          <strong>Summary: </strong>
+          <Content content={ parseMarkdown(chty.summary) } />
+        </div>:''}
       </Panel>
       <Panel header='Just Cause Opinion'>
-        <strong>Just Cause loves: </strong>
-        <Content content={ parseMarkdown(chty.jc_opinion_justcauseloves) } />
-        <br/>
-        <strong>Donate if: </strong>
-        <Content content={ parseMarkdown(chty.jc_opinion_donate_if) } />
-        <br/>
-        <strong>How your money will help: </strong>
-        <strong>Broaden their work: </strong>
-        <Content content={ parseMarkdown(chty.jc_opinion_broadentheirwork) } />
-        <strong>Strengthen the team: </strong>
-        <Content content={ parseMarkdown(chty.jc_opinion_strengthentheteam) } />
+        {chty.jc_opinion_justcauseloves? <div>
+          <strong>Just Cause loves: </strong>
+          <Content content={ parseMarkdown(chty.jc_opinion_justcauseloves) } />
+          <br/>
+        </div>:''}
+        {chty.jc_opinion_donate_if? <div>
+          <strong>Donate if: </strong>
+          <Content content={ parseMarkdown(chty.jc_opinion_donate_if) } />
+          <br/>
+        </div>:''}
+        {chty.jc_opinion_broadentheirwork? <div>
+          <strong>How your money will help: </strong>
+          <strong>Broaden their work: </strong>
+          <Content content={ parseMarkdown(chty.jc_opinion_broadentheirwork) } />
+        </div>:''}
+        {chty.jc_opinion_strengthentheteam? <div>
+          <strong>Strengthen the team: </strong>
+          <Content content={ parseMarkdown(chty.jc_opinion_strengthentheteam) } />
+        </div>:''}
       </Panel>
-      <Panel header='Programs'>
-        {
-          chty.programs.map( (program) =>
+      {chty.programs?<Panel header='Programs'>
+        {chty.programs.map( (program) =>
             <Panel>
               <h4>{program.name}</h4>
               <p><strong>Revenue Model: </strong>{program.revenue_model}</p>
-              <Content content={ parseMarkdown(program.summary) } />
-            </Panel>
-          )
-        }
-      </Panel>
+              {program.summary? <div><Content content={ parseMarkdown(program.summary) } /></div>:''}
+            </Panel>)}
+      </Panel>:''}
 
-      <Panel header='Staff Information'>
+      {chty.staff_info?<Panel header='Staff Information'>
         <p>
           <strong>Staff Head Count ({chty.staff_info.headcount_year}): </strong>
           {chty.staff_info.staff_headcount_number}
@@ -115,11 +126,13 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
           {'        '}
           <strong>Volunteer Satisfaction: </strong> {chty.staff_info.volunteer_satisfaction_percentage}
         </p>
-        <br/>
-        <strong>Commentary: </strong>
-        <Content content={ parseMarkdown(chty.staff_info.commentary) } />
-      </Panel>
-      <Panel header='Reputation Information'>
+        {chty.staff_info.commentary? <div>
+          <br/>
+          <strong>Commentary: </strong>
+          <Content content={ parseMarkdown(chty.staff_info.commentary) } />
+        </div>:''}
+      </Panel>:''}
+      {chty.reputation_info? <Panel header='Reputation Information'>
         <p>
           <strong>Quote 1: </strong>
           <em>{chty.reputation_info.quote_1}</em>
@@ -141,23 +154,23 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
           {'        '}
           <strong>By: </strong>{chty.reputation_info.media_article_1_source}
         </p>
-        <Content content={ parseMarkdown(chty.reputation_info.media_article_1_summary) } />
+        {chty.reputation_info.media_article_1_summary?<Content content={ parseMarkdown(chty.reputation_info.media_article_1_summary) } />:''}
         <br/>
         <p>
           <strong>Article 2 ({chty.reputation_info.media_article_2_date}): </strong> {chty.reputation_info.media_article_2_title}
           {'        '}
           <strong>By: </strong>{chty.reputation_info.media_article_2_source}
         </p>
-        <Content content={ parseMarkdown(chty.reputation_info.media_article_2_summary) } />
+        {chty.reputation_info.media_article_2_summary?<Content content={ parseMarkdown(chty.reputation_info.media_article_2_summary) } />:''}
         <br/>
         <p>
           <strong>Article 3 ({chty.reputation_info.media_article_3_date}): </strong> {chty.reputation_info.media_article_3_title}
           {'        '}
           <strong>By: </strong>{chty.reputation_info.media_article_3_source}
         </p>
-        <Content content={ parseMarkdown(chty.reputation_info.media_article_3_summary) } />
-      </Panel>
-      <Panel header='Leadership Information'>
+        {chty.reputation_info.media_article_3_summary?<Content content={ parseMarkdown(chty.reputation_info.media_article_3_summary) } />:''}
+      </Panel>:''}
+      {chty.leadership_info?<Panel header='Leadership Information'>
         <p>
           <strong>Year: {chty.leadership_info.background_year}</strong>
         </p>
@@ -245,11 +258,13 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
               </tr>)}
           </tbody>
         </Table>
-        <br/>
-        <strong>Commentary: </strong>
-        <Content content={ parseMarkdown(chty.leadership_info.commentary) } />
-      </Panel>
-      <Panel header='Financial Information'>
+        {chty.leadership_info.commentary? <div>
+          <br/>
+          <strong>Commentary: </strong>
+          <Content content={ parseMarkdown(chty.leadership_info.commentary) } />
+        </div>:''}
+      </Panel>:''}
+      {chty.financial_info?<Panel header='Financial Information'>
         <h2>Income</h2>
         <Table responsive>
           <thead>
@@ -324,12 +339,12 @@ const renderCharity = (chty, bdgs, match, history) => (chty ? (
             )}
           </tbody>
         </Table>
-        <br/>
-        <strong>Commentary: </strong>
-        <Content content={ parseMarkdown(chty.financial_info.commentary) } />
-      </Panel>
-
-
+        {chty.financial_info.commentary? <div>
+          <br/>
+          <strong>Commentary: </strong>
+          <Content content={ parseMarkdown(chty.financial_info.commentary) } />
+        </div>:''}
+      </Panel>:''}
     </div>
   </div>
 ) : <NotFound />);

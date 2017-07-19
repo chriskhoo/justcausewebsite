@@ -64,7 +64,7 @@ class SearchResults extends React.Component {
             <h4>Results for "{filter_object.q}"</h4>
             {rpts_filtered.length ?
               <div className="report_cards_holder">
-                {rpts_filtered.map(({ _id, charity_id, detail_level_id, description, name, logo }) => {
+                {rpts_filtered.map(({ _id, charity_id, detail_level_id, target_group_ids, service_ids, description, name, logo }) => {
                 return(
                   <ReportCard
                     key = {_id}
@@ -74,6 +74,8 @@ class SearchResults extends React.Component {
                     name= {name}
                     logo= {logo}
                     description={description}
+                    target_group_ids ={target_group_ids}
+                    service_ids ={service_ids}
                     history= {history}
                     match= {match}
                   />)})}

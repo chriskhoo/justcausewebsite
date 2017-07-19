@@ -94,7 +94,7 @@ class CharityEditor extends React.Component {
     // get props
     const { history, bdgs, f_checks, g_checks } = this.props;
     // get form elements for fixed fields
-    const {name, year_established, website_link, donation_link, logo, summary, revenue_model, religious_affiliation, registration_status, jc_opinion_justcauseloves, jc_opinion_donate_if, jc_opinion_broadentheirwork, jc_opinion_strengthentheteam} = this.form;
+    const {name, year_established, website_link, donation_link, logo, summary, revenue_model, religious_affiliation, registration_status, jc_opinion_justcauseloves, jc_opinion_donate_if, jc_opinion_broadentheirwork, jc_opinion_strengthentheteam, strategy} = this.form;
     // get fixed form elements for staff info
     const {headcount_year, staff_headcount_number, volunteer_headcount_number, staff_turnover_year, staff_turnover_number, satisfaction_year, staff_satisfaction_percentage, volunteer_satisfaction_percentage, staff_info_commentary} = this.form;
     // get fixed form elements for reputation info
@@ -126,6 +126,7 @@ class CharityEditor extends React.Component {
       jc_opinion_donate_if: jc_opinion_donate_if.value.trim(),
       jc_opinion_broadentheirwork: jc_opinion_broadentheirwork.value.trim(),
       jc_opinion_strengthentheteam: jc_opinion_strengthentheteam.value.trim(),
+      strategy: strategy.value.trim(),
       badges_awarded: badges_awarded,
       programs: programs,
       staff_info: {},
@@ -268,7 +269,8 @@ class CharityEditor extends React.Component {
         <FormTextArea fieldName="jc_opinion_broadentheirwork" defaultVal={chty && chty.jc_opinion_broadentheirwork} />
         <FormTextArea fieldName="jc_opinion_strengthentheteam" defaultVal={chty && chty.jc_opinion_strengthentheteam} />
       </Panel>
-      <Panel collapsible header="badges_awarded">
+      <Panel collapsible header="strategy & character">
+        <FormTextArea fieldName="strategy" defaultVal={chty && chty.strategy} />
         <CharityBadgesEditor badges={bdgs} charity_badges={chty && chty.badges_awarded}/>
       </Panel>
       <Panel collapsible header="programs">

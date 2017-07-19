@@ -1,18 +1,22 @@
 $primary: #002060;
 $primary-darker: darken($primary, 10%);
-$primary-lighter: lighten($primary, 15%);
+$primary-lighter: lighten($primary, 20%);
+$primary-pale: lighten($primary, 60%);
 
 $secondary: #00B050;
 $secondary-darker: darken($secondary, 20%);
 $secondary-lighter: lighten($secondary, 20%);
+$secondary-pale: lighten($secondary, 50%);
 
 $tertiary: #0AB8C7;
 $tertiary-darker: darken($tertiary, 20%);
 $tertiary-lighter: lighten($tertiary, 20%);
+$tertiary-pale: lighten($tertiary, 45%);
 
 $quaternary: #FFC000;
 $quaternary-darker: darken($quaternary, 20%);
 $quaternary-lighter: lighten($quaternary, 20%);
+$quaternary-pale: lighten($quaternary, 40%);
 
 $grey: #2b2b2b;
 $grey-darker: darken($grey, 10%);

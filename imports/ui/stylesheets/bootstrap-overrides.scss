@@ -36,3 +36,15 @@ body{
     border-color: $secondary-darker;
   }
 }
+
+.btn-primary{
+  background-color: $primary-darker;
+  border: none;
+  color: $white-lighter;
+}
+
+.btn-success{
+  background-color: $secondary-darker;
+  border: none;
+  color: $white-lighter;
+}

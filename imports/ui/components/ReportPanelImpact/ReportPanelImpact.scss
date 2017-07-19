@@ -1,0 +1,20 @@
+@import '../../stylesheets/colors';
+
+.report-panel-impact{
+  .report-section{
+    .report-row{
+      .key-figure{
+        width: 25%;
+        text-align: left;
+      }
+      .text-beside{
+        text-align: left;
+      }
+    }
+    .report-impact-results-box{
+      margin: 1em;
+      text-align: center;
+      max-width: 45%;
+    }
+  }
+}
