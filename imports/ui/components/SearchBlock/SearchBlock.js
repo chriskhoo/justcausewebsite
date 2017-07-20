@@ -38,10 +38,12 @@ class SearchBlock extends React.Component {
 
   render() {
     const { svcs, ctrys, t_grps, d_levels, a_types, history, match } = this.props;
+    const type = a_types? 'article' : 'report';
     return (
       <form className='searchblock' ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
         <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, a_types, history, match)} />
-        <p className='caption'>Find the charity that matches your values and impact goals</p>
+        {type=='article'?<p className='caption'>Learn more about charitable giving</p>:''}
+        {type=='report'?<p className='caption'>Find the charity that matches your values and impact goals</p>:''}
         <div className= {this.state.aSearch?'advance-search open':'advance-search'} >
           <div onClick={this.toggleSearch}>
             <p>Advanced Search</p>

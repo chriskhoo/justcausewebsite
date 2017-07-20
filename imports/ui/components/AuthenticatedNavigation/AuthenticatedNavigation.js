@@ -5,9 +5,9 @@ import { Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 
 const AuthenticatedNavigation = ({ name }) => (
-  <div>
+  <div className='authenticated-navigation'>
     <Nav>
-      <NavDropdown eventKey={2} title="Tags, lists" id="user-nav-dropdown">
+      <NavDropdown eventKey={2} title="Tags, lists" id="tag-lists-dropdown">
         <LinkContainer to="/admin/article_types">
           <NavItem eventKey={2.1} href="/admin/article_types">Article_Types</NavItem>
         </LinkContainer>
@@ -42,14 +42,28 @@ const AuthenticatedNavigation = ({ name }) => (
       <LinkContainer to="/admin/articles">
         <NavItem eventKey={5} href="/admin/articles">Articles</NavItem>
       </LinkContainer>
+      <NavDropdown eventKey={6} title="Public Pages" id="public-dropdown">
+        <LinkContainer to="/impact-eval">
+          <NavItem eventKey={6.1} href="/impact-eval">Impact Evaluation</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/articles">
+          <NavItem eventKey={6.2} href="/articles">Philantrophy Insights</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/reports">
+          <NavItem eventKey={6.3} href="/reports">Charity Reports</NavItem>
+        </LinkContainer>
+        <LinkContainer to="/about-us">
+          <NavItem eventKey={6.4} href="/about-us">About Us</NavItem>
+        </LinkContainer>
+      </NavDropdown>
     </Nav>
     <Nav pullRight>
-      <NavDropdown eventKey={6} title={name} id="user-nav-dropdown">
+      <NavDropdown eventKey={7} title={name} id="user-nav-dropdown">
         <LinkContainer to="/profile">
-          <NavItem eventKey={6.1} href="/profile">Profile</NavItem>
+          <NavItem eventKey={7.1} href="/profile">Profile</NavItem>
         </LinkContainer>
         <MenuItem divider />
-        <MenuItem eventKey={6.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
+        <MenuItem eventKey={7.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>

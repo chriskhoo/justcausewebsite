@@ -16,4 +16,12 @@ To do list:
 - do we need timestamp for impact output / outcome / quotes?
 - Search currently limited to report title and description do we need to extend this to other fields? if so which?
 - Can't seem to index (and weight collection)
--
+- Convert the sign up to a create user. Remove the login from the nav bar.
+- add UX/UI elements - highlight current page in nav bar, change colour for panels that open (e.g. advance search / panels), search button color on hover
+- template aside to remove effects from mouse over
+
+- create badges for export
+- update logo
+- update export report icons
+- update terms of service & the disclaimer in the top of the report
+- update home page

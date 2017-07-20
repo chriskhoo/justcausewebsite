@@ -139,7 +139,7 @@ function _searchparameter(field, form){
 }
 
 function _objectfilter(filter_object, object_to_filter){
-  const type = object_to_filter.detail_level_id? 'report': 'article';
+  const type = object_to_filter[0].detail_level_id? 'report': 'article';
   let object_filtered = object_to_filter.filter(({country_id})=>filter_object.country.includes(country_id._id) )
                                         .filter(({target_group_ids})=>{
                                           let contained = false;
