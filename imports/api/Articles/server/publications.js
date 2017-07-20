@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { check } from 'meteor/check';
+import { check, Match } from 'meteor/check';
 import Articles from '../Articles';
 
 Meteor.publish('articles', function articles() {
@@ -10,6 +10,26 @@ Meteor.publish('articles', function articles() {
 Meteor.publish('articles.view', function articlesView(articleId) {
   check(articleId, String);
   return Articles.find({ _id: articleId });
+});
+
+// Note: used by public, publishes only completed reports
+Meteor.publish('articles.search', function (searchTerm) {
+  check(searchTerm, Match.OneOf(String, null, undefined));
+  let query = {};
+  const projection = { limit: 10, sort: {title: 1} };
+
+  if (searchTerm){
+    const regex = new RegExp(searchTerm, 'i');
+    query = {
+      $or: [
+        { summary: regex },
+        { title: regex },
+      ],
+    };
+    projection.limit = 100;
+  }
+
+  return Articles.find(query, projection);
 });
 
 // Note: used for finding related articles.
