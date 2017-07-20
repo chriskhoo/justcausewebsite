@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
-import { extract_values } from '../../../modules/get-form-elements'
+import { extract_values, getArticleClassName } from '../../../modules/get-form-elements'
 
 import './ArticleCard.scss';
 
@@ -13,7 +13,7 @@ class ArticleCard extends React.Component {
     target_group_ids_array = extract_values(target_group_ids, '_id').toString();
     service_ids_array = extract_values(service_ids, '_id').toString();
     const url = (match.url == '/articles/results')? `${_id}?target_groups=${target_group_ids_array}&services=${service_ids_array}` : `articles/${_id}?target_groups=${target_group_ids_array}&services=${service_ids_array}`
-    const className = _getClassName(article_type_name);
+    const className = getArticleClassName(article_type_name);
 
     return(
       <div className="article_wrapper" key={_id}>
@@ -53,20 +53,3 @@ ArticleCard.propTypes = {
 };
 
 export default ArticleCard;
-
-// Private function
-function _getClassName(article_type_name){
-  switch (article_type_name){
-    case 'Data Crunch':
-      return 'data';
-    case 'If I had a million':
-      return 'million';
-    case 'Perspectives':
-      return 'perspectives';
-    case 'Helicopter View':
-      return 'heliview';
-    default:
-      return '';
-  }
-  return '';
-}

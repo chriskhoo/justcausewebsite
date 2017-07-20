@@ -12,18 +12,18 @@ import CountriesCollection from '../../../../api/Countries/Countries';
 import Target_GroupsCollection from '../../../../api/Target_Groups/Target_Groups';
 import ArticlesCollection from '../../../../api/Articles/Articles';
 
-import ReportHeader from '../../../components/ReportHeader/ReportHeader';
+import ViewTemplateHeader from '../../../components/ViewTemplateHeader/ViewTemplateHeader';
 import ReportPanel from '../../../components/ReportPanel/ReportPanel';
-import ReportAside from '../../../components/ReportAside/ReportAside';
+import ViewTemplateAside from '../../../components/ViewTemplateAside/ViewTemplateAside';
 
 import './ReportView.scss';
 
 const renderReport = (rept, chty, bdgs, svcs, ctrys, t_grps, arts_rel, match, history) => ( (rept && chty) ? (
   <div className="report-view">
-    <ReportHeader rept={rept} chty={chty} bdgs={bdgs}/>
+    <ViewTemplateHeader rept={rept} chty={chty} bdgs={bdgs}/>
     <div className="report-body">
       <ReportPanel rept={rept} chty={chty} bdgs={bdgs}/>
-      <ReportAside rept={rept} chty={chty} svcs={svcs} ctrys={ctrys} t_grps={t_grps} arts_rel={arts_rel}/>
+      <ViewTemplateAside rept={rept} chty={chty} svcs={svcs} ctrys={ctrys} t_grps={t_grps} arts_rel={arts_rel}/>
     </div>
   </div>
 ) : <NotFound />);

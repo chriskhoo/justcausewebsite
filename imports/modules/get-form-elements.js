@@ -50,12 +50,29 @@ function extract_values(objs, key){
   return array;
 }
 
+function getArticleClassName(article_type_name){
+  switch (article_type_name){
+    case 'Data Crunch':
+      return 'data';
+    case 'If I had a million':
+      return 'million';
+    case 'Perspectives':
+      return 'perspectives';
+    case 'Helicopter View':
+      return 'heliview';
+    default:
+      return '';
+  }
+  return '';
+}
+
 
 export {getFormElementsWithNewButton as getFormElementsWithNewButton};
 export {getCheckedFormElements as getCheckedFormElements};
 export {scrubObject as scrubObject};
 export {getCheckedIdArray as getCheckedIdArray}
 export {extract_values as extract_values}
+export {getArticleClassName as getArticleClassName}
 
 // Private functions for inputs that can add new inputs
 function getIdArray(type, fieldName, form){

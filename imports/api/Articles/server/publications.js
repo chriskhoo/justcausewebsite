@@ -32,7 +32,7 @@ Meteor.publish('articles.search', function (searchTerm) {
   return Articles.find(query, projection);
 });
 
-// Note: used for finding related articles.
+// Note: used for finding articles related to reports.
 Meteor.publish('articles.related', function articlesRelated(target_groups, services) {
   check(target_groups, Array);
   check(services, Array);

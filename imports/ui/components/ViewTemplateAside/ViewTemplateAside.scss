@@ -1,9 +1,9 @@
 @import '../../stylesheets/colors';
 
-.report-aside{
+.view-template-aside{
   display: flex;
   flex-direction: column;
-  .report-links{
+  .template-links{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -15,14 +15,14 @@
     border-radius: 30px;
     margin: 0.5em 0.5em;
   }
-  .report-aside-container{
+  .template-aside-container{
     margin-top: 1em;
     h4{
       margin-bottom: 1em;
     }
     padding: 0.5em 1em;
     border: 1px solid $white-darker;
-    .report-tag-section{
+    .template-tag-section{
       border-top: 2px solid $white-darker;
       padding: 1em 0;
       .tag-button{

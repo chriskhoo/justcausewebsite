@@ -36,6 +36,7 @@ import ReportsResults from '../../pages/Public/ReportsResults/ReportsResults';
 import ReportView from '../../pages/Public/ReportView/ReportView';
 import ArticlesHome from '../../pages/Public/ArticlesHome/ArticlesHome';
 import ArticlesResults from '../../pages/Public/ArticlesResults/ArticlesResults';
+import ArticleView from '../../pages/Public/ArticleView/ArticleView';
 
 import Documents from '../../pages/Documents/Documents';
 import NewDocument from '../../pages/NewDocument/NewDocument';
@@ -102,6 +103,7 @@ const App = props => (
           <Route name="report-view" exact path="/reports/:_id" component={ReportView} {...props} />
           <Route name="articles" exact path="/articles" component={ArticlesHome} {...props} />
           <Route name="articles-results" exact path="/articles/results" component={ArticlesResults} {...props} />
+          <Route name="article-view" exact path="/articles/:_id" component={ArticleView} {...props} />
           <Route component={NotFound} />
         </Switch>
       </Grid>

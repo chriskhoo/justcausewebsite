@@ -43,3 +43,19 @@ Meteor.publish('reports.public.view', function reportsView(reportId) {
 
   return Reports.find({ _id: reportId, completed: true });
 });
+
+// Note: used for finding reports related to articles.
+Meteor.publish('reports.related', function articlesRelated(target_groups, services) {
+  check(target_groups, Array);
+  check(services, Array);
+  let query = {};
+  if(target_groups.length+services.length){
+    query = {
+      $or: [
+        { 'service_ids._id': { $in: services} },
+        { 'target_group_ids._id': {$in: target_groups} },
+      ],
+    };
+  }
+  return Reports.find(query, { limit: 6 });
+});

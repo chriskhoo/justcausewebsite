@@ -1,26 +1,26 @@
-.report-view{
+.article-view{
   display: flex;
   flex-direction: column;
-  .report-header{
+  .view-template-header{
     width: 100%;
   }
-  .report-body{
+  .article-body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
     flex-wrap: wrap;
-    .report-panel{
-      display: flex;
+    .article-panel{
       flex-grow: 2;
-      width: 800px;
-      min-height: 700px;
+      min-width: 640px;
+      max-width: 800px;
       max-height: 900px;
+      margin: 1em 1em 0 0;
     }
-    .report-aside{
+    .view-template-aside{
       flex-grow: 1;
       display: flex;
-      width: 300px;
+      max-width: 300px;
     }
   }
 }

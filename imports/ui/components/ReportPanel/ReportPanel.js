@@ -45,7 +45,7 @@ class ReportPanel extends React.Component {
           <Tab eventKey={8} title="Just Cause's Opinion"><ReportPanelOpinion chty={chty} /></Tab>:''}
 
         </Tabs>
-      </div>:'Report not found');
+      </div>:<div>Report not found</div>);
   }
 }
 

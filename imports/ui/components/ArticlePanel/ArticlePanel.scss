@@ -1,0 +1,12 @@
+@import '../../stylesheets/colors';
+
+.article-panel{
+  border: 1px solid $white-darker;
+  overflow: auto;
+  vertical-align: middle;
+  img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+}
