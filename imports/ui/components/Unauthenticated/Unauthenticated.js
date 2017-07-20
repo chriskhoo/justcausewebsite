@@ -9,7 +9,7 @@ const Unauthenticated = ({ loggingIn, authenticated, component, ...rest }) => (
       if (loggingIn) return <div />;
       return !authenticated ?
       (React.createElement(component, { ...props, loggingIn, authenticated })) :
-      (<Redirect to="/documents" />);
+      (<Redirect to="/profile" />);
     }}
   />
 );

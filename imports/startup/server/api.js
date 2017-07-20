@@ -31,9 +31,6 @@ import '../../api/Financial_Checklists/server/publications';
 import '../../api/Governance_Checklists/methods';
 import '../../api/Governance_Checklists/server/publications';
 
-import '../../api/Documents/methods';
-import '../../api/Documents/server/publications';
-
 import '../../api/Users/server/methods';
 import '../../api/Users/server/publications';
 

@@ -38,10 +38,6 @@ import ArticlesHome from '../../pages/Public/ArticlesHome/ArticlesHome';
 import ArticlesResults from '../../pages/Public/ArticlesResults/ArticlesResults';
 import ArticleView from '../../pages/Public/ArticleView/ArticleView';
 
-import Documents from '../../pages/Documents/Documents';
-import NewDocument from '../../pages/NewDocument/NewDocument';
-import ViewDocument from '../../pages/ViewDocument/ViewDocument';
-import EditDocument from '../../pages/EditDocument/EditDocument';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -61,6 +57,14 @@ const App = props => (
       <Grid>
         <Switch>
           <Route exact name="index" path="/" component={Index} />
+          <Authenticated exact path="/profile" component={Profile} {...props} />
+
+          <Unauthenticated path="/signup" component={Signup} {...props} />
+          <Unauthenticated path="/login" component={Login} {...props} />
+          <Unauthenticated path="/logout" component={Logout} {...props} />
+          <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
+          <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
+          <Route name="examplePage" path="/example-page" component={ExamplePage} />
 
           <Authenticated exact path="/admin/article_types" component={Article_Types} {...props} />
           <Authenticated exact path="/admin/countries" component={Countries} {...props} />
@@ -85,18 +89,6 @@ const App = props => (
           <Authenticated exact path="/admin/articles/:_id" component={ViewArticle} {...props} />
           <Authenticated exact path="/admin/articles/:_id/edit" component={EditArticle} {...props} />
 
-          <Authenticated exact path="/documents" component={Documents} {...props} />
-          <Authenticated exact path="/documents/new" component={NewDocument} {...props} />
-          <Authenticated exact path="/documents/:_id" component={ViewDocument} {...props} />
-          <Authenticated exact path="/documents/:_id/edit" component={EditDocument} {...props} />
-          <Authenticated exact path="/profile" component={Profile} {...props} />
-
-          <Unauthenticated path="/signup" component={Signup} {...props} />
-          <Unauthenticated path="/login" component={Login} {...props} />
-          <Unauthenticated path="/logout" component={Logout} {...props} />
-          <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
-          <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
-          <Route name="examplePage" path="/example-page" component={ExamplePage} />
 
           <Route name="reports" exact path="/reports" component={ReportsHome} {...props} />
           <Route name="reports-results" exact path="/reports/results" component={ReportsResults} {...props} />

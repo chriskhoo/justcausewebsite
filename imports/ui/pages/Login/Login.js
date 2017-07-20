@@ -47,7 +47,7 @@ class Login extends React.Component {
         Bert.alert(error.reason, 'danger');
       } else {
         Bert.alert('Welcome back!', 'success');
-        history.push('/documents');
+        history.push('/profile');
       }
     });
   }
