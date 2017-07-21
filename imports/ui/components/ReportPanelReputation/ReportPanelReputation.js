@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
 import ReportIconImage from '../ReportIconImage/ReportIconImage';
+import { numberWithCommas } from '../../../modules/get-form-elements'
 
 import './ReportPanelReputation.scss';
 
@@ -48,7 +49,7 @@ class ReportPanelReputation extends React.Component {
             <ReportIconImage image='/Icon_Facebook.png' small/>
             <div className='text-beside'>
               <div className='report-row'>
-                <p className='key-figure'>{facebook_likes_number}</p>
+                <p className='key-figure'>{numberWithCommas(facebook_likes_number)}</p>
                 <p className='text-beside'><strong>Facebook likes({facebook_likes_date})</strong></p>
               </div>
             </div>

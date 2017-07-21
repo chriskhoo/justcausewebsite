@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
 import { Glyphicon, Table } from 'react-bootstrap';
+import { numberWithCommas } from '../../../modules/get-form-elements'
 
 import './ReportPanelFinances.scss';
 
@@ -29,9 +30,9 @@ class ReportPanelFinances extends React.Component {
                 <Table striped bordered hover responsive>
                   <thead><tr><th>Year</th><th>Income</th><th>Expenditure</th></tr></thead>
                   <tbody>
-                    <tr><td>{income_year_1}</td><td>{income_year_1_amt}</td><td>{expenditure_year_1_amt}</td></tr>
-                    <tr><td>{income_year_2}</td><td>{income_year_2_amt}</td><td>{expenditure_year_2_amt}</td></tr>
-                    <tr><td>{income_year_3}</td><td>{income_year_3_amt}</td><td>{expenditure_year_3_amt}</td></tr>
+                    <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{expenditure_year_1_amt}</td></tr>
+                    <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{expenditure_year_2_amt}</td></tr>
+                    <tr><td>{income_year_3}</td><td>{numberWithCommas(income_year_3_amt)}</td><td>{expenditure_year_3_amt}</td></tr>
                   </tbody>
                 </Table>
               </div>:'' }
@@ -59,9 +60,9 @@ class ReportPanelFinances extends React.Component {
               { graph4_check? <div className='fact-container'>
                 <h4>Number of major donors</h4>
                 <p>Financial year: {major_donors_year}</p>
-                <p className='key-figure'>{major_donors_number}</p>
+                <p className='key-figure'>{numberWithCommas(major_donors_number)}</p>
                 <p>Donors (excluding government) giving more than</p>
-                <p className='key-figure'>$ {major_donors_minimum_amt}</p>
+                <p className='key-figure'>$ {numberWithCommas(major_donors_minimum_amt)}</p>
               </div>:'' }
             </div>
           </div>) :''}

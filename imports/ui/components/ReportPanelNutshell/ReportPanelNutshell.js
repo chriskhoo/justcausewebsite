@@ -6,6 +6,7 @@ import { monthDayYear } from '@cleverbeagle/dates';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
 import ReportIconImage from '../ReportIconImage/ReportIconImage';
+import { numberWithCommas } from '../../../modules/get-form-elements'
 
 import './ReportPanelNutshell.scss';
 
@@ -30,7 +31,7 @@ class ReportPanelNutshell extends React.Component {
               <div className='fact-container'>
                 <h5>Annual Income</h5>
                 <ReportIconImage image='/Icon_Rev.png' large/>
-                <p className='key-figure'>${financial_info.income_year_3_amt}</p>
+                <p className='key-figure'>${numberWithCommas(financial_info.income_year_3_amt)}</p>
                 <p>({financial_info.income_year_3})</p>
               </div> :''}
               { revenue_model?

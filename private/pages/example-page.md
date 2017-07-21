@@ -22,6 +22,5 @@ To do list:
 - make banner creation (for detail level and article type) immune to case
 
 
-- update export report icons
 - update terms of service & the disclaimer in the top of the report
 - update home page

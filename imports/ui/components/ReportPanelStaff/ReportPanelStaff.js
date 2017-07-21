@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
 import ReportIconImage from '../ReportIconImage/ReportIconImage';
-import {  } from 'react-bootstrap';
+import { numberWithCommas } from '../../../modules/get-form-elements'
 
 import './ReportPanelStaff.scss';
 
@@ -14,7 +14,7 @@ class ReportPanelStaff extends React.Component {
     const { chty } = this.props;
     const { staff_info } = chty || {};
     const { headcount_year, staff_headcount_number, volunteer_headcount_number, staff_turnover_year, staff_turnover_number, satisfaction_year, staff_satisfaction_percentage, volunteer_satisfaction_percentage, commentary } = staff_info || {};
-    const graph1_check = headcount_year && staff_headcount_number && volunteer_headcount_number;
+    const graph1_check = headcount_year && staff_headcount_number;
     const graph2_check = staff_turnover_year && staff_turnover_number;
     const graph3_check = satisfaction_year && staff_satisfaction_percentage && volunteer_satisfaction_percentage;
     return (staff_info?
@@ -26,11 +26,13 @@ class ReportPanelStaff extends React.Component {
               <h4>Headcount</h4>
               <p>Financial year: {headcount_year}</p>
               <ReportIconImage image='/Icon_Volunteers.png' large/>
-              <p className='key-figure'>{staff_headcount_number}</p>
+              <p className='key-figure'>{numberWithCommas(staff_headcount_number)}</p>
               <p>Staff</p>
-              <br />
-              <p className='key-figure'>{volunteer_headcount_number}</p>
-              <p>Active volunteers</p>
+              {volunteer_headcount_number? <div>
+                <br />
+                <p className='key-figure'>{numberWithCommas(volunteer_headcount_number)}</p>
+                <p>Active volunteers</p>
+              </div>:''}
             </div>:'' }
             { graph2_check? <div className='fact-container'>
               <h4>Staff turnover rate</h4>

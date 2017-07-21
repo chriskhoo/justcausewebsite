@@ -66,6 +66,9 @@ function getArticleClassName(article_type_name){
   return '';
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 export {getFormElementsWithNewButton as getFormElementsWithNewButton};
 export {getCheckedFormElements as getCheckedFormElements};
@@ -73,6 +76,7 @@ export {scrubObject as scrubObject};
 export {getCheckedIdArray as getCheckedIdArray}
 export {extract_values as extract_values}
 export {getArticleClassName as getArticleClassName}
+export {numberWithCommas as numberWithCommas}
 
 // Private functions for inputs that can add new inputs
 function getIdArray(type, fieldName, form){
