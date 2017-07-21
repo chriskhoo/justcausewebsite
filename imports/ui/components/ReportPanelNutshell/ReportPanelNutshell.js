@@ -75,7 +75,7 @@ class ReportPanelNutshell extends React.Component {
         </div>) :''}
         <div className='report-section'>
           <h4>Disclaimer</h4>
-          <p>Please read the disclaimer found here.</p>
+          <p>Please read the disclaimer found <a href='/terms'>here</a>.</p>
         </div>
       </div>
     ):<div></div>;

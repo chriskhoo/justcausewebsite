@@ -13,6 +13,4 @@ const Footer = () => (
   </div>
 );
 
-Footer.propTypes = {};
-
 export default Footer;

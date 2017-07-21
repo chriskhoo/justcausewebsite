@@ -12,8 +12,7 @@ To do list:
 - Write tests
 - is there a safe way to parse the markdown data vs using the code in components > Page?
 - work out mechanism for timestamps on things like badge awards
-- Do we need bullet points if we have MD?
-- do we need timestamp for impact output / outcome / quotes?
+
 - Search currently limited to report title and description do we need to extend this to other fields? if so which?
 - Can't seem to index (and weight collection)
 - Convert the sign up to a create user. Remove the login from the nav bar.
@@ -22,5 +21,4 @@ To do list:
 - make banner creation (for detail level and article type) immune to case
 
 
-- update terms of service & the disclaimer in the top of the report
 - update home page
