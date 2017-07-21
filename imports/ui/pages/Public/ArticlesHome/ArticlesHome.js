@@ -28,7 +28,7 @@ const ArticlesHome = ({ loading, arts, svcs, ctrys, t_grps, a_types, history, ma
       match={match} />
 
     <PanelGroup>
-      <Panel collapsible header='About Philantrophy Insights' bsStyle="secondary"> Stuff about philantrophy insights go here </Panel>
+      <Panel collapsible header='About Philantrophy Insights' bsStyle="secondary"> We believe that small insights can help drive better giving. See below for articles and information from Just Cause and our partners that we hope will help you make an even bigger impact when you donate. </Panel>
     </PanelGroup>
 
     <h4>Featured Articles</h4>

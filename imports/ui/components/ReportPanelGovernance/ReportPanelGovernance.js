@@ -22,7 +22,7 @@ class ReportPanelGovernance extends React.Component {
     return ( leadership_info?
       <div className='report-panel-governance'>
         {(graph1_check || graph2_check || graph5_check)?(<div className='report-section'>
-          <h4>Quick facts about this charity</h4>
+          <h4>Quick facts about this organisation</h4>
           <div className='report-row' >
             <div className='report-section fact-wrapper'>
               { graph1_check? <div className='fact-container'>
@@ -78,14 +78,14 @@ class ReportPanelGovernance extends React.Component {
         </div>) :''}
         {governance_checklist_ids && (governance_checklist_ids.length >0 )?
           (<div className='report-section'>
-            <h4>Governance checklist for this charity</h4>
+            <h4>Governance checklist for this organisation</h4>
             { governance_checklist_ids.map( (checklist)=><div key={checklist._id} className='report-row' >
               <Glyphicon glyph='ok' className='key-figure' />
               <div className='text-beside'>{checklist.description}</div>
             </div> ) }
           </div>) :''}
         {commentary?(<div className='report-section opinion-box'>
-          <h4>Just Cause believes that ... </h4>
+          <h4>Just Cause commentary on governance and leadership</h4>
           <Content content={ parseMarkdown(commentary) } />
         </div>) :''}
       </div>:<div></div>);

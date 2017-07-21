@@ -19,13 +19,13 @@ class ReportPanelNutshell extends React.Component {
     return (rept && chty)? (
       <div className='report-panel-nutshell'>
         {summary?(<div className='report-section'>
-          <h4>Charity summary</h4>
+          <h4>Organisation summary</h4>
           <Content content={ parseMarkdown(summary) } />
         </div>) :''}
 
         {( (financial_info && financial_info.income_year_3_amt) || revenue_model || religious_affiliation || registration_status )?(
           <div className='report-section'>
-            <h4>Quick facts about this charity</h4>
+            <h4>Quick facts about this organisation</h4>
             <div className='report-row'>
               { (financial_info && financial_info.income_year_3_amt)?
               <div className='fact-container'>
@@ -58,11 +58,11 @@ class ReportPanelNutshell extends React.Component {
             </div>
         </div>) :''}
         {(program && program.summary)?(<div className='report-section'>
-          <h4>Program summary</h4>
+          <h4>Programme summary</h4>
           <Content content={ parseMarkdown(program.summary) } />
         </div>) :''}
         {(program && program.revenue_model)?(<div className='report-section'>
-          <h4>Program revenue model</h4>
+          <h4>Programme revenue model</h4>
           <div className='report-row'>
             <p className='key-figure'>{revenue_model}</p>
             <p className='text-beside'>Government Funded</p>

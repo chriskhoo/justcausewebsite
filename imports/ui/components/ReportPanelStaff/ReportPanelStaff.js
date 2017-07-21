@@ -20,7 +20,7 @@ class ReportPanelStaff extends React.Component {
     return (staff_info?
       <div className='report-panel-staff'>
         {(graph1_check || graph2_check || graph5_check)?(<div className='report-section'>
-          <h4>Quick facts about this charity</h4>
+          <h4>Quick facts about this organisation</h4>
           <div className='report-row' >
             { graph1_check? <div className='fact-container'>
               <h4>Headcount</h4>
@@ -31,7 +31,7 @@ class ReportPanelStaff extends React.Component {
               {volunteer_headcount_number? <div>
                 <br />
                 <p className='key-figure'>{numberWithCommas(volunteer_headcount_number)}</p>
-                <p>Active volunteers</p>
+                <p>Volunteers</p>
               </div>:''}
             </div>:'' }
             { graph2_check? <div className='fact-container'>
@@ -57,7 +57,7 @@ class ReportPanelStaff extends React.Component {
             :''}
         </div>) :''}
         {commentary?(<div className='report-section opinion-box'>
-          <h4>Just Cause believes that ... </h4>
+          <h4>Just Cause commentary on staff & volunteers</h4>
           <Content content={ parseMarkdown(commentary) } />
         </div>) :''}
       </div>:<div></div>);

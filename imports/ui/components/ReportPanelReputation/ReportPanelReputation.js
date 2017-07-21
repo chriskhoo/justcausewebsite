@@ -21,7 +21,7 @@ class ReportPanelReputation extends React.Component {
     return (reputation_info?
       <div className='report-panel-reputation'>
         {(quote_1 || quote_2 || quote_3)?(<div className='report-section'>
-          <h4>What do people who work with the charity say?</h4>
+          <h4>What do people who work with the organisation say?</h4>
           <p>JustCause asked five organisations who work regularly with them, what they think:</p>
           {quote_1? <div className='report-row'>
             <ReportIconImage image='/Icon_Quote.png' small/>
@@ -44,13 +44,13 @@ class ReportPanelReputation extends React.Component {
         </div>) :''}
 
         {(graph1_check || graph2_check || graph3_check || graph4_check)?(<div className='report-section'>
-          <h4>Latest media coverage on this charity</h4>
+          <h4>Latest media coverage on this organisation</h4>
           {graph1_check? <div className='report-row'>
             <ReportIconImage image='/Icon_Facebook.png' small/>
             <div className='text-beside'>
               <div className='report-row'>
                 <p className='key-figure'>{numberWithCommas(facebook_likes_number)}</p>
-                <p className='text-beside'><strong>Facebook likes({facebook_likes_date})</strong></p>
+                <p className='text-beside'><strong>Facebook likes ({facebook_likes_date})</strong></p>
               </div>
             </div>
           </div>:''}

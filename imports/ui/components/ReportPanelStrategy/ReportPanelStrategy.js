@@ -23,7 +23,7 @@ class ReportPanelStrategy extends React.Component {
         </div> : '' }
         { (badges_awarded && (badges_awarded.length> 0) )?
         <div className='report-section'>
-          <h4>Badges awarded to this charity: </h4>
+          <h4>The following characteristics really stood out when reviewing this organisation:</h4>
           {bdgs.filter( ({_id})=> badges_awarded_id_array.includes(_id) ).map( (badge) => (<div className='report-row' key={badge._id} >
             <ReportIconImage image={badge.image} small/>
             <div className='text-beside'>

@@ -16,7 +16,7 @@ class ReportPanelOpinion extends React.Component {
           <div className='report-row'>
             <ReportIconImage image='/Icon_Love.png' small/>
             <div className='opinion-box text-beside'>
-              <h4>Just Cause loves this charity</h4>
+              <h4>Just Cause loves this organisation</h4>
               <Content content={ parseMarkdown(jc_opinion_justcauseloves) } />
             </div>
           </div>
@@ -24,7 +24,7 @@ class ReportPanelOpinion extends React.Component {
         {(jc_opinion_donate_if)?(<div className='report-section'>
           <div className='report-row'>
             <div className='opinion-box text-beside'>
-              <h4>Donate to this charity if you ... </h4>
+              <h4>Donate to this organisation if you ... </h4>
               <Content content={ parseMarkdown(jc_opinion_donate_if) } />
             </div>
             <ReportIconImage image='/Icon_Star.png' small/>
@@ -34,7 +34,7 @@ class ReportPanelOpinion extends React.Component {
           <div className='report-row'>
             <ReportIconImage image='/Icon_Work.png' small />
             <div className='opinion-box text-beside'>
-              <h4>How we think your support can help this charity ... </h4>
+              <h4>How we think your support can help this organisation ... </h4>
               {jc_opinion_broadentheirwork? <div className='report-section'>
                 <p>Broaden and deepen their work:</p>
                 <Content content={ parseMarkdown(jc_opinion_broadentheirwork) } />
