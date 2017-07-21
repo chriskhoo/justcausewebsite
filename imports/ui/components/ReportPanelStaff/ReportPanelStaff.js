@@ -25,23 +25,23 @@ class ReportPanelStaff extends React.Component {
             { graph1_check? <div className='fact-container'>
               <h4>Headcount</h4>
               <p>Financial year: {headcount_year}</p>
-              <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+              <ReportIconImage image='/Icon_Volunteers.png' large/>
               <p className='key-figure'>{staff_headcount_number}</p>
               <p>Staff</p>
               <br />
-              <p className='key-figure'>{staff_headcount_number}</p>
+              <p className='key-figure'>{volunteer_headcount_number}</p>
               <p>Active volunteers</p>
             </div>:'' }
             { graph2_check? <div className='fact-container'>
               <h4>Staff turnover rate</h4>
               <p>Financial year: {staff_turnover_year}</p>
-              <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+              <ReportIconImage image='/Icon_Turnover.png' large/>
               <p className='key-figure'>{staff_turnover_number} %</p>
             </div>:'' }
             { graph3_check? <div className='fact-container'>
               <h4>Volunteer & staff satisfaction<sup>1</sup></h4>
               <p>Financial year: {satisfaction_year}</p>
-              <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+              <ReportIconImage image='/Icon_Smiley.png' large/>
               <p className='key-figure'>{staff_satisfaction_percentage} %</p>
               <p>Staff</p>
               <br />
@@ -49,8 +49,10 @@ class ReportPanelStaff extends React.Component {
               <p>Volunteers</p>
             </div>:'' }
           </div>
-          <p>Based on JustCause’s survey of 40 staff & volunteers conducted within the last 2 years</p>
-          <p><sup>1</sup> reporting they are satisfied or very satisfied with their experience</p>
+          {satisfaction_year?
+            <div><p>Based on JustCause’s survey of 40 staff & volunteers conducted within the last 2 years</p>
+            <p><sup>1</sup> reporting they are satisfied or very satisfied with their experience</p></div>
+            :''}
         </div>) :''}
         {commentary?(<div className='report-section opinion-box'>
           <h4>Just Cause believes that ... </h4>

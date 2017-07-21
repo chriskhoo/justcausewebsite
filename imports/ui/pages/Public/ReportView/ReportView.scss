@@ -1,7 +1,7 @@
 .report-view{
   display: flex;
   flex-direction: column;
-  .report-header{
+  .view-template-header{
     width: 100%;
   }
   .report-body{
@@ -17,7 +17,7 @@
       min-height: 700px;
       max-height: 900px;
     }
-    .report-aside{
+    .view-template-aside{
       flex-grow: 1;
       display: flex;
       width: 300px;

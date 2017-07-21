@@ -19,9 +19,9 @@ To do list:
 - Convert the sign up to a create user. Remove the login from the nav bar.
 - add UX/UI elements - highlight current page in nav bar, change colour for panels that open (e.g. advance search / panels), search button color on hover
 - template aside to remove effects from mouse over
+- make banner creation (for detail level and article type) immune to case
 
-- create badges for export
-- update logo
+
 - update export report icons
 - update terms of service & the disclaimer in the top of the report
 - update home page

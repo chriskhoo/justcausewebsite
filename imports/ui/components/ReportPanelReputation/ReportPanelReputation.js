@@ -23,7 +23,7 @@ class ReportPanelReputation extends React.Component {
           <h4>What do people who work with the charity say?</h4>
           <p>JustCause asked five organisations who work regularly with them, what they think:</p>
           {quote_1? <div className='report-row'>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Quote.png' small/>
             <div className='blue-box text-beside'>
               <Content content={ parseMarkdown(quote_1) } />
             </div>
@@ -32,10 +32,10 @@ class ReportPanelReputation extends React.Component {
             <div className='blue-box text-beside'>
               <Content content={ parseMarkdown(quote_2) } />
             </div>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Quote.png' small/>
           </div>:''}
           {quote_3? <div className='report-row'>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Quote.png' small/>
             <div className='blue-box text-beside'>
               <Content content={ parseMarkdown(quote_3) } />
             </div>
@@ -45,7 +45,7 @@ class ReportPanelReputation extends React.Component {
         {(graph1_check || graph2_check || graph3_check || graph4_check)?(<div className='report-section'>
           <h4>Latest media coverage on this charity</h4>
           {graph1_check? <div className='report-row'>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Facebook.png' small/>
             <div className='text-beside'>
               <div className='report-row'>
                 <p className='key-figure'>{facebook_likes_number}</p>
@@ -54,7 +54,7 @@ class ReportPanelReputation extends React.Component {
             </div>
           </div>:''}
           {graph2_check? <div className='report-row'>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Media.png' small/>
             <div className='text-beside'>
               <h4>{media_article_1_title}</h4>
               <p><strong>{media_article_1_source}, {media_article_1_date}</strong></p>
@@ -62,7 +62,7 @@ class ReportPanelReputation extends React.Component {
             </div>
           </div>:''}
           {graph3_check? <div className='report-row'>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Media.png' small/>
             <div className='text-beside'>
               <h4>{media_article_2_title}</h4>
               <p><strong>{media_article_2_source}, {media_article_2_date}</strong></p>
@@ -70,7 +70,7 @@ class ReportPanelReputation extends React.Component {
             </div>
           </div>:''}
           {graph4_check? <div className='report-row'>
-            <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' small/>
+            <ReportIconImage image='/Icon_Media.png' small/>
             <div className='text-beside'>
               <h4>{media_article_3_title}</h4>
               <p><strong>{media_article_3_source}, {media_article_3_date}</strong></p>
@@ -78,7 +78,7 @@ class ReportPanelReputation extends React.Component {
             </div>
           </div>:''}
         </div>) :''}
-        
+
         {commentary?(<div className='report-section opinion-box'>
           <h4>Just Cause believes that ... </h4>
           <Content content={ parseMarkdown(commentary) } />

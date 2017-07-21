@@ -29,28 +29,28 @@ class ReportPanelNutshell extends React.Component {
               { (financial_info && financial_info.income_year_3_amt)?
               <div className='fact-container'>
                 <h5>Annual Income</h5>
-                <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+                <ReportIconImage image='/Icon_Rev.png' large/>
                 <p className='key-figure'>${financial_info.income_year_3_amt}</p>
                 <p>({financial_info.income_year_3})</p>
               </div> :''}
               { revenue_model?
               <div className='fact-container'>
                 <h5>Revenue Model</h5>
-                <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+                <ReportIconImage image='/Icon_RevModel.png' large/>
                 <p className='key-figure'>{revenue_model}</p>
                 <p>Government Funded</p>
               </div>: ''}
               {religious_affiliation?
               <div className='fact-container'>
                 <h5>Religious Affiliation</h5>
-                <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+                <ReportIconImage image='/Icon_Religion.png' large/>
                 <p className='key-figure'>{religious_affiliation}</p>
                 <p>-</p>
               </div>:''}
               { registration_status?
                 <div className='fact-container'>
                   <h5>Registration Status</h5>
-                  <ReportIconImage image='https://s-media-cache-ak0.pinimg.com/236x/29/00/cf/2900cfd430da55d24dac8d77256c694b--ninjas.jpg' large/>
+                  <ReportIconImage image='/Icon_Legal.png' large/>
                   <p className='key-figure'>{registration_status}</p>
                   <p>-</p>
                 </div>:''}
