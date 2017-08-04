@@ -19,7 +19,7 @@ class ReportPanelStaff extends React.Component {
     const graph3_check = satisfaction_year && staff_satisfaction_percentage && volunteer_satisfaction_percentage;
     return (staff_info?
       <div className='report-panel-staff'>
-        {(graph1_check || graph2_check || graph5_check)?(<div className='report-section'>
+        {(graph1_check || graph2_check || graph3_check)?(<div className='report-section'>
           <h4>Quick facts about this organisation</h4>
           <div className='report-row' >
             { graph1_check? <div className='fact-container'>

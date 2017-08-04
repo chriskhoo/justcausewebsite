@@ -21,4 +21,8 @@ To do list:
 - make banner creation (for detail level and article type) immune to case
 
 
+- Change impact panel to tables 
 - update home page
+- create Impact evaluation
+- create about us
+- Make header sticky
