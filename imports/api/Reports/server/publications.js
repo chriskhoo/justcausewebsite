@@ -21,7 +21,7 @@ Meteor.publish('reports.public', function reports() {
 Meteor.publish('reports.search', function (searchTerm) {
   check(searchTerm, Match.OneOf(String, null, undefined));
   let query = {};
-  const projection = { limit: 10, sort: {title: 1} };
+  const projection = { sort: {title: 1} };
 
   if (searchTerm){
     const regex = new RegExp(searchTerm, 'i');
@@ -31,7 +31,7 @@ Meteor.publish('reports.search', function (searchTerm) {
         { name: regex },
       ],
     };
-    projection.limit = 100;
+    projection.limit = 40;
   }
 
   return Reports.find(query, projection);
