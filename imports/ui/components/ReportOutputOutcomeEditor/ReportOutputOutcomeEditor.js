@@ -41,7 +41,7 @@ ReportOutputOutcomeEditor.propTypes = {
 };
 
 function populateExisting(array, handleRemove, field){
-  if(array.length){
+  if(array && array.length){
     return array.map((elm) => <ReportOutputOutcomeEditor key={elm._id} _id={elm._id} number={elm.number} description={elm.description} field={field} handleRemove={handleRemove}/>)
   }else{
     return "Just Cause has none recorded for this charity."
