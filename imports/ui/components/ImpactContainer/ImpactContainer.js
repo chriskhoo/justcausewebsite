@@ -17,6 +17,7 @@ class ImpactContainer extends React.Component {
         {impact_framework?(<div><strong>Impact Framework</strong><Content content={ parseMarkdown(impact_framework) } /></div>):''}
         {commentary?(<div><strong>Commentary</strong><Content content={ parseMarkdown(commentary) } /></div>):''}
         <div className='panel-group'>
+          {outputs?
           <div className='panel panel-default group-elements half-width'>
             <div className = 'panel-body'>
               <h4>Outputs</h4>
@@ -27,21 +28,22 @@ class ImpactContainer extends React.Component {
                   <div className="ten8-width inline-block">{output.description}</div>
                 </div>)}
             </div>
-          </div>
+          </div> : '' }
           <div className='ten1-width'></div>
+          {outcomes && outcome_quotes ?
           <div className='panel panel-default group-elements half-width'>
             <div className='panel-body'>
               <h4>Outcomes</h4>
-              {outcomes.map((outcome)=>
+              {outcomes? outcomes.map((outcome)=>
               <div key={outcome._id}>
                 <div className="ten1-width inline-block key-figure">{outcome.number}</div>
                 <div className='ten1-width inline-block'></div>
                 <div className="ten8-width inline-block">{outcome.description}</div>
-              </div>)}
+              </div>): ''}
               <p></p>
               {outcome_quotes?<Content content={ parseMarkdown(outcome_quotes) } />:''}
             </div>
-          </div>
+          </div>: '' }
         </div>
       </Panel>
     );
