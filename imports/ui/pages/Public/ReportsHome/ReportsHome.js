@@ -38,7 +38,7 @@ const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, ma
           Now, with some seed funding from Credit Suisse’s Corporate Citizenship team, we are delighted to share our second set of charity reports. Our methodology involves three steps; a review of publicly available information, a review of relevant internal documents and an interview with senior management. We also perform surveys and interviews with stakeholders for the more detailed reports.
         </p>
         <p>
-          We currently offer three levels of detail: short (based only on publicly available information), medium (includes an interview with key personnel of the charity) and long (includes an in-depth interview and surveys of staff, volunteers and beneficiaries where practical). Please note that we do not charge any fees for this service and that we do not publish anything without the charities’ permission.
+          We currently offer three levels of detail: short (based only on publicly available information), mid-length (includes an interview with key personnel of the charity) and long (includes an in-depth interview and surveys of staff, volunteers and beneficiaries where practical). Please note that we do not charge any fees for this service and that we do not publish anything without the charities’ permission.
         </p>
       </Panel>
       <Panel collapsible header='Glossary' bsStyle="secondary">
