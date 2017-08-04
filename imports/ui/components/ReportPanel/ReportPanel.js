@@ -26,19 +26,19 @@ class ReportPanel extends React.Component {
           { rept.impact_info?
             <Tab eventKey={2} title="Impact"><ReportPanelImpact rept={rept} chty={chty} /></Tab> : '' }
 
-          { ((badges_awarded.length >0) || strategy || bdgs)?
+          { ( ((badges_awarded.length >0) || strategy) && bdgs)?
             <Tab eventKey={3} title="Strategy & Character"><ReportPanelStrategy chty={chty} bdgs={bdgs} /></Tab> : '' }
 
-          { financial_info?
+          { financial_info && ((financial_info.financial_checklist_ids && financial_info.financial_checklist_ids.length > 0) || Object.keys(financial_info).length > 1)?
             <Tab eventKey={4} title="Finances"><ReportPanelFinances chty={chty} /></Tab>:''}
 
           { leadership_info?
           <Tab eventKey={5} title="Governance & Leadership"><ReportPanelGovernance rept={rept} chty={chty} /></Tab>:''}
 
-          { staff_info?
+          { Object.keys(staff_info).length > 0 ?
           <Tab eventKey={6} title="Staff & Volunteers"><ReportPanelStaff rept={rept} chty={chty} /></Tab>:''}
 
-          { reputation_info?
+          { Object.keys(reputation_info).length > 0 ?
           <Tab eventKey={7} title="Reputation"><ReportPanelReputation rept={rept} chty={chty} /></Tab>:''}
 
           { (jc_opinion_justcauseloves || jc_opinion_donate_if || jc_opinion_broadentheirwork || jc_opinion_strengthentheteam)?
