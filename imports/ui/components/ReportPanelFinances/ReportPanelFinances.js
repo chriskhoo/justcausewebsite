@@ -30,9 +30,9 @@ class ReportPanelFinances extends React.Component {
                 <Table striped bordered hover responsive>
                   <thead><tr><th>Year</th><th>Income</th><th>Expenditure</th></tr></thead>
                   <tbody>
-                    <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{expenditure_year_1_amt}</td></tr>
-                    <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{expenditure_year_2_amt}</td></tr>
-                    <tr><td>{income_year_3}</td><td>{numberWithCommas(income_year_3_amt)}</td><td>{expenditure_year_3_amt}</td></tr>
+                    <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{numberWithCommas(expenditure_year_1_amt)}</td></tr>
+                    <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{numberWithCommas(expenditure_year_2_amt)}</td></tr>
+                    <tr><td>{income_year_3}</td><td>{numberWithCommas(income_year_3_amt)}</td><td>{numberWithCommas(expenditure_year_3_amt)}</td></tr>
                   </tbody>
                 </Table>
               </div>:'' }

@@ -451,7 +451,7 @@ Charities.schema = new SimpleSchema({
     optional: true,
   },
   "financial_info.income_year_1": {
-    type: Number,
+    type: String,
     label: "The Y-2 year of reporting.",
     optional: true,
   },
@@ -466,7 +466,7 @@ Charities.schema = new SimpleSchema({
     optional: true,
   },
   "financial_info.income_year_2": {
-    type: Number,
+    type: String,
     label: "The Y-1 year of reporting.",
     optional: true,
   },
@@ -481,7 +481,7 @@ Charities.schema = new SimpleSchema({
     optional: true,
   },
   "financial_info.income_year_3": {
-    type: Number,
+    type: String,
     label: "The year of reporting.",
     optional: true,
   },
@@ -496,7 +496,7 @@ Charities.schema = new SimpleSchema({
     optional: true,
   },
   "financial_info.revenue_model_reporting_year": {
-    type: Number,
+    type: String,
     label: "The reporting year the revenue model is based on.",
     optional: true,
   },
@@ -526,7 +526,7 @@ Charities.schema = new SimpleSchema({
     optional: true,
   },
   "financial_info.major_donors_year": {
-    type: Number,
+    type: String,
     label: "The reporting year the major donors are based on.",
     optional: true,
   },
@@ -541,7 +541,7 @@ Charities.schema = new SimpleSchema({
     optional: true,
   },
   "financial_info.reserve_ratio_year": {
-    type: Number,
+    type: String,
     label: "The reporting year the reserve ratio.",
     optional: true,
   },

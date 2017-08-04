@@ -38,7 +38,7 @@ class ViewTemplateHeader extends React.Component {
 
           {(type=='article')?
           <p><strong>Last updated: { updatedAt? monthDayYear(updatedAt):'' }</strong></p>
-          :<p>Charity Established in { year_established }</p>}
+          :<p>Organisation registered in { year_established }</p>}
 
           {(type=='article')?
           (summary?<Content content={ parseMarkdown(summary) } />:'')

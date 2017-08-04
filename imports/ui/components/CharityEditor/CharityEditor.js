@@ -197,25 +197,25 @@ class CharityEditor extends React.Component {
     };
 
     chty.financial_info={
-      income_year_1: Number(income_year_1.value),
+      income_year_1: income_year_1.value.trim(),
       income_year_1_amt: Number(income_year_1_amt.value),
       expenditure_year_1_amt: Number(expenditure_year_1_amt.value),
-      income_year_2: Number(income_year_2.value),
+      income_year_2: income_year_2.value.trim(),
       income_year_2_amt: Number(income_year_2_amt.value),
       expenditure_year_2_amt: Number(expenditure_year_2_amt.value),
-      income_year_3: Number(income_year_3.value),
+      income_year_3: income_year_3.value.trim(),
       income_year_3_amt: Number(income_year_3_amt.value),
       expenditure_year_3_amt: Number(expenditure_year_3_amt.value),
-      revenue_model_reporting_year: Number(revenue_model_reporting_year.value),
+      revenue_model_reporting_year: revenue_model_reporting_year.value.trim(),
       rev_model_cash_donations_and_fundraised_income_percent: Number(rev_model_cash_donations_and_fundraised_income_percent.value),
       rev_model_govt_grants_subsidies_percent: Number(rev_model_govt_grants_subsidies_percent.value),
       rev_model_activity_income_percent: Number(rev_model_activity_income_percent.value),
       rev_model_investment_income_percent: Number(rev_model_investment_income_percent.value),
       rev_model_others_percent: Number(rev_model_others_percent.value),
-      major_donors_year: Number(major_donors_year.value),
+      major_donors_year: major_donors_year.value.trim(),
       major_donors_number: Number(major_donors_number.value),
       major_donors_minimum_amt: Number(major_donors_minimum_amt.value),
-      reserve_ratio_year: Number(reserve_ratio_year.value),
+      reserve_ratio_year: reserve_ratio_year.value.trim(),
       reserve_ratio_amt: Number(reserve_ratio_amt.value),
       financial_checklist_ids: financial_checklist_ids,
       commentary: financial_info_commentary.value.trim(),
@@ -352,28 +352,28 @@ class CharityEditor extends React.Component {
         <FormTextArea fieldName="leadership_info_commentary" defaultVal={chty && chty.leadership_info && chty.leadership_info.commentary} />
       </Panel>
       <Panel collapsible header="financial_info">
-        <FormTextInput fieldName="income_year_1" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_1} type="number"/>
+        <FormTextInput fieldName="income_year_1" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_1}/>
         <FormTextInput fieldName="income_year_1_amt" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_1_amt} type="number"/>
         <FormTextInput fieldName="expenditure_year_1_amt" defaultVal={chty && chty.financial_info && chty.financial_info.expenditure_year_1_amt} type="number"/>
 
-        <FormTextInput fieldName="income_year_2" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_2} type="number"/>
+        <FormTextInput fieldName="income_year_2" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_2}/>
         <FormTextInput fieldName="income_year_2_amt" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_2_amt} type="number"/>
         <FormTextInput fieldName="expenditure_year_2_amt" defaultVal={chty && chty.financial_info && chty.financial_info.expenditure_year_2_amt} type="number"/>
 
-        <FormTextInput fieldName="income_year_3" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_3} type="number"/>
+        <FormTextInput fieldName="income_year_3" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_3}/>
         <FormTextInput fieldName="income_year_3_amt" defaultVal={chty && chty.financial_info && chty.financial_info.income_year_3_amt} type="number"/>
         <FormTextInput fieldName="expenditure_year_3_amt" defaultVal={chty && chty.financial_info && chty.financial_info.expenditure_year_3_amt} type="number"/>
 
-        <FormTextInput fieldName="revenue_model_reporting_year" defaultVal={chty && chty.financial_info && chty.financial_info.revenue_model_reporting_year} type="number"/>
+        <FormTextInput fieldName="revenue_model_reporting_year" defaultVal={chty && chty.financial_info && chty.financial_info.revenue_model_reporting_year}/>
         <FormTextInput fieldName="rev_model_cash_donations_and_fundraised_income_percent" defaultVal={chty && chty.financial_info && chty.financial_info.rev_model_cash_donations_and_fundraised_income_percent} type="number"/>
         <FormTextInput fieldName="rev_model_govt_grants_subsidies_percent" defaultVal={chty && chty.financial_info && chty.financial_info.rev_model_govt_grants_subsidies_percent} type="number"/>
         <FormTextInput fieldName="rev_model_activity_income_percent" defaultVal={chty && chty.financial_info && chty.financial_info.rev_model_activity_income_percent} type="number"/>
         <FormTextInput fieldName="rev_model_investment_income_percent" defaultVal={chty && chty.financial_info && chty.financial_info.rev_model_investment_income_percent} type="number"/>
         <FormTextInput fieldName="rev_model_others_percent" defaultVal={chty && chty.financial_info && chty.financial_info.rev_model_others_percent} type="number"/>
-        <FormTextInput fieldName="major_donors_year" defaultVal={chty && chty.financial_info && chty.financial_info.major_donors_year} type="number"/>
+        <FormTextInput fieldName="major_donors_year" defaultVal={chty && chty.financial_info && chty.financial_info.major_donors_year}/>
         <FormTextInput fieldName="major_donors_number" defaultVal={chty && chty.financial_info && chty.financial_info.major_donors_number} type="number"/>
         <FormTextInput fieldName="major_donors_minimum_amt" defaultVal={chty && chty.financial_info && chty.financial_info.major_donors_minimum_amt} type="number"/>
-        <FormTextInput fieldName="reserve_ratio_year" defaultVal={chty && chty.financial_info && chty.financial_info.reserve_ratio_year} type="number"/>
+        <FormTextInput fieldName="reserve_ratio_year" defaultVal={chty && chty.financial_info && chty.financial_info.reserve_ratio_year}/>
         <FormTextInput fieldName="reserve_ratio_amt" defaultVal={chty && chty.financial_info && chty.financial_info.reserve_ratio_amt} type="number"/>
         <CharityChecklistEditor
           checklists= {f_checks}
