@@ -20,16 +20,16 @@ Meteor.publish('reports.public', function reports() {
 // Note: used by public, publishes only completed reports
 Meteor.publish('reports.search', function (searchTerm) {
   check(searchTerm, Match.OneOf(String, null, undefined));
-  let query = {};
+  let query = { completed: true };
   const projection = { sort: {title: 1} };
 
   if (searchTerm){
     const regex = new RegExp(searchTerm, 'i');
     query = {
-      $or: [
-        { description: regex },
-        { name: regex },
-      ],
+      $and: [
+        { $or: [ { description: regex }, { name: regex } ]},
+        { completed: true }
+      ]
     };
     projection.limit = 40;
   }
@@ -40,7 +40,6 @@ Meteor.publish('reports.search', function (searchTerm) {
 // Note: used by public, publishes only completed reports
 Meteor.publish('reports.public.view', function reportsView(reportId) {
   check(reportId, String);
-
   return Reports.find({ _id: reportId, completed: true });
 });
 
@@ -48,13 +47,13 @@ Meteor.publish('reports.public.view', function reportsView(reportId) {
 Meteor.publish('reports.related', function articlesRelated(target_groups, services) {
   check(target_groups, Array);
   check(services, Array);
-  let query = {};
+  let query = { completed: true };
   if(target_groups.length+services.length){
     query = {
-      $or: [
-        { 'service_ids._id': { $in: services} },
-        { 'target_group_ids._id': {$in: target_groups} },
-      ],
+      $and: [
+        { $or: [ { 'service_ids._id': { $in: services} }, { 'target_group_ids._id': {$in: target_groups} } ]},
+        { completed: true }
+      ]
     };
   }
   return Reports.find(query, { limit: 6 });
