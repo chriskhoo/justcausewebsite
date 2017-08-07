@@ -1,0 +1,47 @@
+.StaticHome{
+  .table{
+    th{
+      text-align: center;
+      border: none;
+    }
+    td{
+      width: 33%;
+      border: none;
+    }
+    .report-icon-image.large{
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .carousel{
+    .carousel-inner{
+      .item{
+        img{
+          width: 100%;
+        }
+        .carousel-caption{
+          background-color: rgba(0,0,0,.6);
+          top: 0;
+          left: 0;
+          bottom: auto;
+          width: 100%;
+          padding: 0;
+          h1, h3{
+            margin: 0;
+            // line-height: 1.25;
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.4);
+          }
+          h1{
+            font-size: 4em;
+          }
+          h3{
+            font-size: 2em;
+          }
+        }
+      }
+    }
+  }
+}

@@ -38,6 +38,7 @@ import ArticlesHome from '../../pages/Public/ArticlesHome/ArticlesHome';
 import ArticlesResults from '../../pages/Public/ArticlesResults/ArticlesResults';
 import ArticleView from '../../pages/Public/ArticleView/ArticleView';
 import StaticTerms from '../../pages/Public/StaticTerms/StaticTerms';
+import StaticHome from '../../pages/Public/StaticHome/StaticHome';
 
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
@@ -57,7 +58,7 @@ const App = props => (
       <Navigation {...props} />
       <Grid>
         <Switch>
-          <Route exact name="index" path="/" component={Index} />
+          <Route exact name="index" path="/" component={StaticHome} />
           <Route name="terms" exact path="/terms" component={StaticTerms} />
           <Authenticated exact path="/profile" component={Profile} {...props} />
 
