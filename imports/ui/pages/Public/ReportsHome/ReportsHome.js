@@ -41,7 +41,7 @@ const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, ma
           We currently offer three levels of detail: short (based only on publicly available information), mid-length (includes an interview with key personnel of the charity) and long (includes an in-depth interview and surveys of staff, volunteers and beneficiaries where practical). Please note that we do not charge any fees for this service and that we do not publish anything without the charities’ permission.
         </p>
       </Panel>
-      <Panel collapsible header='Glossary' bsStyle="secondary">
+      <Panel collapsible header='Glossary' className='panel-secondary'>
         <Table responsive striped>
           <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
           <tbody>

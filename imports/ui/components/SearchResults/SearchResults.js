@@ -8,7 +8,8 @@ import TagChecklist from '../TagChecklist/TagChecklist';
 import SearchBar from '../SearchBar/SearchBar';
 import ReportCard from '../ReportCard/ReportCard';
 import ArticleCard from '../ArticleCard/ArticleCard';
-import { getCheckedIdArray, scrubObject } from '../../../modules/get-form-elements'
+import { getCheckedIdArray, scrubObject } from '../../../modules/get-form-elements';
+import { numberWithCommas } from '../../../modules/get-form-elements'
 
 import './SearchResults.scss';
 
@@ -50,8 +51,8 @@ class SearchResults extends React.Component {
     const { arts, rpts, svcs, ctrys, t_grps, d_levels, a_types, history, match } = this.props;
     const type = rpts? 'report' : 'article';
     const filter_object = this.state.filter_object
-    const rpts_filtered = rpts? _objectfilter(filter_object, rpts): undefined;
-    const arts_filtered = arts? _objectfilter(filter_object, arts): undefined;
+    const rpts_filtered = rpts? _objectfilter(filter_object, rpts, 'report'): undefined;
+    const arts_filtered = arts? _objectfilter(filter_object, arts, 'article'): undefined;
     return (
       <form className='search-results' ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
         <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, a_types, history, match)} query = {filter_object.q}/>
@@ -69,7 +70,7 @@ class SearchResults extends React.Component {
             <TagChecklist tag_name='service' tag_object={svcs} filtered_options={filter_object.service} handleFilters={this.handleFilters} />
           </div>
           <div className='search-results-panel'>
-            <h4>Results for "{filter_object.q}"</h4>
+            <h4>{ (type == 'report')? numberWithCommas(rpts_filtered.length) : numberWithCommas(arts_filtered.length) } Results for "{filter_object.q}"</h4>
             {(type == 'report')?
               (rpts_filtered.length ?
                 <div className="report_cards_holder">
@@ -138,8 +139,7 @@ function _searchparameter(field, form){
   }
 }
 
-function _objectfilter(filter_object, object_to_filter){
-  const type = object_to_filter[0].detail_level_id? 'report': 'article';
+function _objectfilter(filter_object, object_to_filter, type){
   let object_filtered = object_to_filter.filter(({country_id})=>filter_object.country.includes(country_id._id) )
                                         .filter(({target_group_ids})=>{
                                           let contained = false;
