@@ -1,0 +1,45 @@
+@import '../../../stylesheets/colors';
+
+.static-about{
+  .jumbotron{
+    background: $grey-lighter url("/Background_about.jpg") no-repeat center;
+    background-size: cover;
+    height: 500px;
+    text-align: center;
+    color: $grey-darker;
+    text-shadow: 0 1px 1px rgba(0,0,0,.6);
+  }
+  #our_team{
+    margin-top: 30px;
+    color: $white-lighter;
+    background-color: $grey-darker;
+    padding: 1em;
+    .row{
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      .report-icon-image{
+        max-height: 200px;
+
+      }
+    }
+  }
+  #partners_members{
+    margin: 0;
+    color: $grey-darker;
+    background-color: $white;
+    padding: 30px 1em;
+    h3{
+      margin-top: 0;
+    }
+    img{
+      width: 100%;
+    }
+  }
+  .table{
+    td{
+      border: none;
+      padding: 0.5em 2em;
+    }
+  }
+}

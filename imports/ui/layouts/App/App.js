@@ -39,6 +39,8 @@ import ArticlesResults from '../../pages/Public/ArticlesResults/ArticlesResults'
 import ArticleView from '../../pages/Public/ArticleView/ArticleView';
 import StaticTerms from '../../pages/Public/StaticTerms/StaticTerms';
 import StaticHome from '../../pages/Public/StaticHome/StaticHome';
+import StaticAbout from '../../pages/Public/StaticAbout/StaticAbout';
+import StaticImpact from '../../pages/Public/StaticImpact/StaticImpact';
 
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
@@ -56,9 +58,16 @@ const App = props => (
   <Router>
     {!props.loading ? <div className="App">
       <Navigation {...props} />
+      <Switch>
+        <Route exact name="index" path="/" component={StaticHome} />
+        <Route name="about-us" exact path="/about-us" component={StaticAbout} />
+        <Route name="impact-eval" exact path="/impact-eval" component={StaticImpact} />
+      </Switch>
       <Grid>
         <Switch>
-          <Route exact name="index" path="/" component={StaticHome} />
+          <Route exact name="index" path="/" component={()=>(<div></div>)} />
+          <Route exact name="about-us" path="/about-us" component={()=>(<div></div>)} />
+          <Route name="impact-eval" exact path="/impact-eval" component={()=>(<div></div>)} />
           <Route name="terms" exact path="/terms" component={StaticTerms} />
           <Authenticated exact path="/profile" component={Profile} {...props} />
 

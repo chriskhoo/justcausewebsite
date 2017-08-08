@@ -4,6 +4,10 @@
   margin-top: 0;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
 @include breakpoint(tablet) {
   .page-header {
     margin-top: 20px;

@@ -1,4 +1,6 @@
-.StaticHome{
+@import '../../../stylesheets/colors';
+
+.static-home{
   .table{
     th{
       text-align: center;
@@ -7,6 +9,7 @@
     td{
       width: 33%;
       border: none;
+      padding: 1em 2em;
     }
     .report-icon-image.large{
       width: 100%;
@@ -14,8 +17,20 @@
       margin: 0;
     }
   }
+  #what_we_do{
+    padding: 5px 0;
+    h1{
+      font-size: 4em;
+      margin: 0;
+      text-align: center;
+      color: $primary;
+    }
+  }
 
   .carousel{
+    .carousel-control{
+      display: none;
+    }
     .carousel-inner{
       .item{
         img{
@@ -28,11 +43,10 @@
           bottom: auto;
           width: 100%;
           padding: 0;
-          h1, h3{
+          h1, h3, .glyphicon-chevron-down{
             margin: 0;
-            // line-height: 1.25;
-            color: #fff;
-            text-shadow: 0 1px 1px rgba(0,0,0,.4);
+            color: $white-lighter;
+            text-shadow: 0 1px 1px rgba(0,0,0,.6);
           }
           h1{
             font-size: 4em;
@@ -40,6 +54,7 @@
           h3{
             font-size: 2em;
           }
+
         }
       }
     }
