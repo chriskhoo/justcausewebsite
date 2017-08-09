@@ -1,32 +1,29 @@
 @import '../../../stylesheets/colors';
 
 .static-home{
-  .table{
-    th{
-      text-align: center;
-      border: none;
-    }
-    td{
-      width: 33%;
-      border: none;
-      padding: 1em 2em;
-    }
-    .report-icon-image.large{
-      width: 100%;
-      padding: 0;
-      margin: 0;
-    }
+  h1{
+    font-size: 4em;
   }
   #what_we_do{
     padding: 5px 0;
-    h1{
-      font-size: 4em;
-      margin: 0;
+    h1, h4{
       text-align: center;
+      margin: 0;
+    }
+    h1{
       color: $primary;
     }
+    .row{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      .col-md-4{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
   }
-
   .carousel{
     .carousel-control{
       display: none;
@@ -37,7 +34,7 @@
           width: 100%;
         }
         .carousel-caption{
-          background-color: rgba(0,0,0,.6);
+          background-color: rgba(0,0,0,.4);
           top: 0;
           left: 0;
           bottom: auto;
@@ -45,16 +42,14 @@
           padding: 0;
           h1, h3, .glyphicon-chevron-down{
             margin: 0;
-            color: $white-lighter;
             text-shadow: 0 1px 1px rgba(0,0,0,.6);
-          }
-          h1{
-            font-size: 4em;
           }
           h3{
             font-size: 2em;
           }
-
+          .glyphicon-chevron-down{
+            color: $white-lighter;
+          }
         }
       }
     }

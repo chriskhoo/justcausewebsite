@@ -17,10 +17,10 @@
     .row{
       padding: 1em;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       .report-icon-image{
         max-height: 200px;
-
       }
     }
   }
@@ -34,12 +34,6 @@
     }
     img{
       width: 100%;
-    }
-  }
-  .table{
-    td{
-      border: none;
-      padding: 0.5em 2em;
     }
   }
 }

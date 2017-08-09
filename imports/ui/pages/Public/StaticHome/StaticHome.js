@@ -1,6 +1,6 @@
 import React from 'react';
 import ReportIconImage from '../../../components/ReportIconImage/ReportIconImage';
-import {Button, Table, Carousel, Glyphicon, Grid} from 'react-bootstrap';
+import {Button, Carousel, Glyphicon, Grid, Row, Col} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import smoothScroll from '../../../../modules/smoothScroll'
 
@@ -15,7 +15,7 @@ const StaticHome = () => (
           <h1>Just Cause</h1>
           <h3>Find and help great charities</h3>
           <h3 className='bounce'>
-            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('what_we_do')} />
+            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
         </Carousel.Caption>
       </Carousel.Item>
@@ -25,7 +25,7 @@ const StaticHome = () => (
           <h1>Just Cause</h1>
           <h3>Find and help great charities</h3>
           <h3 className='bounce'>
-            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('what_we_do')} />
+            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
         </Carousel.Caption>
       </Carousel.Item>
@@ -35,7 +35,7 @@ const StaticHome = () => (
           <h1>Just Cause</h1>
           <h3>Find and help great charities</h3>
           <h3>
-            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('what_we_do')} />
+            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
         </Carousel.Caption>
       </Carousel.Item>
@@ -45,7 +45,7 @@ const StaticHome = () => (
           <h1>Just Cause</h1>
           <h3>Find and help great charities</h3>
           <h3 className='bounce'>
-            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('what_we_do')} />
+            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
         </Carousel.Caption>
       </Carousel.Item>
@@ -55,7 +55,7 @@ const StaticHome = () => (
           <h1>Just Cause</h1>
           <h3>Find and help great charities</h3>
           <h3 className='bounce'>
-            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('what_we_do')} />
+            <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
         </Carousel.Caption>
       </Carousel.Item>
@@ -71,47 +71,35 @@ const StaticHome = () => (
       </div>
       <div id='what_we_do'>
         <h3>What do we do?</h3>
-        <Table>
-          <thead>
-            <tr>
-              <th>Impact Evaluation</th>
-              <th>Strategic Research</th>
-              <th>Charity Reports</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><h1><Glyphicon glyph="screenshot" /></h1></td>
-              <td><h1><Glyphicon glyph="search" /></h1></td>
-              <td><h1><Glyphicon glyph="list-alt" /></h1></td>
-            </tr>
-            <tr>
-              <td>We offer tailored support to both donors and charities in impact evaluation through a team of experienced consultants. We see impact evaluation not just as a process of data collection, but as a fundamental mindset that an organisation embraces into their culture and way of working. We offer a unique combination of professional consulting skills, impact evaluation expertise and practical non-profit sector experience, guided by a strong set of values and social purpose.</td>
-              <td>We provide custom research on philanthropy trends and unmet social needs. Our work aims to contextualise issues so that donors can channel resources in a more strategic and targeted manner. Wherever possible, we encourage sharing of our research so that the wider community can also benefit.</td>
-              <td>We offer independent analysis on charities that seeks to understand what social impact a charity makes and how they might sustain it. Our framework involves looking at domains covering areas such as governance, leadership, finances and “mindset for impact”. We believe that with access to more objective and insightful information, donors will give more money, more strategically.</td>
-            </tr>
-            <tr>
-              <td>
-                <LinkContainer to='impact-eval'>
-                  <Button bsStyle="success" block>Details
-                  </Button>
-                </LinkContainer>
-              </td>
-              <td>
-                <LinkContainer to='articles'>
-                  <Button bsStyle="success" block>Details
-                  </Button>
-                </LinkContainer>
-              </td>
-              <td>
-                <LinkContainer to='reports'>
-                  <Button bsStyle="success" block>Details
-                  </Button>
-                </LinkContainer>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+        <Row>
+          <Col xs={12} md={4} >
+            <h4>Impact Evaluation</h4>
+            <h1><Glyphicon glyph="screenshot" /></h1>
+            <p>We offer tailored support to both donors and charities in impact evaluation through a team of experienced consultants. We see impact evaluation not just as a process of data collection, but as a fundamental mindset that an organisation embraces into their culture and way of working. We offer a unique combination of professional consulting skills, impact evaluation expertise and practical non-profit sector experience, guided by a strong set of values and social purpose.</p>
+            <LinkContainer to='impact-eval'>
+              <Button bsStyle="success" block>Details
+              </Button>
+            </LinkContainer>
+          </Col>
+          <Col xs={12} md={4} >
+            <h4>Strategic Research</h4>
+            <h1><Glyphicon glyph="search" /></h1>
+            <p>We provide custom research on philanthropy trends and unmet social needs. Our work aims to contextualise issues so that donors can channel resources in a more strategic and targeted manner. Wherever possible, we encourage sharing of our research so that the wider community can also benefit.</p>
+            <LinkContainer to='articles'>
+              <Button bsStyle="success" block>Details
+              </Button>
+            </LinkContainer>
+          </Col>
+          <Col xs={12} md={4} >
+            <h4>Charity Reports</h4>
+            <h1><Glyphicon glyph="list-alt" /></h1>
+            <p>We offer independent analysis on charities that seeks to understand what social impact a charity makes and how they might sustain it. Our framework involves looking at domains covering areas such as governance, leadership, finances and “mindset for impact”. We believe that with access to more objective and insightful information, donors will give more money, more strategically.</p>
+            <LinkContainer to='reports'>
+              <Button bsStyle="success" block>Details
+              </Button>
+            </LinkContainer>
+          </Col>
+        </Row>
       </div>
     </Grid>
   </div>

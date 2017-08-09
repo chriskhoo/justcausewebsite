@@ -33,6 +33,11 @@
   #work{
     background-color: $grey;
     color: $white;
+    .row{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
   }
   #clients{
     color: $white-darker;
