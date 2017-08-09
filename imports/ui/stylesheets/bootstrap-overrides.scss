@@ -1,5 +1,15 @@
 @import './mixins';
 
+// change default font and colour
+body{
+  color: $grey;
+  font-family: 'Hind', sans-serif;
+  background-color: $white-lighter;
+  h1, h2, h3, h4, h5, h6{
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
 .page-header {
   margin-top: 0;
 }
@@ -14,19 +24,39 @@
   }
 }
 
+// update breakpoint for navbar collapse
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
 .Documents table tbody tr td {
   vertical-align: middle;
 }
 
-body{
-  color: $grey;
-  font-family: 'Hind', sans-serif;
-  background-color: $white-lighter;
-  h1, h2, h3, h4, h5, h6{
-    font-family: 'Montserrat', sans-serif;
-  }
-}
-
+// update panel and button colours
 .panel-primary {
   border-color: $primary-darker;
   .panel-heading {
