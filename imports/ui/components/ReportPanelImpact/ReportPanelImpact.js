@@ -2,10 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Row, Col} from 'react-bootstrap';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
-
-import './ReportPanelImpact.scss';
 
 class ReportPanelImpact extends React.Component {
   render() {
@@ -15,35 +14,50 @@ class ReportPanelImpact extends React.Component {
     return ((rept && rept.impact_info && rept.type)?
       <div className='report-panel-impact'>
         { (impact_framework && data_collection && continuous_improvement)?
-        <div className='report-section'>
+        <Col xs={12} md={12} className='report-section'>
           <h4> { (type == 'program')? 'Programme' : 'Charity'} approach to impact measurement</h4>
-          { impact_framework?<div className='report-row'><div className='key-figure'>Framework</div>  <Content content={ parseMarkdown(impact_framework) } /></div>:'' }
-          { data_collection?<div className='report-row'><div className='key-figure'>Data Collection</div>  <Content content={ parseMarkdown(data_collection) } /></div>:'' }
-          { continuous_improvement?<div className='report-row'><div className='key-figure'>Continuous Improvement</div>  <Content content={ parseMarkdown(continuous_improvement) } /></div> :'' }
-        </div> :''}
+          { impact_framework? (<Row>
+            <Col xs={4} md={4} className='key-figure text-left'>Framework</Col>
+            <Col xs={8} md={8}><Content content={ parseMarkdown(impact_framework) } /></Col>
+          </Row>):'' }
+          { data_collection?(<Row>
+            <Col xs={4} md={4} className='key-figure text-left'>Data Collection</Col>
+            <Col xs={8} md={8}> <Content content={ parseMarkdown(data_collection) } /></Col>
+          </Row>):'' }
+          { continuous_improvement?(<Row>
+            <Col xs={4} md={4} className='key-figure text-left'>Continuous Improvement</Col>
+            <Col xs={8} md={8}> <Content content={ parseMarkdown(continuous_improvement) } /> </Col>
+          </Row>) :'' }
+        </Col> :''}
         { ( outputs || outcomes || outcome_quotes )?
-        <div className='report-section'>
+        <Col xs={12} md={12} className='report-section'>
           <h4> { (type == 'program')? 'Programme' : 'Charity'} results</h4>
-          <div className='report-row'>
-            <div className='report-impact-results-box blue-box'>
+          <Row>
+            <Col xs={12} md={6} className='report-impact-results-box blue-box'>
               <p><strong>Main Outputs</strong></p>
               <p>(e.g. # reached)</p>
-              { (outputs && (outputs.length >0) )? outputs.map( ({_id, number, description })=> <div key={_id} className='report-row'><div className='key-figure'>{number}</div> <div className='text-beside'>{description}</div></div> ) :'' }
-            </div>
-            <div className='report-impact-results-box blue-box'>
+              { (outputs && (outputs.length >0) )? outputs.map( ({_id, number, description })=> <Row key={_id}>
+                <Col xs={3} md={3} className='key-figure'>{number}</Col>
+                <Col xs={9} md={9}>{description}</Col>
+              </Row> ) :'' }
+            </Col>
+            <Col xs={12} md={6} className='report-impact-results-box blue-box'>
               <p><strong>Main Outcomes</strong></p>
               <p>(e.g. reported change)</p>
-              { (outcomes && (outcomes.length >0) )? outcomes.map( ({_id, number, description })=> <div key={_id} className='report-row'><div className='key-figure'>{number}</div>  <div className='text-beside'>{description}</div></div> ) :'' }
+              { (outcomes && (outcomes.length >0) )? outcomes.map( ({_id, number, description })=> <Row key={_id}>
+                <Col xs={3} md={3} className='key-figure'>{number}</Col>
+                <Col xs={9} md={9}>{description}</Col>
+              </Row> ) :'' }
               { outcome_quotes? <Content content={ parseMarkdown(outcome_quotes) } /> :'' }
-            </div>
-          </div>
-        </div> :''}
+            </Col>
+          </Row>
+        </Col> :''}
         { ( commentary )?
-        <div className='report-section opinion-box'>
+        <Col xs={12} md={12} className='report-section opinion-box'>
           <h4> Just Cause commentary on impact:</h4>
           <Content content={ parseMarkdown(commentary) } />
-        </div> : '' }
-
+        </Col> : '' }
+        <div>.</div>
       </div>:<div></div>);
   }
 }

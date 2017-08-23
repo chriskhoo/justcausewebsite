@@ -8,7 +8,9 @@ import './StaticAbout.scss';
 const StaticAbout = () => (
   <div className="static-about">
     <Jumbotron>
-      <h1>About Us</h1>
+      <div className='overlay'>
+        <h1>About Us</h1>
+      </div>
     </Jumbotron>
     <Grid>
       <div id='history'>
@@ -63,8 +65,7 @@ const StaticAbout = () => (
     </div>
     <div id='contact'>
       <Grid>
-        <h3>Contact us at:</h3>
-        <ReportIconImage image='/Icon_Smiley.png' large/>
+        <h3>Contact us at: <ReportIconImage image='/Email.png'/></h3>
       </Grid>
     </div>
   </div>

@@ -2,10 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { extract_values } from '../../../modules/get-form-elements'
-import ReportBadgeImage from '../ReportBadgeImage/ReportBadgeImage';
-
-import './ReportHeaderBadgeRow.scss';
+import { extract_values } from '../../../modules/get-form-elements';
+import { Col } from 'react-bootstrap';
+import ReportIconImage from '../ReportIconImage/ReportIconImage';
 
 class ReportHeaderBadgeRow extends React.Component {
   render() {
@@ -13,7 +12,7 @@ class ReportHeaderBadgeRow extends React.Component {
     const badges_awarded_id_array = extract_values(badges_awarded, '_id');
     return (
       <div className = 'report-header-badge-row'>
-        {bdgs.filter( ({_id})=> badges_awarded_id_array.includes(_id) ).map( (badge) => <ReportBadgeImage key={badge._id} image={badge.image} name={badge.name} /> )}
+        {bdgs.filter( ({_id})=> badges_awarded_id_array.includes(_id) ).map( (badge) => <Col xs={4} md={2} key={badge._id}><ReportIconImage image={badge.image} alt={`${badge.name} badge`}/></Col> )}
       </div>
     );
   }

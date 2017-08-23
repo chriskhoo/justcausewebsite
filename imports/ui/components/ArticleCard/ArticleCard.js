@@ -2,8 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import { extract_values, getArticleClassName } from '../../../modules/get-form-elements'
+import ReportIconImage from '../ReportIconImage/ReportIconImage';
 
 import './ArticleCard.scss';
 
@@ -16,25 +17,23 @@ class ArticleCard extends React.Component {
     const className = getArticleClassName(article_type_name);
 
     return(
-      <div className="article_wrapper" key={_id}>
+      <Col xs={12} md={8} className="article_wrapper" key={_id}>
         <div className= {`article_card ${className}`}>
           <div className={ `article_type ${className}`} >{article_type_name}</div>
-          <div className='article-row'>
-            <div className='article-column small'>
-              <div className="thumbnail_custom"><img src={thumbnail} alt={title+' thumbnail'}/></div>
+            <Col xs={4} md={3}>
+              <ReportIconImage image={thumbnail} alt={title+' thumbnail'}/>
               <Button
                 bsStyle="success"
                 onClick={() => history.push(url)}
                 block
                 >Read Article</Button>
-            </div>
-            <div className='article-column large'>
+            </Col>
+            <Col xs={8} md={9}>
               <h4>{title}</h4>
               <p>{summary}</p>
-            </div>
-          </div>
+            </Col>
         </div>
-      </div>
+      </Col>
     );
   }
 }

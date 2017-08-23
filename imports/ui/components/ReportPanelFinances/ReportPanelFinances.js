@@ -4,10 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
-import { Glyphicon, Table } from 'react-bootstrap';
+import { Glyphicon, Table, Row, Col } from 'react-bootstrap';
 import { numberWithCommas } from '../../../modules/get-form-elements'
-
-import './ReportPanelFinances.scss';
 
 class ReportPanelFinances extends React.Component {
   render() {
@@ -21,63 +19,72 @@ class ReportPanelFinances extends React.Component {
     return ((financial_info)?
       <div className='report-panel-finances'>
         { graph1_check || graph2_check || graph3_check || graph4_check?
-          (<div className='report-section'>
+          (<Col xs={12} md={12} className='report-section'>
             <h4>Quick facts about this organisation</h4>
-            <div className='report-row' >
-              { graph1_check? <div className='fact-container'>
-                <h4>Total income & expenditure</h4>
-                <p>Financial year: {income_year_3}</p>
-                <Table striped bordered hover responsive>
-                  <thead><tr><th>Year</th><th>Income</th><th>Expenditure</th></tr></thead>
-                  <tbody>
-                    <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{numberWithCommas(expenditure_year_1_amt)}</td></tr>
-                    <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{numberWithCommas(expenditure_year_2_amt)}</td></tr>
-                    <tr><td>{income_year_3}</td><td>{numberWithCommas(income_year_3_amt)}</td><td>{numberWithCommas(expenditure_year_3_amt)}</td></tr>
-                  </tbody>
-                </Table>
-              </div>:'' }
-              { graph2_check? <div className='fact-container'>
-                <h4>Income break-down (%)</h4>
-                <p>Financial year: {revenue_model_reporting_year}</p>
-                <Table striped bordered hover responsive>
-                  <thead><tr><th>Source</th><th>%</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><th>Donations and fundraised income</th> <td>{rev_model_cash_donations_and_fundraised_income_percent}</td></tr>
-                    <tr><th>Government grants subsidies</th><td>{rev_model_govt_grants_subsidies_percent}</td></tr>
-                    <tr><th>Activity income</th><td>{rev_model_activity_income_percent}</td></tr>
-                    <tr><th>Investment income</th><td>{rev_model_investment_income_percent}</td></tr>
-                    <tr><th>Others</th><td>{rev_model_others_percent}</td></tr>
-                  </tbody>
-                </Table>
-              </div>:'' }
-              { graph3_check? <div className='fact-container'>
-                <h4>Reserves ratio</h4>
-                <p>Financial year: {reserve_ratio_year}</p>
-                <p className='key-figure'>{reserve_ratio_amt}</p>
-                <p>Unrestricted reserves / Total annual expenditure</p>
-              </div>:'' }
-              { graph4_check? <div className='fact-container'>
-                <h4>Number of major donors</h4>
-                <p>Financial year: {major_donors_year}</p>
-                <p className='key-figure'>{numberWithCommas(major_donors_number)}</p>
-                <p>Donors (excluding government) giving more than</p>
-                <p className='key-figure'>$ {numberWithCommas(major_donors_minimum_amt)}</p>
-              </div>:'' }
-            </div>
-          </div>) :''}
+            <Row>
+              { graph1_check? <Col xs={12} md={6} className='flex'>
+                <div className='fact-container'>
+                  <h4>Total income & expenditure</h4>
+                  <p>Financial year: {income_year_3}</p>
+                  <Table striped bordered hover responsive>
+                    <thead><tr><th>Year</th><th>Income</th><th>Expenditure</th></tr></thead>
+                    <tbody>
+                      <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{numberWithCommas(expenditure_year_1_amt)}</td></tr>
+                      <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{numberWithCommas(expenditure_year_2_amt)}</td></tr>
+                      <tr><td>{income_year_3}</td><td>{numberWithCommas(income_year_3_amt)}</td><td>{numberWithCommas(expenditure_year_3_amt)}</td></tr>
+                    </tbody>
+                  </Table>
+                </div>
+              </Col>:'' }
+              { graph2_check? <Col xs={12} md={6} className='flex'>
+                <div className='fact-container'>
+                  <h4>Income break-down (%)</h4>
+                  <p>Financial year: {revenue_model_reporting_year}</p>
+                  <Table striped bordered hover responsive>
+                    <thead><tr><th>Source</th><th>%</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><th>Donations and fundraised income</th> <td>{rev_model_cash_donations_and_fundraised_income_percent}</td></tr>
+                      <tr><th>Government grants subsidies</th><td>{rev_model_govt_grants_subsidies_percent}</td></tr>
+                      <tr><th>Activity income</th><td>{rev_model_activity_income_percent}</td></tr>
+                      <tr><th>Investment income</th><td>{rev_model_investment_income_percent}</td></tr>
+                      <tr><th>Others</th><td>{rev_model_others_percent}</td></tr>
+                    </tbody>
+                  </Table>
+                </div>
+              </Col>:'' }
+              { graph3_check? <Col xs={6} md={6} className='flex'>
+                <div className='fact-container'>
+                  <h4>Reserves ratio</h4>
+                  <p>Financial year: {reserve_ratio_year}</p>
+                  <p className='key-figure'>{reserve_ratio_amt}</p>
+                  <p>Unrestricted reserves / Total annual expenditure</p>
+                </div>
+              </Col>:'' }
+              { graph4_check? <Col xs={6} md={6} className='flex'>
+                <div className='fact-container'>
+                  <h4>Number of major donors</h4>
+                  <p>Financial year: {major_donors_year}</p>
+                  <p className='key-figure'>{numberWithCommas(major_donors_number)}</p>
+                  <p>i.e. donors (excluding government) giving more than</p>
+                  <p className='key-figure'> {numberWithCommas(major_donors_minimum_amt)}</p>
+                </div>
+              </Col>:'' }
+            </Row>
+          </Col>) :''}
         {financial_checklist_ids && (financial_checklist_ids.length >0 )?
-          (<div className='report-section'>
+          (<Col xs={12} md={12} className='report-section'>
             <h4>Key financial processes & policy checklist for this organisation</h4>
-            { financial_checklist_ids.map( (checklist)=><div key={checklist._id} className='report-row' >
-              <Glyphicon glyph='ok' className='key-figure' />
-              <div className='text-beside'>{checklist.description}</div>
-            </div> ) }
-          </div>) :''}
-        {commentary?(<div className='report-section opinion-box'>
+            { financial_checklist_ids.map( (checklist)=><Row key={checklist._id} >
+              <Col xs={1} md={1}> <Glyphicon glyph='ok' className='key-figure' /></Col>
+              <Col xs={11} md={11}>{checklist.description}</Col>
+            </Row> ) }
+          </Col>) :''}
+        {commentary?(<Col xs={12} md={12} className='report-section opinion-box'>
           <h4>Just Cause commentary on financials </h4>
           <Content content={ parseMarkdown(commentary) } />
-        </div>) :''}
+        </Col>) :''}
+        <div>.</div>
       </div>:<div></div>);
   }
 }

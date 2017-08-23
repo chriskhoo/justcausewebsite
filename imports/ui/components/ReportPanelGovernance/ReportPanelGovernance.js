@@ -4,10 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
-import { Glyphicon, Table } from 'react-bootstrap';
+import { Glyphicon, Table, Row, Col  } from 'react-bootstrap';
 import ReportIconImage from '../ReportIconImage/ReportIconImage'
-
-import './ReportPanelGovernance.scss';
 
 class ReportPanelGovernance extends React.Component {
   render() {
@@ -21,23 +19,25 @@ class ReportPanelGovernance extends React.Component {
     const graph5_check = profession_1_name && profession_1_number;
     return ( leadership_info?
       <div className='report-panel-governance'>
-        {(graph1_check || graph2_check || graph5_check)?(<div className='report-section'>
+        {(graph1_check || graph2_check || graph5_check)?( <Col xs={12} md={12} className='report-section'>
           <h4>Quick facts about this organisation</h4>
-          <div className='report-row' >
-            <div className='report-section fact-wrapper'>
-              { graph1_check? <div className='fact-container'>
+          <Row>
+            { graph1_check? <Col xs={6} md={6} className='flex'>
+              <div className='fact-container'>
                 <h4>Total board size</h4>
                 <p>Financial year: {background_year}</p>
                 <p className='key-figure'>{board_size}</p>
-              </div>:'' }
-              { graph2_check? <div className='fact-container'>
+              </div>
+            </Col>:'' }
+            { graph2_check? <Col xs={6} md={6} className='flex'>
+              <div className='fact-container'>
                 <h4>Board gender balance</h4>
                 <p>Financial year: {background_year}</p>
                 <p className='key-figure'>{gender_ratio}</p>
                 <p>Male : Female</p>
-              </div>:'' }
-            </div>
-            { graph5_check? <div className='fact-wrapper'>
+              </div>
+            </Col>:'' }
+            { graph5_check? <Col xs={12} md={12}>
               <div className='fact-container'>
                 <h4>Board composition by professional background</h4>
                 <p>Financial year: {background_year}</p>
@@ -54,40 +54,41 @@ class ReportPanelGovernance extends React.Component {
                   </tbody>
                 </Table>
               </div>
-            </div>:'' }
-          </div>
-        </div>) :''}
-        {graph3_check?(<div className='report-section'>
+            </Col>:'' }
+          </Row>
+        </Col>) :''}
+        {graph3_check?(<Col xs={12} md={12} className='report-section'>
           <h4>Charity leadership</h4>
-          <div className='report-row'>
-            <ReportIconImage image={person_1_face}/>
-            <div className='text-beside'>
+          <Row>
+            <Col xs={3} md={3}><ReportIconImage image={person_1_face}/></Col>
+            <Col xs={9} md={9}>
               <h4>{person_1_name}</h4>
               <p><strong>{person_1_position}</strong></p>
               <Content content={ parseMarkdown(person_1_description) } />
-            </div>
-          </div>
-          {graph4_check?<div className='report-row'>
-            <ReportIconImage image={person_2_face}/>
-            <div className='text-beside'>
+            </Col>
+          </Row>
+          {graph4_check?<Row>
+            <Col xs={3} md={3}><ReportIconImage image={person_2_face}/></Col>
+            <Col xs={9} md={9}>
               <h4>{person_2_name}</h4>
               <p><strong>{person_2_position}</strong></p>
               <Content content={ parseMarkdown(person_2_description) } />
-            </div>
-          </div>:''}
-        </div>) :''}
+            </Col>
+          </Row>:''}
+        </Col>) :''}
         {governance_checklist_ids && (governance_checklist_ids.length >0 )?
-          (<div className='report-section'>
+          (<Col xs={12} md={12} className='report-section'>
             <h4>Governance checklist for this organisation</h4>
-            { governance_checklist_ids.map( (checklist)=><div key={checklist._id} className='report-row' >
-              <Glyphicon glyph='ok' className='key-figure' />
-              <div className='text-beside'>{checklist.description}</div>
-            </div> ) }
-          </div>) :''}
-        {commentary?(<div className='report-section opinion-box'>
+            { governance_checklist_ids.map( (checklist)=><Row key={checklist._id} >
+              <Col xs={1} md={1}><Glyphicon glyph='ok' className='key-figure' /></Col>
+              <Col xs={11} md={11}>{checklist.description}</Col>
+            </Row> ) }
+          </Col>) :''}
+        {commentary?(<Col xs={12} md={12} className='report-section opinion-box'>
           <h4>Just Cause commentary on governance and leadership</h4>
           <Content content={ parseMarkdown(commentary) } />
-        </div>) :''}
+        </Col>) :''}
+        <div>.</div>
       </div>:<div></div>);
   }
 }

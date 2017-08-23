@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import {Row, Col} from 'react-bootstrap';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
 import ReportsCollection from '../../../../api/Reports/Reports';
@@ -20,11 +21,15 @@ import './ReportView.scss';
 
 const renderReport = (rept, chty, bdgs, svcs, ctrys, t_grps, arts_rel, match, history) => ( (rept && chty) ? (
   <div className="report-view">
-    <ViewTemplateHeader rept={rept} chty={chty} bdgs={bdgs}/>
-    <div className="report-body">
-      <ReportPanel rept={rept} chty={chty} bdgs={bdgs}/>
-      <ViewTemplateAside rept={rept} chty={chty} svcs={svcs} ctrys={ctrys} t_grps={t_grps} arts_rel={arts_rel}/>
-    </div>
+    <Row>
+      <Col xs={12} md={12} ><ViewTemplateHeader rept={rept} chty={chty} bdgs={bdgs}/></Col>
+    </Row>
+    <Row>
+      <div className="report-body">
+        <Col xs={12} md={8} ><ReportPanel rept={rept} chty={chty} bdgs={bdgs}/></Col>
+        <Col xs={12} md={4} ><ViewTemplateAside rept={rept} chty={chty} svcs={svcs} ctrys={ctrys} t_grps={t_grps} arts_rel={arts_rel}/></Col>
+      </div>
+    </Row>
   </div>
 ) : <NotFound />);
 

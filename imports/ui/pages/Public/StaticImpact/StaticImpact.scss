@@ -4,20 +4,9 @@
   .jumbotron{
     background: $grey-lighter url("/Background_impact.jpg") no-repeat center;
     background-size: cover;
-    height: 500px;
-    text-align: center;
     color: $white;
-    text-shadow: 0 1px 1px rgba(0,0,0,.6);
-    position: relative;
     .overlay{
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: rgba(0,0,0,.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background-color: rgba(0,0,0,.3);
     }
   }
   .container{
@@ -34,8 +23,6 @@
     background-color: $grey;
     color: $white;
     .row{
-      display: flex;
-      flex-wrap: wrap;
       align-items: center;
     }
   }

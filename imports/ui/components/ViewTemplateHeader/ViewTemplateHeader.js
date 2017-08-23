@@ -4,9 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import parseMarkdown from '../../../modules/parse-markdown';
 import Content from '../Content/Content';
+import {Row, Col} from 'react-bootstrap';
 import { monthDayYear } from '@cleverbeagle/dates';
-import { getArticleClassName } from '../../../modules/get-form-elements'
-import ReportHeaderBadgeRow from '../ReportHeaderBadgeRow/ReportHeaderBadgeRow'
+import { getArticleClassName } from '../../../modules/get-form-elements';
+import ReportHeaderBadgeRow from '../ReportHeaderBadgeRow/ReportHeaderBadgeRow';
 
 import './ViewTemplateHeader.scss';
 
@@ -29,13 +30,11 @@ class ViewTemplateHeader extends React.Component {
 
     return ( (art||rept)?
       <div className='view-template-header'>
-        <div className='view-template-thumbnail'>
+        <Col xs={12} md={3} className='view-template-thumbnail'>
           <img src={(type=='article')?thumbnail:logo} alt='thumbnail'/>
-        </div>
-        <div className = 'header-container'>
-          <div className={ `banner ${bannerClassName}`} >{(type=='article')?article_type_name:detail_level_name}</div>
+        </Col>
+        <Col xs={12} md={9} className = 'header-container'>
           <h3>{ (type=='article')?title:name }</h3>
-
           {(type=='article')?
           <p><strong>Last updated: { updatedAt? monthDayYear(updatedAt):'' }</strong></p>
           :<p>Organisation registered in { year_established }</p>}
@@ -43,7 +42,8 @@ class ViewTemplateHeader extends React.Component {
           {(type=='article')?
           (summary?<Content content={ parseMarkdown(summary) } />:'')
           :<ReportHeaderBadgeRow bdgs={bdgs} badges_awarded={badges_awarded} />}
-        </div>
+        </Col>
+        <div className={ `banner ${bannerClassName}`} >{(type=='article')?article_type_name:detail_level_name}</div>
       </div>: <div></div>)
   }
 }

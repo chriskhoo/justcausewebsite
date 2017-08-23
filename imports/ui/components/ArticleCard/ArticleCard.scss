@@ -1,25 +1,11 @@
 @import '../../stylesheets/colors';
 
 .article_wrapper{
-  margin: 2em;
-  .data {
-    border-color: $primary-darker;
-  }
-  .million {
-    border-color: $secondary-darker;
-  }
-  .perspectives {
-    border-color: $tertiary-darker;
-  }
-  .heliview {
-    border-color: $grey-lighter;
-  }
+  margin-bottom: 1em;
   .article_card{
-    width: 650px;
-    display: flex;
     border: solid 2px;
     border-radius: 2em;
-    padding: 2em 0;
+    padding: 1em 0;
     position: relative;
     overflow: hidden;
     .article_type{
@@ -35,61 +21,44 @@
       z-index: 10;
       border: solid 1px $white-lighter;
     }
-    .article_type.data {
-      background-color: $primary-darker;
-    }
-    .article_type.million {
-      background-color: $secondary-darker;
-    }
-    .article_type.perspectives {
-      background-color: $tertiary-darker;
-    }
-    .article_type.heliview {
-      background-color: $grey-lighter;
-    }
-    .article-row{
-      width: 100%;
-      text-align: left;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: stretch;
-      justify-content: space-between;
-      .article-column{
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        margin: 0 2em;
-      }
-      .article-column.small{
-        max-width: 20%;
-      }
-      .article-column.large{
-        max-width: 80%;
-      }
-      .btn-success{
-        border-radius: 5em;
-        margin: 0.5em 0;
-      }
+    .btn-success{
+      border-radius: 5em;
+      margin: 0.5em 0;
+      padding: 6px 1px;
     }
     .thumbnail_custom{
-      position: relative;
-      height: 100px;
-      width: 100%;
-      margin: 0.3em;
+      text-align: center;
       img {
-        position: absolute;
-        max-height: 100%;
         max-width: 100%;
-        width: auto;
-        height: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
+        max-height: 60px;
       }
     }
   }
+  .col-xs-4 button{
+    font-size: 0.8em;
+  }
+}
+.article_card.data {
+  border-color: $primary-darker;
+}
+.article_card.million {
+  border-color: $secondary-darker;
+}
+.article_card.perspectives {
+  border-color: $tertiary-darker;
+}
+.article_card.heliview {
+  border-color: $grey-lighter;
+}
+.article_type.data {
+  background-color: $primary-darker;
+}
+.article_type.million {
+  background-color: $secondary-darker;
+}
+.article_type.perspectives {
+  background-color: $tertiary-darker;
+}
+.article_type.heliview {
+  background-color: $grey-lighter;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Alert, PanelGroup, Table } from 'react-bootstrap';
+import { Panel, Alert, PanelGroup, Table, Row, Col } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import Loading from '../../../components/Loading/Loading';
@@ -153,11 +153,11 @@ const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, ma
 
     <h4>Recent Updates</h4>
     {rpts.length ?
-      <div className="report_cards_holder">
+      <Row className="report_cards_holder">
         {rpts.slice(0,6).map(({ _id, detail_level_id, description, charity_id, name, logo, target_group_ids, service_ids, country_id}) => {
         return(
-          <ReportCard
-            key = {_id}
+          <Col xs={12} md={4} key={_id} >
+            <ReportCard
             detail_level_name={detail_level_id.name}
             charity_id = {charity_id}
             _id = {_id}
@@ -169,8 +169,8 @@ const ReportsHome = ({ loading, rpts, svcs, ctrys, t_grps, d_levels, history, ma
             country_id={country_id}
             history= {history}
             match= {match}
-          />)})}
-      </div> : <Alert bsStyle="warning">No reports yet!</Alert>}
+          /></Col>)})}
+      </Row> : <Alert bsStyle="warning">No reports yet!</Alert>}
   </div>
 ) : <Loading />);
 

@@ -17,23 +17,17 @@
 
   .advance-search{
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-align: center;
     padding: 2em;
   }
-
   .advance-search.open{
     color: $white-lighter;
     background-color: $grey;
   }
   .tag-panel{
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: stretch;
+    flex-wrap: wrap;
   }
   .tag-panel.hidden{
     display: none;

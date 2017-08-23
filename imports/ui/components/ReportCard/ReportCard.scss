@@ -1,13 +1,11 @@
 @import '../../stylesheets/colors';
 
 .report_wrapper{
-  margin: 2em;
+  margin-bottom: 1em;
   .report_card{
     position: relative;
-    width: 310px;
-    height: 310px;
     border: solid 2px;
-    border-radius: 5%;
+    border-radius: 25px;
     padding: 2em 1em;
     text-align: center;
     overflow: hidden;
@@ -23,46 +21,26 @@
       z-index: 10;
       border: solid 1px $white-lighter;
     }
-    .report_detail_level.long {
-      background-color: $primary;
-    }
-    .report_detail_level.mid-length {
-      background-color: $secondary;
-    }
-    .report_detail_level.short {
-      background-color: $tertiary;
-    }
-    .thumbnail_custom{
-      position: relative;
-      height: 100px;
-      width: 100%;
-      margin: 0.3em;
-      img {
-        position: absolute;
-        max-height: 100%;
-        max-width: 100%;
-        width: auto;
-        height: auto;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-      }
-    }
     p {
       text-align: justify;
     }
   }
-  .long{
+  .report_card.long{
     border-color: $primary;
   }
-
-  .mid-length{
+  .report_card.mid-length{
     border-color: $secondary;
   }
-
-  .short{
+  .report_card.short{
     border-color: $tertiary;
+  }
+  .report_detail_level.long {
+    background-color: $primary;
+  }
+  .report_detail_level.mid-length {
+    background-color: $secondary;
+  }
+  .report_detail_level.short {
+    background-color: $tertiary;
   }
 }

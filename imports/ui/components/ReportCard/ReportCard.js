@@ -3,7 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
-import { extract_values } from '../../../modules/get-form-elements'
+import { extract_values } from '../../../modules/get-form-elements';
+import ReportIconImage from '../ReportIconImage/ReportIconImage';
 
 import './ReportCard.scss';
 
@@ -17,7 +18,7 @@ class ReportCard extends React.Component {
       <div className="report_wrapper" key={_id}>
         <div className= {`report_card ${detail_level_name}`}>
           <div className={ `report_detail_level ${detail_level_name}`} >{detail_level_name}</div>
-          <div className="thumbnail_custom"><img src={logo} alt={name+'logo'}/></div>
+          <ReportIconImage image={logo} alt={name+' logo'}/>
           <h4>{name}</h4>
           <p>{description}</p>
           <Button

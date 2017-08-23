@@ -1,7 +1,7 @@
 @import '../../stylesheets/colors';
 .searchbar {
   display: inline-flex;
-  align-items: center;
+  align-items: stretch;
   align-content: center;
   border: 2px solid $primary;
   margin: 3em auto 1em auto;
@@ -20,7 +20,7 @@
   input {
     border: none;
     height: 100%;
-    min-width: 300px;
+    width: 100%;
     color: $primary;
   }
   button{
@@ -29,5 +29,8 @@
     border: none;
     background-color: $primary;
     color: $white-lighter;
+  }
+  .col-xs-8 input, button.col-xs-3{
+    font-size: 0.8em;
   }
 }

@@ -22,7 +22,7 @@ const StaticImpact = () => (
         <Row>
           <Col xs={12} md={3} ><ReportIconImage image='/Logo_mercy_relief.jpeg' large/></Col>
           <Col xs={12} md={9} >
-            <h4>Impact evaluation framework and tools</h4>
+            <h4>Independent Evaluation</h4>
             <p>We supported Mercy Relief in evaluating the impact of their partner programmes in the Philippines. This involved site visits, focus group discussions, stakeholder interviews and a review of programme documents and data. We produced a report for each programme summarising the impact and providing recommendations for the future.</p>
           </Col>
         </Row>
@@ -38,13 +38,6 @@ const StaticImpact = () => (
           <Col xs={12} md={9} >
             <h4>Establishing impact evaluation frameworks</h4>
             <p>We worked with a new private foundation in Singapore, Octava Foundation to establish a simple framework and process for measuring their impact. This involved a series of workshops with management and board members to map out their “Theory of Change” and agree a set of indicators to measure the impact of their funded programmes. We also developed practical data collection tools such as a beneficiary survey to capture the agreed indicators.</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={3} ><ReportIconImage image='/Logo_strategic_research.jpeg' large/></Col>
-          <Col xs={12} md={9} >
-            <h4>Strategic research</h4>
-            <p>We produced a detailed report on philanthropy trends and unmet social needs in Singapore and six regional countries to support a major Singapore foundation in its strategic review. The research involved expert interviews in each of the countries as well as a thorough literature review.</p>
           </Col>
         </Row>
       </Grid>

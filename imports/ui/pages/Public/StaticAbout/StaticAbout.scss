@@ -4,10 +4,10 @@
   .jumbotron{
     background: $grey-lighter url("/Background_about.jpg") no-repeat center;
     background-size: cover;
-    height: 500px;
-    text-align: center;
     color: $grey-darker;
-    text-shadow: 0 1px 1px rgba(0,0,0,.6);
+    .overlay{
+      background-color: rgba(255,255,255,.4);
+    }
   }
   #our_team{
     margin-top: 30px;
@@ -16,10 +16,8 @@
     padding: 1em;
     .row{
       padding: 1em;
-      display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      .report-icon-image{
+      img{
         max-height: 200px;
       }
     }
@@ -33,7 +31,7 @@
       margin-top: 0;
     }
     img{
-      width: 100%;
+      max-height: 100px;
     }
   }
 }

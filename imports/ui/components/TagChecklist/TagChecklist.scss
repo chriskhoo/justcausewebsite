@@ -3,6 +3,9 @@
 .tag-checklist{
   background: $white-lighter;
   color: $grey;
-  padding: 1em;
   text-align: left;
+  flex: 1 0 auto;
+}
+.advance-search.open .tag-checklist{
+  border: 5px solid $grey;
 }

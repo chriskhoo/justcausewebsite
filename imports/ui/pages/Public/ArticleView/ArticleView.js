@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import {Row, Col} from 'react-bootstrap';
 import NotFound from '../../NotFound/NotFound';
 import Loading from '../../../components/Loading/Loading';
 import ArticlesCollection from '../../../../api/Articles/Articles';
@@ -18,11 +19,14 @@ import './ArticleView.scss';
 
 const renderReport = (art, svcs, ctrys, t_grps, rpts_rel, match, history) => art ? (
   <div className="article-view">
-    <ViewTemplateHeader art={art} />
-    <div className="article-body">
-      <ArticlePanel art={art} />
-      <ViewTemplateAside art={art} svcs={svcs} ctrys={ctrys} t_grps={t_grps} rpts_rel={rpts_rel}/>
-    </div>
+    <Row>
+      <Col xs={12} md={12} ><ViewTemplateHeader art={art} /></Col>
+    </Row>
+
+    <Row className="article-body">
+      <Col xs={12} md={8} ><ArticlePanel art={art} /></Col>
+      <Col xs={12} md={4} ><ViewTemplateAside art={art} svcs={svcs} ctrys={ctrys} t_grps={t_grps} rpts_rel={rpts_rel}/></Col>
+    </Row>
   </div>
 ) : <NotFound />;
 

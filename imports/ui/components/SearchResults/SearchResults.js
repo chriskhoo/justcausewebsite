@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon, Alert } from 'react-bootstrap';
+import { Glyphicon, Alert, Col, Row } from 'react-bootstrap';
 import FormTextInput from '../../componentElements/FormTextInput/FormTextInput';
 import TagChecklist from '../TagChecklist/TagChecklist';
 import SearchBar from '../SearchBar/SearchBar';
@@ -55,43 +55,47 @@ class SearchResults extends React.Component {
     const arts_filtered = arts? _objectfilter(filter_object, arts, 'article'): undefined;
     return (
       <form className='search-results' ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
-        <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, a_types, history, match)} query = {filter_object.q}/>
-        {type == 'report'?
-          <p className='caption'>Find the charity that matches your values and impact goals</p>:
-          <p className='caption'>Learn more about charitable giving</p>}
+        <Row className='flex'>
+          <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, a_types, history, match)} query = {filter_object.q}/>
+        </Row>
 
-        <div className='search-results-wrapper'>
-          <div className='search-filters'>
-            <h4>Search Filters</h4>
-            {a_types? <TagChecklist tag_name='article_type' tag_object={a_types} filtered_options={filter_object.article_type}  handleFilters={this.handleFilters} />: '' }
-            {d_levels? <TagChecklist tag_name='detail_level' tag_object={d_levels} filtered_options={filter_object.detail_level}  handleFilters={this.handleFilters} />: '' }
-            <TagChecklist tag_name='country' tag_object={ctrys} filtered_options={filter_object.country} handleFilters={this.handleFilters} />
-            <TagChecklist tag_name='target_group' tag_object={t_grps} filtered_options={filter_object.target_group} handleFilters={this.handleFilters} />
-            <TagChecklist tag_name='service' tag_object={svcs} filtered_options={filter_object.service} handleFilters={this.handleFilters} />
-          </div>
-          <div className='search-results-panel'>
+        <Row className='search-results-wrapper'>
+          <Col xs={12} md={3} className='search-filters'>
+            <Row>
+              <Col xs={12} md={12}><h4>Search Filters</h4></Col>
+            </Row>
+            <Row>
+              {a_types? <Col xs={12} md={12} className='tag-checklist-first'><TagChecklist tag_name='article_type' tag_object={a_types} filtered_options={filter_object.article_type}  handleFilters={this.handleFilters} /></Col>: '' }
+              {d_levels? <Col xs={12} md={12} className='tag-checklist-first'><TagChecklist tag_name='detail_level' tag_object={d_levels} filtered_options={filter_object.detail_level}  handleFilters={this.handleFilters} /></Col>: '' }
+              <Col xs={12} md={12}><TagChecklist tag_name='country' tag_object={ctrys} filtered_options={filter_object.country} handleFilters={this.handleFilters} /></Col>
+              <Col xs={12} md={12}><TagChecklist tag_name='target_group' tag_object={t_grps} filtered_options={filter_object.target_group} handleFilters={this.handleFilters} /></Col>
+              <Col xs={12} md={12}><TagChecklist tag_name='service' tag_object={svcs} filtered_options={filter_object.service} handleFilters={this.handleFilters} /></Col>
+            </Row>
+          </Col>
+          <Col xs={12} md={9} className='search-results-panel'>
             <h4>{ (type == 'report')? numberWithCommas(rpts_filtered.length) : numberWithCommas(arts_filtered.length) } Results for "{filter_object.q}"</h4>
             {(type == 'report')?
               (rpts_filtered.length ?
-                <div className="report_cards_holder">
+                <Row className="report_cards_holder">
                   {rpts_filtered.map(({ _id, charity_id, detail_level_id, target_group_ids, service_ids, description, name, logo }) => {
                   return(
-                    <ReportCard
-                      key = {_id}
-                      detail_level_name={detail_level_id.name}
-                      charity_id={charity_id}
-                      _id = {_id}
-                      name= {name}
-                      logo= {logo}
-                      description={description}
-                      target_group_ids ={target_group_ids}
-                      service_ids ={service_ids}
-                      history= {history}
-                      match= {match}
-                    />)})}
-                </div> : <Alert bsStyle="warning">No reports yet!</Alert>):
+                    <Col xs={12} md={6} key={_id}>
+                      <ReportCard
+                        detail_level_name={detail_level_id.name}
+                        charity_id={charity_id}
+                        _id = {_id}
+                        name= {name}
+                        logo= {logo}
+                        description={description}
+                        target_group_ids ={target_group_ids}
+                        service_ids ={service_ids}
+                        history= {history}
+                        match= {match}
+                      />
+                    </Col>)})}
+                </Row> : <Alert bsStyle="warning">No reports yet!</Alert>):
               (arts_filtered.length ?
-                <div className="article_cards_holder">
+                <Row className="article_cards_holder">
                   {arts_filtered.map( ({ _id, article_type_id, title, thumbnail, summary, target_group_ids, service_ids, country_id }) =>
                     <ArticleCard
                       key = {_id}
@@ -106,10 +110,10 @@ class SearchResults extends React.Component {
                       history= {history}
                       match= {match}
                     /> )}
-                </div> : <Alert bsStyle="warning">No articles yet!</Alert>)
+                </Row> : <Alert bsStyle="warning">No articles yet!</Alert>)
             }
-          </div>
-        </div>
+          </Col>
+        </Row>
       </form>
     );
   }

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Glyphicon } from 'react-bootstrap';
+import { Glyphicon, Row, Col } from 'react-bootstrap';
 import FormTextInput from '../../componentElements/FormTextInput/FormTextInput';
 import TagChecklist from '../TagChecklist/TagChecklist';
 import SearchBar from '../SearchBar/SearchBar';
@@ -42,20 +42,19 @@ class SearchBlock extends React.Component {
     return (
       <form className='searchblock' ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
         <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, a_types, history, match)} />
-        {type=='article'?<p className='caption'>Learn more about charitable giving</p>:''}
-        {type=='report'?<p className='caption'>Find the charity that matches your values and impact goals</p>:''}
+        <p className='caption'>For more detailed options click advanced search below</p>
         <div className= {this.state.aSearch?'advance-search open':'advance-search'} >
           <div onClick={this.toggleSearch}>
             <p>Advanced Search</p>
             <Glyphicon glyph={this.state.aSearch?'chevron-up':'chevron-down'}></Glyphicon>
           </div>
-          <div className={this.state.aSearch?'tag-panel':'tag-panel hidden'}>
-            {a_types?<TagChecklist tag_name='article_type' tag_object={a_types} page='home'/>:''}
-            {d_levels?<TagChecklist tag_name='detail_level' tag_object={d_levels} page='home'/>:''}
-            <TagChecklist tag_name='country' tag_object={ctrys} page='home'/>
-            <TagChecklist tag_name='target_group' tag_object={t_grps} page='home'/>
-            <TagChecklist tag_name='service' tag_object={svcs} page='home'/>
-          </div>
+          <Row className={this.state.aSearch?'tag-panel':'tag-panel hidden'}>
+            {a_types?<Col xs={6} md={3} className='flex'><TagChecklist tag_name='article_type' tag_object={a_types} page='home'/></Col>:''}
+            {d_levels?<Col xs={6} md={3} className='flex'><TagChecklist tag_name='detail_level' tag_object={d_levels} page='home'/></Col>:''}
+            <Col xs={6} md={3} className='flex'><TagChecklist tag_name='country' tag_object={ctrys} page='home'/></Col>
+            <Col xs={6} md={3} className='flex'><TagChecklist tag_name='target_group' tag_object={t_grps} page='home'/></Col>
+            <Col xs={6} md={3} className='flex'><TagChecklist tag_name='service' tag_object={svcs} page='home'/></Col>
+          </Row>
         </div>
       </form>
     );
