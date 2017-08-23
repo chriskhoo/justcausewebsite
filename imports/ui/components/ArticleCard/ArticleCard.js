@@ -15,6 +15,7 @@ class ArticleCard extends React.Component {
     service_ids_array = extract_values(service_ids, '_id').toString();
     const url = (match.url == '/articles/results')? `${_id}?target_groups=${target_group_ids_array}&services=${service_ids_array}` : `articles/${_id}?target_groups=${target_group_ids_array}&services=${service_ids_array}`
     const className = getArticleClassName(article_type_name);
+    const summary_trim = (summary && (summary.length >120) )?summary.substring(0,120): summary;
 
     return(
       <Col xs={12} md={8} className="article_wrapper" key={_id}>
@@ -30,7 +31,7 @@ class ArticleCard extends React.Component {
             </Col>
             <Col xs={8} md={9}>
               <h4>{title}</h4>
-              <p>{summary}</p>
+              <p>{summary_trim}</p>
             </Col>
         </div>
       </Col>

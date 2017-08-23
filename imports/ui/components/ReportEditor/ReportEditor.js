@@ -296,7 +296,7 @@ function _getField(field, report, charities){
   if(length > 120){
     return fieldVal.substring(0,120)
   }else{
-    return fieldVal.substring(0,length)
+    return fieldVal
   }
 }
 
