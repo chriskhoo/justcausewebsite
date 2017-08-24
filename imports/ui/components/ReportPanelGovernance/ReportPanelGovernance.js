@@ -22,14 +22,14 @@ class ReportPanelGovernance extends React.Component {
         {(graph1_check || graph2_check || graph5_check)?( <Col xs={12} md={12} className='report-section'>
           <h4>Quick facts about this organisation</h4>
           <Row>
-            { graph1_check? <Col xs={6} md={6} className='flex'>
+            { graph1_check? <Col xs={12} md={6} className='flex'>
               <div className='fact-container'>
                 <h4>Total board size</h4>
                 <p>Financial year: {background_year}</p>
                 <p className='key-figure'>{board_size}</p>
               </div>
             </Col>:'' }
-            { graph2_check? <Col xs={6} md={6} className='flex'>
+            { graph2_check? <Col xs={12} md={6} className='flex'>
               <div className='fact-container'>
                 <h4>Board gender balance</h4>
                 <p>Financial year: {background_year}</p>

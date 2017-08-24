@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
         <Col xs={1} md={1}>
           <Glyphicon glyph="search"></Glyphicon>
         </Col>
-        <Col xs={8} md={9}>
+        <Col xs={8} md={9} className='flex'>
           <input
             type="text"
             name="search"
@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
           />
         </Col>
         <button
-          className='col-md-2 col-xs-3'
+          className='col-md-2 col-xs-3 flex'
           type='button'
           onClick= {handleSubmit}
           >Search</button>

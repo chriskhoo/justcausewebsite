@@ -32,18 +32,18 @@ class ViewTemplateAside extends React.Component {
           </Col>
         </Row> }
         <Row className='template-aside-container'>
-          <h4>{ type } Tags</h4>
-          <Col xs={4} md={12} className='template-tag-section'>
+          <Col xs={12} md={12}><h4>{ type } Tags</h4></Col>
+          <Col xs={12} md={12} className='template-tag-section'>
             <p><strong>Country:</strong></p>
             <Col xs={12} md={12} className='tag-button'>{country_id.name}</Col>
           </Col>
-          <Col xs={4} md={12} className='template-tag-section'>
+          <Col xs={12} md={12} className='template-tag-section'>
             <p><strong>Target group:</strong></p>
-            {t_grps.filter( ({_id})=> target_group_ids_tagged_array.includes(_id) ).map( (target_group) => <Col xs={12} md={4} key={target_group._id} className='tag-button'>{target_group.name}</Col> )}
+            {t_grps.filter( ({_id})=> target_group_ids_tagged_array.includes(_id) ).map( (target_group) => <Col xs={6} md={4} key={target_group._id} className='tag-button'>{target_group.name}</Col> )}
           </Col>
-          <Col xs={4} md={12} className='template-tag-section'>
+          <Col xs={12} md={12} className='template-tag-section'>
             <p><strong>Service:</strong></p>
-            {svcs.filter( ({_id})=> service_ids_tagged_array.includes(_id) ).map( (service) => <Col xs={12} md={4} key={service._id} className='tag-button'>{service.name}</Col> )}
+            {svcs.filter( ({_id})=> service_ids_tagged_array.includes(_id) ).map( (service) => <Col xs={6} md={4} key={service._id} className='tag-button'>{service.name}</Col> )}
           </Col>
         </Row>
         {arts_rel? <Row className='template-aside-container'>

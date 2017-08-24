@@ -27,7 +27,9 @@ class ReportPanelFinances extends React.Component {
                   <h4>Total income & expenditure</h4>
                   <p>Financial year: {income_year_3}</p>
                   <Table striped bordered hover responsive>
-                    <thead><tr><th>Year</th><th>Income</th><th>Expenditure</th></tr></thead>
+                    <thead>
+                      <tr><th>Year</th><th>Income</th><th>Expenditure</th></tr>
+                    </thead>
                     <tbody>
                       <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{numberWithCommas(expenditure_year_1_amt)}</td></tr>
                       <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{numberWithCommas(expenditure_year_2_amt)}</td></tr>
@@ -44,7 +46,7 @@ class ReportPanelFinances extends React.Component {
                     <thead><tr><th>Source</th><th>%</th></tr>
                     </thead>
                     <tbody>
-                      <tr><th>Donations and fundraised income</th> <td>{rev_model_cash_donations_and_fundraised_income_percent}</td></tr>
+                      <tr><th>Donations and fundraised income</th><td>{rev_model_cash_donations_and_fundraised_income_percent}</td></tr>
                       <tr><th>Government grants subsidies</th><td>{rev_model_govt_grants_subsidies_percent}</td></tr>
                       <tr><th>Activity income</th><td>{rev_model_activity_income_percent}</td></tr>
                       <tr><th>Investment income</th><td>{rev_model_investment_income_percent}</td></tr>
@@ -53,7 +55,7 @@ class ReportPanelFinances extends React.Component {
                   </Table>
                 </div>
               </Col>:'' }
-              { graph3_check? <Col xs={6} md={6} className='flex'>
+              { graph3_check? <Col xs={12} md={6} className='flex'>
                 <div className='fact-container'>
                   <h4>Reserves ratio</h4>
                   <p>Financial year: {reserve_ratio_year}</p>
@@ -61,7 +63,7 @@ class ReportPanelFinances extends React.Component {
                   <p>Unrestricted reserves / Total annual expenditure</p>
                 </div>
               </Col>:'' }
-              { graph4_check? <Col xs={6} md={6} className='flex'>
+              { graph4_check? <Col xs={12} md={6} className='flex'>
                 <div className='fact-container'>
                   <h4>Number of major donors</h4>
                   <p>Financial year: {major_donors_year}</p>

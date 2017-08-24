@@ -24,12 +24,12 @@ const renderReport = (rept, chty, bdgs, svcs, ctrys, t_grps, arts_rel, match, hi
     <Row>
       <Col xs={12} md={12} ><ViewTemplateHeader rept={rept} chty={chty} bdgs={bdgs}/></Col>
     </Row>
-    <Row>
+    <div>
       <div className="report-body">
         <Col xs={12} md={8} ><ReportPanel rept={rept} chty={chty} bdgs={bdgs}/></Col>
         <Col xs={12} md={4} ><ViewTemplateAside rept={rept} chty={chty} svcs={svcs} ctrys={ctrys} t_grps={t_grps} arts_rel={arts_rel}/></Col>
       </div>
-    </Row>
+    </div>
   </div>
 ) : <NotFound />);
 
