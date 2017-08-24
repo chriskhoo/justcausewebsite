@@ -4,7 +4,7 @@ import { Nav, NavItem } from 'react-bootstrap';
 
 const PublicNavigation = () => (
   <div className='public-navigation'>
-    <Nav>
+    <Nav pullRight>
       <LinkContainer to="/impact-eval">
         <NavItem eventKey={1} href="/impact-eval">Impact Evaluation</NavItem>
       </LinkContainer>
@@ -18,15 +18,11 @@ const PublicNavigation = () => (
         <NavItem eventKey={4} href="/about-us">About Us</NavItem>
       </LinkContainer>
     </Nav>
-
-    <Nav pullRight>
-      <LinkContainer to="/signup">
-        <NavItem eventKey={5} href="/signup">Sign Up</NavItem>
-      </LinkContainer>
+    {/* <Nav pullRight>
       <LinkContainer to="/login">
         <NavItem eventKey={6} href="/login">Log In</NavItem>
       </LinkContainer>
-    </Nav>
+    </Nav> */}
   </div>
 );
 

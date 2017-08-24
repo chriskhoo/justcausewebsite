@@ -62,8 +62,11 @@ const AuthenticatedNavigation = ({ name }) => (
         <LinkContainer to="/profile">
           <NavItem eventKey={7.1} href="/profile">Profile</NavItem>
         </LinkContainer>
+        <LinkContainer to="/signup">
+          <NavItem eventKey={7.2} href="/signup">Create User</NavItem>
+        </LinkContainer>
         <MenuItem divider />
-        <MenuItem eventKey={7.2} onClick={() => Meteor.logout()}>Logout</MenuItem>
+        <MenuItem eventKey={7.3} onClick={() => Meteor.logout()}>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>

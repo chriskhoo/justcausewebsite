@@ -1,11 +1,9 @@
 import React from 'react';
 import { Row, Col, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
 import InputHint from '../../components/InputHint/InputHint';
-import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
 
 class Signup extends React.Component {
@@ -80,7 +78,7 @@ class Signup extends React.Component {
     return (<div className="Signup">
       <Row>
         <Col xs={12} sm={6} md={5} lg={4}>
-          <h4 className="page-header">Sign Up</h4>
+          <h4 className="page-header">Create user</h4>
           <form ref={form => (this.form = form)} onSubmit={event => event.preventDefault()}>
             <Row>
               <Col xs={6}>
@@ -125,10 +123,7 @@ class Signup extends React.Component {
               />
               <InputHint>Use at least six characters.</InputHint>
             </FormGroup>
-            <Button type="submit" bsStyle="success">Sign Up</Button>
-            <AccountPageFooter>
-              <p>Already have an account? <Link to="/login">Log In</Link>.</p>
-            </AccountPageFooter>
+            <Button type="submit" bsStyle="success">Create & log-in</Button>
           </form>
         </Col>
       </Row>

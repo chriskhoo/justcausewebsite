@@ -8,7 +8,6 @@ import { Roles } from 'meteor/alanning:roles';
 import Navigation from '../../components/Navigation/Navigation';
 import Authenticated from '../../components/Authenticated/Authenticated';
 import Unauthenticated from '../../components/Unauthenticated/Unauthenticated';
-import Index from '../../pages/Index/Index';
 
 import Article_Types from '../../pages/Admin/Article_Types/Article_Types';
 import Countries from '../../pages/Admin/Countries/Countries';
@@ -45,12 +44,12 @@ import StaticImpact from '../../pages/Public/StaticImpact/StaticImpact';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
-import RecoverPassword from '../../pages/RecoverPassword/RecoverPassword';
-import ResetPassword from '../../pages/ResetPassword/ResetPassword';
 import Profile from '../../pages/Profile/Profile';
 import NotFound from '../../pages/NotFound/NotFound';
 import Footer from '../../components/Footer/Footer';
-import ExamplePage from '../../pages/ExamplePage/ExamplePage';
+// import RecoverPassword from '../../pages/RecoverPassword/RecoverPassword';
+// import ResetPassword from '../../pages/ResetPassword/ResetPassword';
+// import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 
 import './App.scss';
 
@@ -68,15 +67,14 @@ const App = props => (
           <Route exact name="index" path="/" component={()=>(<div></div>)} />
           <Route exact name="about-us" path="/about-us" component={()=>(<div></div>)} />
           <Route name="impact-eval" exact path="/impact-eval" component={()=>(<div></div>)} />
-          <Route name="terms" exact path="/terms" component={StaticTerms} />
-          <Authenticated exact path="/profile" component={Profile} {...props} />
 
-          <Unauthenticated path="/signup" component={Signup} {...props} />
+          <Authenticated exact path="/profile" component={Profile} {...props} />
+          <Authenticated path="/signup" component={Signup} {...props} />
           <Unauthenticated path="/login" component={Login} {...props} />
           <Unauthenticated path="/logout" component={Logout} {...props} />
-          <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
-          <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
-          <Route name="examplePage" path="/example-page" component={ExamplePage} />
+          {/* <Route name="recover-password" path="/recover-password" component={RecoverPassword} /> */}
+          {/* <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} /> */}
+          {/* <Route name="examplePage" path="/example-page" component={ExamplePage} /> */}
 
           <Authenticated exact path="/admin/article_types" component={Article_Types} {...props} />
           <Authenticated exact path="/admin/countries" component={Countries} {...props} />
@@ -86,12 +84,10 @@ const App = props => (
           <Authenticated exact path="/admin/badges" component={Badges} {...props} />
           <Authenticated exact path="/admin/financial_checklists" component={Financial_Checklists} {...props} />
           <Authenticated exact path="/admin/governance_checklists" component={Governance_Checklists} {...props} />
-
           <Authenticated exact path="/admin/charities" component={Charities} {...props} />
           <Authenticated exact path="/admin/charities/new" component={NewCharity} {...props} />
           <Authenticated exact path="/admin/charities/:_id" component={ViewCharity} {...props} />
           <Authenticated exact path="/admin/charities/:_id/edit" component={EditCharity} {...props} />
-
           <Authenticated exact path="/admin/reports" component={Reports} {...props} />
           <Authenticated exact path="/admin/reports/new" component={NewReport} {...props} />
           <Authenticated exact path="/admin/reports/:_id" component={ViewReport} {...props} />
@@ -107,6 +103,7 @@ const App = props => (
           <Route name="articles" exact path="/articles" component={ArticlesHome} {...props} />
           <Route name="articles-results" exact path="/articles/results" component={ArticlesResults} {...props} />
           <Route name="article-view" exact path="/articles/:_id" component={ArticleView} {...props} />
+          <Route name="terms" exact path="/terms" component={StaticTerms} />
           <Route component={NotFound} />
         </Switch>
       </Grid>

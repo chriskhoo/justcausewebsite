@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import { Bert } from 'meteor/themeteorchef:bert';
-import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
 
 class RecoverPassword extends React.Component {
@@ -66,9 +65,6 @@ class RecoverPassword extends React.Component {
               />
             </FormGroup>
             <Button type="submit" bsStyle="success">Recover Password</Button>
-            <AccountPageFooter>
-              <p>Remember your password? <Link to="/login">Log In</Link>.</p>
-            </AccountPageFooter>
           </form>
         </Col>
       </Row>

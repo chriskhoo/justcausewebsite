@@ -13,7 +13,7 @@ const StaticHome = () => (
         <img width={900} height={500} alt="900x500" src="/Background_person_1.jpg"/>
         <Carousel.Caption>
           <h1>Just Cause</h1>
-          <h3>Find and help great charities</h3>
+          <h3>Thank you for visiting our prototype site - we welcome your feedback</h3>
           <h3 className='bounce'>
             <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
@@ -95,8 +95,7 @@ const StaticHome = () => (
             <h1><Glyphicon glyph="list-alt" /></h1>
             <p>We offer independent analysis on charities that seeks to understand what social impact a charity makes and how they might sustain it. Our framework involves looking at domains covering areas such as governance, leadership, finances and “mindset for impact”. We believe that with access to more objective and insightful information, donors will give more money, more strategically.</p>
             <LinkContainer to='reports'>
-              <Button bsStyle="success" block>Details
-              </Button>
+              <Button bsStyle="success" block>Details</Button>
             </LinkContainer>
           </Col>
         </Row>

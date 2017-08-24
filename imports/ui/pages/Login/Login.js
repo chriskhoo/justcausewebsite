@@ -1,10 +1,8 @@
 import React from 'react';
 import { Row, Col, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Bert } from 'meteor/themeteorchef:bert';
-import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import validate from '../../../modules/validate';
 
 class Login extends React.Component {
@@ -47,7 +45,7 @@ class Login extends React.Component {
         Bert.alert(error.reason, 'danger');
       } else {
         Bert.alert('Welcome back!', 'success');
-        history.push('/profile');
+        history.push('/');
       }
     });
   }
@@ -70,7 +68,6 @@ class Login extends React.Component {
             <FormGroup>
               <ControlLabel className="clearfix">
                 <span className="pull-left">Password</span>
-                <Link className="pull-right" to="/recover-password">Forgot password?</Link>
               </ControlLabel>
               <input
                 type="password"
@@ -80,9 +77,6 @@ class Login extends React.Component {
               />
             </FormGroup>
             <Button type="submit" bsStyle="success">Log In</Button>
-            <AccountPageFooter>
-              <p>{'Don\'t have an account?'} <Link to="/signup">Sign Up</Link>.</p>
-            </AccountPageFooter>
           </form>
         </Col>
       </Row>

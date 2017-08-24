@@ -7,7 +7,7 @@ import './Footer.scss';
 const Footer = () => (
   <div className="Footer">
     <Grid>
-      <p className="pull-left">&copy; JustCause {year()}</p>
+      <p className="pull-left">&copy; Just Cause {year()}</p>
       <p className="pull-right"><Link to="/terms">Terms of Service</Link></p>
     </Grid>
   </div>
