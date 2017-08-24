@@ -42,6 +42,14 @@
       }
       .related-text p{
         margin: 0;
+        transition: all .25s ease-in-out;
+      }
+
+      .related-text:hover{
+        text-decoration: underline;
+        color: $secondary;
+        cursor: pointer; 
+        cursor: hand;
       }
     }
   }

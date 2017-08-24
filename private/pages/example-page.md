@@ -3,7 +3,6 @@
 ### Priorities
 - Search filter - select / unselect all
 - Make header sticky
-- add UX/UI elements - highlight current page in nav bar, change colour for panels that open (e.g. advance search / panels), search button color on hover
 - use D3 to convert the tables to graphs
 
 - write documentation
@@ -36,6 +35,8 @@
 - Remove signup and login ( or change color )
 - Convert the sign up to a create user. Remove the login from the nav bar.
 - template aside to remove effects from mouse over
+- add UX/UI elements - highlight current page in nav bar, change colour for panels that open (e.g. advance search / panels), search button color on hover
+- link related articles / reports
 
 ### Notes
 Read more on the [boilerplate](http://cleverbeagle.com/pup/v1/the-basics/methods#utility-methods).

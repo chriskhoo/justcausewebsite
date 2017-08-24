@@ -13,7 +13,7 @@ const StaticHome = () => (
         <img width={900} height={500} alt="900x500" src="/Background_person_1.jpg"/>
         <Carousel.Caption>
           <h1>Just Cause</h1>
-          <h3>Thank you for visiting our prototype site - we welcome your feedback</h3>
+          <h3>Thank you for visiting our prototype site - feedback welcomed!</h3>
           <h3 className='bounce'>
             <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
@@ -23,7 +23,7 @@ const StaticHome = () => (
         <img width={900} height={500} alt="900x500" src="/Background_person_2.jpg"/>
         <Carousel.Caption>
           <h1>Just Cause</h1>
-          <h3>Find and help great charities</h3>
+          <h3>Thank you for visiting our prototype site - feedback welcomed!</h3>
           <h3 className='bounce'>
             <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
@@ -33,7 +33,7 @@ const StaticHome = () => (
         <img width={900} height={500} alt="900x500" src="/Background_person_3.jpg"/>
         <Carousel.Caption>
           <h1>Just Cause</h1>
-          <h3>Find and help great charities</h3>
+          <h3>Thank you for visiting our prototype site - feedback welcomed!</h3>
           <h3>
             <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
@@ -43,7 +43,7 @@ const StaticHome = () => (
         <img width={900} height={500} alt="900x500" src="/Background_person_4.jpg"/>
         <Carousel.Caption>
           <h1>Just Cause</h1>
-          <h3>Find and help great charities</h3>
+          <h3>Thank you for visiting our prototype site - feedback welcomed!</h3>
           <h3 className='bounce'>
             <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>
@@ -53,7 +53,7 @@ const StaticHome = () => (
         <img width={900} height={500} alt="900x500" src="/Background_person_5.jpeg"/>
         <Carousel.Caption>
           <h1>Just Cause</h1>
-          <h3>Find and help great charities</h3>
+          <h3>Thank you for visiting our prototype site - feedback welcomed!</h3>
           <h3 className='bounce'>
             <Glyphicon glyph='chevron-down' onClick={() => smoothScroll.scrollTo('who_we_are')} />
           </h3>

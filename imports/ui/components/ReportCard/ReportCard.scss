@@ -9,6 +9,7 @@
     padding: 2em 1em;
     text-align: center;
     overflow: hidden;
+    transition: transform .25s ease-in-out;
     .report_detail_level{
       position: absolute;
       top: 30px;
@@ -42,5 +43,8 @@
   }
   .report_detail_level.short {
     background-color: $tertiary;
+  }
+  .report_card:hover{
+    transform: scale(1.05);
   }
 }

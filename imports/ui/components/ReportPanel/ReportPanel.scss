@@ -17,33 +17,21 @@
         font-size: 0.8em;
       }
       a:hover{
-        color: $secondary-darker;
-        font-size: 1em;
-        font-weight: bold;
+        color: $secondary;
       }
     }
     li.active{
       a{
         color: $white-lighter;
         background: $secondary;
-        font-size: 1em;
-        font-weight: bold;
       }
     }
   }
   .tab-content{
     .active{
-      // height: 700px;
-      // width: 800px;
       border: 1px solid $white-darker;
-      // padding: 1em;
-      // overflow: auto;
-      // display: flex;
-      // flex-direction: column;
     }
     .report-section{
-  //     display: flex;
-  //     flex-direction: column;
       margin-bottom: 2em;
       .text-left{
         text-align: left;
@@ -53,13 +41,6 @@
         align-items: stretch;
         flex-wrap: wrap;
         margin-bottom: 1em;
-  //       flex-direction: row;
-  //       margin: 1em 0;
-  //       .key-figure.glyphicon.glyphicon-ok{
-  //         display: inline-flex;
-  //         align-items: center;
-  //         font-size: 1.5em;
-  //       }
       }
     }
     .opinion-box{
@@ -72,15 +53,8 @@
      }
 
     .fact-container{
-  //     display: flex;
-  //     flex-direction: column;
-  //     justify-content: center;
-  //     align-items: center;
       text-align: center;
       border: 1px solid $secondary;
-  //     min-height: 240px;
-  //     min-width: 130px;
-  //     margin: 0.5em;
       flex-grow: 1;
       padding: 0.5em;
       margin: 0.5em 0;

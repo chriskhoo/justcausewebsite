@@ -7,21 +7,43 @@ import { Glyphicon, Row, Col } from 'react-bootstrap';
 import './SearchBar.scss';
 
 class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      focus: false,
+    };
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+
+  handleFocus(){
+    let nextState = this.state;
+    nextState.focus = true;
+    this.setState(nextState);
+  }
+
+  handleBlur(){
+    let nextState = this.state;
+    nextState.focus = false;
+    this.setState(nextState);
+  }
+
   render() {
+    const { focus } = this.state;
     const { handleSubmit, query } = this.props;
+    const searchbarClass = focus? 'searchbar active': 'searchbar';
     return (
-      <Col xs={10} md={6} className='searchbar'>
-        <Col xs={1} md={1}>
-          <Glyphicon glyph="search"></Glyphicon>
-        </Col>
-        <Col xs={8} md={9} className='flex'>
-          <input
-            type="text"
-            name="search"
-            placeholder="Enter search"
-            defaultValue = {query}
-          />
-        </Col>
+      <Col xs={10} md={6} className={searchbarClass}>
+        <Glyphicon glyph="search" className='col-md-1 col-xs-1 flex'></Glyphicon>
+        <input
+          type="text"
+          name="search"
+          className='col-md-2 col-xs-3 flex'
+          placeholder="Enter search"
+          defaultValue = {query}
+          onFocus = {this.handleFocus}
+          onBlur = {this.handleBlur}
+        />
         <button
           className='col-md-2 col-xs-3 flex'
           type='button'

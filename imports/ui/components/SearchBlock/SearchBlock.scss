@@ -19,6 +19,7 @@
     width: 100%;
     text-align: center;
     padding: 2em;
+    transition: all 0.5s ease-in-out;
   }
   .advance-search.open{
     color: $white-lighter;
@@ -28,8 +29,25 @@
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+    transition: all 0.3s ease-in-out;
   }
-  .tag-panel.hidden{
-    display: none;
+  .tag-panel.minimize{
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transform: translateY(-5em);
+  }
+  .advance-search-toggle{
+    display: inline-block;
+    transition: all .25s ease-in-out;
+  }
+  .advance-search-toggle:hover{
+    color: $secondary;
+    animation: bounce 2.3s 1;
+    cursor: pointer;
+    cursor: hand;
   }
 }

@@ -9,6 +9,7 @@
   padding: 0;
   border-radius: 3em;
   overflow: hidden;
+  transition: all .25s ease-in-out;
 
   .glyphicon.glyphicon-search{
     padding: 0 1rem;
@@ -16,12 +17,13 @@
     line-height: 3rem;
     font-size: 2rem;
     color: $primary;
+    z-index: 1;
+    transition: all .25s ease-in-out;
   }
   input {
     border: none;
     height: 100%;
     width: 100%;
-    color: $primary;
   }
   button{
     padding: 0 1em;
@@ -29,8 +31,23 @@
     border: none;
     background-color: $primary;
     color: $white-lighter;
+    text-align: center;
+    transition: all .25s ease-in-out;
   }
   .col-xs-8 input, button.col-xs-3{
     font-size: 0.8em;
+  }
+}
+
+.searchbar:hover, .searchbar.active {
+  border-color: $secondary-darker;
+  .glyphicon.glyphicon-search{
+    color: $secondary-darker;
+  }
+  button{
+    background-color: $secondary-darker;
+  }
+  button:hover{
+    background-color: $secondary;
   }
 }

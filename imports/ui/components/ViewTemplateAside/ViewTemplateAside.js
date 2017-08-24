@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Button, Row, Col } from 'react-bootstrap';
 import { extract_values } from '../../../modules/get-form-elements'
 
@@ -54,7 +55,7 @@ class ViewTemplateAside extends React.Component {
                 <img alt='thumbnail' src={article.thumbnail} />
               </Col>
               <Col xs={9} md={9} className='related-text'>
-                <p>{article.title}</p>
+                <LinkContainer to={`/articles/${article._id}?target_groups=${extract_values(article.target_group_ids, '_id').toString()}&services=${extract_values(article.service_ids, '_id').toString()}`} ><p>{article.title}</p></LinkContainer>
               </Col>
             </Col>) )}
           </Row> : ''}
@@ -66,7 +67,7 @@ class ViewTemplateAside extends React.Component {
                   <img alt='thumbnail' src={report.logo} />
                 </Col>
                 <Col xs={9} md={9} className='related-text'>
-                  <p>{report.name}</p>
+                  <LinkContainer to={`/reports/${report._id}?charity_id=${report.charity_id}&target_groups=${extract_values(report.target_group_ids, '_id').toString() }&services=${ extract_values( report.service_ids, '_id' ).toString() }`} ><p>{report.name}</p></LinkContainer>
                 </Col>
               </Col>) )}
             </Row> : ''}

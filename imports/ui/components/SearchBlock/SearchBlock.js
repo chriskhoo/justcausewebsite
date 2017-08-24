@@ -44,16 +44,17 @@ class SearchBlock extends React.Component {
         <SearchBar handleSubmit= {()=>this.handleSubmit(svcs, ctrys, t_grps, d_levels, a_types, history, match)} />
         <p className='caption'>For more detailed options click advanced search below</p>
         <div className= {this.state.aSearch?'advance-search open':'advance-search'} >
-          <div onClick={this.toggleSearch}>
-            <p>Advanced Search</p>
+          <div className='advance-search-toggle' onClick={this.toggleSearch}>
+            <span>Advanced Search</span>
+            <br/>
             <Glyphicon glyph={this.state.aSearch?'chevron-up':'chevron-down'}></Glyphicon>
           </div>
-          <Row className={this.state.aSearch?'tag-panel':'tag-panel hidden'}>
-            {a_types?<Col xs={6} md={3} className='flex'><TagChecklist tag_name='article_type' tag_object={a_types} page='home'/></Col>:''}
-            {d_levels?<Col xs={6} md={3} className='flex'><TagChecklist tag_name='detail_level' tag_object={d_levels} page='home'/></Col>:''}
-            <Col xs={6} md={3} className='flex'><TagChecklist tag_name='country' tag_object={ctrys} page='home'/></Col>
-            <Col xs={6} md={3} className='flex'><TagChecklist tag_name='target_group' tag_object={t_grps} page='home'/></Col>
-            <Col xs={6} md={3} className='flex'><TagChecklist tag_name='service' tag_object={svcs} page='home'/></Col>
+          <Row className={this.state.aSearch?'tag-panel':'tag-panel minimize'}>
+            {a_types?<Col xs={12} md={3} className='flex'><TagChecklist tag_name='article_type' tag_object={a_types} page='home'/></Col>:''}
+            {d_levels?<Col xs={12} md={3} className='flex'><TagChecklist tag_name='detail_level' tag_object={d_levels} page='home'/></Col>:''}
+            <Col xs={12} md={3} className='flex'><TagChecklist tag_name='country' tag_object={ctrys} page='home'/></Col>
+            <Col xs={12} md={3} className='flex'><TagChecklist tag_name='target_group' tag_object={t_grps} page='home'/></Col>
+            <Col xs={12} md={3} className='flex'><TagChecklist tag_name='service' tag_object={svcs} page='home'/></Col>
           </Row>
         </div>
       </form>
