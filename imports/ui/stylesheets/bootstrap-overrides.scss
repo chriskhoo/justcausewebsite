@@ -111,7 +111,16 @@ body { padding-top: 51px; }
   flex-wrap: wrap;
 }
 
-// update panel and button colours
+// update panel colors and appearance
+.panel-group{
+  .panel{
+    margin:0;
+    border-radius: 0;
+    .panel-heading{
+      border-radius: 0;
+    }
+  }
+}
 .panel-primary {
   border-color: $primary-darker;
   .panel-heading {
@@ -128,6 +137,11 @@ body { padding-top: 51px; }
     background-color: $secondary-darker;
     border-color: $secondary-darker;
   }
+}
+
+// update button appearance and colours
+.btn{
+  border-radius: 40px;
 }
 
 .btn-primary{

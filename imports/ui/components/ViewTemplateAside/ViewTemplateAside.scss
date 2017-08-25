@@ -3,9 +3,6 @@
 .view-template-aside{
   display: flex;
   flex-direction: column;
-  .btn{
-    border-radius: 30px;
-  }
   .template-aside-container{
     margin-top: 1em;
     h4{
@@ -18,7 +15,7 @@
       padding: 1em 0;
       .tag-button{
         background-color: $white;
-        border-radius: 30px;
+        border-radius: 0;
         padding: 6px 12px;
         text-align: center;
         display: inline-block;
@@ -48,7 +45,7 @@
       .related-text:hover{
         text-decoration: underline;
         color: $secondary;
-        cursor: pointer; 
+        cursor: pointer;
         cursor: hand;
       }
     }
