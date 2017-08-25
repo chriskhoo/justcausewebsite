@@ -13,7 +13,7 @@
 
   .glyphicon{
     font-size: 3em;
-    transition: all 0.35s ease-in-out;
+    transition: transform 0.25s ease-in-out;
   }
 
   .advance-search{
@@ -42,7 +42,7 @@
     visibility: hidden;
     opacity: 0;
     height: 0;
-    transform: translateY(-5em);
+    transform: translateY(-11em);
   }
   .advance-search-toggle{
     display: inline-block;
