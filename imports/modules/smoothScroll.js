@@ -19,6 +19,8 @@ let smoothScroll = {
 		var node = document.getElementById(id);
 		var nodeTop = node.offsetTop;
 		var nodeHeight = node.offsetHeight;
+		var header = document.getElementById('nav');
+		var headerHeight = header.offsetHeight;
 		var body = document.body;
 		var html = document.documentElement;
 		var height = Math.max(
@@ -35,7 +37,7 @@ let smoothScroll = {
 		// var targetY = (bottomScrollableY < delta) ?
 		// 	bottomScrollableY - (height - nodeTop - nodeHeight + offset):
 		// 	delta;
-		var targetY = delta;
+		var targetY = delta-headerHeight;
 
 		startTime = Date.now();
 		percentage = 0;

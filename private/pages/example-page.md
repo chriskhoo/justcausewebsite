@@ -3,13 +3,12 @@
 ### Priorities
 - use D3 to convert the tables to graphs
 
-- write documentation
-- create better style guide for to group css
-- responsive database (i.e. embedded data gets updated with source data gets updated)
-- more detailed validation when doing the initial checks on the server and the client side
-- write tests
-- custom methods for jquery validation for pull down options
-- Search filter - select / unselect all
+- Docs: write documentation
+- Styleguide: create better style guide for to group css
+- TDD: write tests
+- Responsive database: i.e. embedded data gets updated with source data gets updated
+- Validation: more detailed validation when doing the initial checks on the server and the client side + custom methods for jquery validation for pull down options
+- Filters: Search filter - select / unselect all
 
 ### For client
 - Extend search to other fields? if so which?
@@ -37,6 +36,7 @@
 - add UX/UI elements - highlight current page in nav bar, change colour for panels that open (e.g. advance search / panels), search button color on hover
 - link related articles / reports
 - Make header sticky
+- Make cards pop
 
 ### Notes
 Read more on the [boilerplate](http://cleverbeagle.com/pup/v1/the-basics/methods#utility-methods).
