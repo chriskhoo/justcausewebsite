@@ -8,7 +8,7 @@ import AuthenticatedNavigation from '../AuthenticatedNavigation/AuthenticatedNav
 import './Navigation.scss';
 
 const Navigation = props => (
-  <Navbar>
+  <Navbar className="navbar-fixed-top" >
     <Navbar.Header>
       <Navbar.Brand>
         <Link to="/"><img src='/jc_logo.png' alt='home-page'/></Link>

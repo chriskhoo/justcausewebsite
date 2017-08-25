@@ -13,6 +13,7 @@
 
   .glyphicon{
     font-size: 3em;
+    transition: all 0.35s ease-in-out;
   }
 
   .advance-search{
@@ -24,6 +25,9 @@
   .advance-search.open{
     color: $white-lighter;
     background-color: $grey;
+    .glyphicon{
+      transform: rotate(180deg);
+    }
   }
   .tag-panel{
     display: flex;

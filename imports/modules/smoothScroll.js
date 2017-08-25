@@ -32,9 +32,10 @@ let smoothScroll = {
 		var offset = window.pageYOffset;
 		var delta = nodeTop - offset;
 		var bottomScrollableY = height - windowHeight;
-		var targetY = (bottomScrollableY < delta) ?
-			bottomScrollableY - (height - nodeTop - nodeHeight + offset):
-			delta;
+		// var targetY = (bottomScrollableY < delta) ?
+		// 	bottomScrollableY - (height - nodeTop - nodeHeight + offset):
+		// 	delta;
+		var targetY = delta;
 
 		startTime = Date.now();
 		percentage = 0;

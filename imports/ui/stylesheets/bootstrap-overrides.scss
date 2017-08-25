@@ -10,12 +10,36 @@ body{
   }
 }
 
+// Leave gap due to sticky navbar
+body { padding-top: 51px; }
+
 .page-header {
   margin-top: 0;
 }
 
 .navbar {
   margin-bottom: 0;
+}
+
+// navbar appearance
+.navbar-default{
+  background-color: $white-lighter;
+  border-color: $secondary-darker;
+  .navbar-nav{
+    a{
+      transition: all .3s ease-in-out;
+    }
+    a:hover{
+      color: $primary;
+    }
+    .active{
+      a, a:hover, a:focus{
+        color: $secondary;
+        font-weight: bold;
+        background-color: inherit;
+      }
+    }
+  }
 }
 
 @include breakpoint(tablet) {

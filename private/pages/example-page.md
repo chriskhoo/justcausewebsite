@@ -1,8 +1,6 @@
 # Developer notes
 
 ### Priorities
-- Search filter - select / unselect all
-- Make header sticky
 - use D3 to convert the tables to graphs
 
 - write documentation
@@ -11,6 +9,7 @@
 - more detailed validation when doing the initial checks on the server and the client side
 - write tests
 - custom methods for jquery validation for pull down options
+- Search filter - select / unselect all
 
 ### For client
 - Extend search to other fields? if so which?
@@ -37,6 +36,7 @@
 - template aside to remove effects from mouse over
 - add UX/UI elements - highlight current page in nav bar, change colour for panels that open (e.g. advance search / panels), search button color on hover
 - link related articles / reports
+- Make header sticky
 
 ### Notes
 Read more on the [boilerplate](http://cleverbeagle.com/pup/v1/the-basics/methods#utility-methods).

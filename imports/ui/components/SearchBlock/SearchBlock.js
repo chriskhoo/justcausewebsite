@@ -47,7 +47,7 @@ class SearchBlock extends React.Component {
           <div className='advance-search-toggle' onClick={this.toggleSearch}>
             <span>Advanced Search</span>
             <br/>
-            <Glyphicon glyph={this.state.aSearch?'chevron-up':'chevron-down'}></Glyphicon>
+            <Glyphicon glyph='chevron-up'></Glyphicon>
           </div>
           <Row className={this.state.aSearch?'tag-panel':'tag-panel minimize'}>
             {a_types?<Col xs={12} md={3} className='flex'><TagChecklist tag_name='article_type' tag_object={a_types} page='home'/></Col>:''}
