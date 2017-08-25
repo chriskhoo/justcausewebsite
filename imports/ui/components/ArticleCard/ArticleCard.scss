@@ -8,7 +8,7 @@
     padding: 1em 0;
     position: relative;
     overflow: hidden;
-    transition: transform .4s ease-in-out;
+    transition: all .35s ease-in-out;
     .article_type{
       text-align: center;
       position: absolute;
@@ -40,7 +40,8 @@
   }
 }
 .article_card:hover{
-  transform: scale(1.05);
+  transform: scale(1.025);
+  box-shadow: 5px 5px 15px rgba(0,0,0, 0.35);
 }
 .article_card.data {
   border-color: $primary-darker;
