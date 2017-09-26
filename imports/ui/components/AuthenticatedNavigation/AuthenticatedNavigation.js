@@ -47,7 +47,7 @@ const AuthenticatedNavigation = ({ name }) => (
           <NavItem eventKey={6.1} href="/impact-eval">Impact Evaluation</NavItem>
         </LinkContainer>
         <LinkContainer to="/articles">
-          <NavItem eventKey={6.2} href="/articles">Philantrophy Insights</NavItem>
+          <NavItem eventKey={6.2} href="/articles">Sector Reports</NavItem>
         </LinkContainer>
         <LinkContainer to="/reports">
           <NavItem eventKey={6.3} href="/reports">Charity Reports</NavItem>

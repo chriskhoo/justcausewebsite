@@ -17,7 +17,7 @@ import './ArticlesHome.scss';
 const ArticlesHome = ({ loading, arts, svcs, ctrys, t_grps, a_types, history, match }) => (!loading ? (
   <div className="ArticlesHome">
     <div className="page-header clearfix">
-      <h3 className="pull-left">Philantrophy insights</h3>
+      <h3 className="pull-left">Sector reports</h3>
     </div>
     <SearchBlock
       svcs={svcs}
@@ -28,7 +28,7 @@ const ArticlesHome = ({ loading, arts, svcs, ctrys, t_grps, a_types, history, ma
       match={match} />
 
     <PanelGroup>
-      <Panel header='About Philantrophy Insights' className='panel-secondary' collapsible > We believe that small insights can help drive better giving. See below for articles and information from Just Cause and our partners that we hope will help you make an even bigger impact when you donate. </Panel>
+      <Panel header='About Sector reports' className='panel-secondary' > We believe that small insights can help drive better giving. See below for articles and information from Just Cause and our partners that we hope will help you make an even bigger impact when you donate. </Panel>
     </PanelGroup>
 
     <h4>Featured Articles</h4>

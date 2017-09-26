@@ -13,7 +13,7 @@ import SearchResults from '../../../components/SearchResults/SearchResults';
 const ArticlesResults = ({ loading, arts, svcs, ctrys, t_grps, a_types, history, match }) => (!loading ? (
   <div className="ArticlesResults">
     <div className="page-header clearfix">
-      <h3 className="pull-left">Philantrophy insights</h3>
+      <h3 className="pull-left">Sector reports</h3>
     </div>
     <SearchResults
       arts={arts}

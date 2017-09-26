@@ -71,7 +71,7 @@ class ReportPanelNutshell extends React.Component {
         {(program && program.revenue_model)?(<Col xs={12} md={12}className='report-section'>
           <h4>Programme revenue model</h4>
           <p>
-            <span className='key-figure'>{revenue_model}</span>
+            <span className='key-figure'>{program.revenue_model}</span>
             <span>  Government Funded</span>
           </p>
         </Col>) :''}

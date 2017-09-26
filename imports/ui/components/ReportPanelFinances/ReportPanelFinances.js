@@ -12,7 +12,7 @@ class ReportPanelFinances extends React.Component {
     const { chty } = this.props;
     const { financial_info } = chty || {};
     const { income_year_1, income_year_1_amt, expenditure_year_1_amt, income_year_2, income_year_2_amt, expenditure_year_2_amt, income_year_3, income_year_3_amt, expenditure_year_3_amt, revenue_model_reporting_year, rev_model_cash_donations_and_fundraised_income_percent, rev_model_govt_grants_subsidies_percent, rev_model_activity_income_percent, rev_model_investment_income_percent, rev_model_others_percent, major_donors_year, major_donors_number, major_donors_minimum_amt, reserve_ratio_year, reserve_ratio_amt, financial_checklist_ids, commentary } = financial_info || {};
-    const graph1_check = income_year_1 && income_year_2 && income_year_3 && income_year_1_amt && expenditure_year_1_amt && income_year_2_amt && expenditure_year_2_amt && income_year_3_amt && expenditure_year_3_amt;
+    const graph1_check = (income_year_1 && income_year_1_amt) || (income_year_1 && expenditure_year_1_amt) || (income_year_2 && income_year_2_amt) || (income_year_2 && expenditure_year_2_amt) || (income_year_3 && income_year_3_amt) || (income_year_3 && expenditure_year_3_amt);
     const graph2_check = revenue_model_reporting_year || rev_model_cash_donations_and_fundraised_income_percent || rev_model_govt_grants_subsidies_percent || rev_model_activity_income_percent || rev_model_investment_income_percent || rev_model_others_percent;
     const graph3_check = reserve_ratio_year && reserve_ratio_amt;
     const graph4_check = major_donors_year && major_donors_number && major_donors_minimum_amt;
@@ -31,9 +31,21 @@ class ReportPanelFinances extends React.Component {
                       <tr><th>Year</th><th>Income</th><th>Expenditure</th></tr>
                     </thead>
                     <tbody>
-                      <tr><td>{income_year_1}</td><td>{numberWithCommas(income_year_1_amt)}</td><td>{numberWithCommas(expenditure_year_1_amt)}</td></tr>
-                      <tr><td>{income_year_2}</td><td>{numberWithCommas(income_year_2_amt)}</td><td>{numberWithCommas(expenditure_year_2_amt)}</td></tr>
-                      <tr><td>{income_year_3}</td><td>{numberWithCommas(income_year_3_amt)}</td><td>{numberWithCommas(expenditure_year_3_amt)}</td></tr>
+                      {(income_year_1 && income_year_1_amt) || (income_year_1 && expenditure_year_1_amt) ? <tr>
+                        <td>{income_year_1}</td>
+                        {income_year_1_amt? <td>{numberWithCommas(income_year_1_amt)}</td> : <td></td>}
+                        {expenditure_year_1_amt? <td>{numberWithCommas(expenditure_year_1_amt)}</td> : <td></td>}
+                      </tr>: ''}
+                      {(income_year_2 && income_year_2_amt) || (income_year_2 && expenditure_year_2_amt) ? <tr>
+                        <td>{income_year_2}</td>
+                        {income_year_2_amt? <td>{numberWithCommas(income_year_2_amt)}</td> : <td></td>}
+                        {expenditure_year_2_amt? <td>{numberWithCommas(expenditure_year_2_amt)}</td> : <td></td>}
+                      </tr>: ''}
+                      {(income_year_3 && income_year_3_amt) || (income_year_3 && expenditure_year_3_amt) ? <tr>
+                        <td>{income_year_3}</td>
+                        {income_year_3_amt? <td>{numberWithCommas(income_year_3_amt)}</td> : <td></td>}
+                        {expenditure_year_3_amt? <td>{numberWithCommas(expenditure_year_3_amt)}</td> : <td></td>}
+                      </tr>: ''}
                     </tbody>
                   </Table>
                 </div>

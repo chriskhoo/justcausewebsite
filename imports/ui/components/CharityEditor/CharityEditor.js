@@ -255,7 +255,7 @@ class CharityEditor extends React.Component {
         <FormTextInput fieldName="name" defaultVal={chty && chty.name} />
         <FormTextInput fieldName="year_established" defaultVal={chty && chty.year_established} type="number"/>
         <FormTextInput fieldName="website_link" defaultVal={chty && chty.website_link} type="url"/>
-        <FormTextInput fieldName="donation_link" defaultVal={chty && chty.website_link} type="url"/>
+        <FormTextInput fieldName="donation_link" defaultVal={chty && chty.donation_link} type="url"/>
         <FormThumbnailUpload fieldName="logo" metaContext={ {type: "logo"} } handleUpload={this.handleUpload} />
         <Thumbnail className="thumbnail_custom" src={this.state.logo} alt="logo_preview" />
         <FormTextArea fieldName="summary" defaultVal={chty && chty.summary} />

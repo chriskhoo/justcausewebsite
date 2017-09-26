@@ -11,7 +11,8 @@ const Navigation = props => (
   <Navbar className="navbar-fixed-top" id='nav'>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link to="/"><img src='/jc_logo.png' alt='home-page'/></Link>
+        <a href="https://justcauseasia.org" target="_blank"><img src='/jc_logo.png' alt='home-page'/></a>
+        {/* <Link to="/"><img src='/jc_logo.png' alt='home-page'/></Link> */}
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
