@@ -27,7 +27,14 @@ Meteor.publish('reports.search', function (searchTerm) {
     const regex = new RegExp(searchTerm, 'i');
     query = {
       $and: [
-        { $or: [ { description: regex }, { name: regex } ]},
+        { $or: [
+          { description: regex },
+          { name: regex },
+          { 'country_id.name': regex },
+          { 'detail_level_id.name': regex },
+          { 'service_ids.name': regex },
+          { 'target_group_ids.name': regex }
+        ]},
         { completed: true }
       ]
     };

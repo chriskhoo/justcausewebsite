@@ -24,6 +24,10 @@ Meteor.publish('articles.search', function (searchTerm) {
       $or: [
         { summary: regex },
         { title: regex },
+        { 'country_id.name': regex },
+        { 'article_type_id.name': regex },
+        { 'service_ids.name': regex },
+        { 'target_group_ids.name': regex }
       ],
     };
     projection.limit = 100;

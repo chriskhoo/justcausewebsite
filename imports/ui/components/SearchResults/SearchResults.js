@@ -8,7 +8,7 @@ import TagChecklist from '../TagChecklist/TagChecklist';
 import SearchBar from '../SearchBar/SearchBar';
 import ReportCard from '../ReportCard/ReportCard';
 import ArticleCard from '../ArticleCard/ArticleCard';
-import { getCheckedIdArray, scrubObject } from '../../../modules/get-form-elements';
+import { getCheckedIdArray, scrubObject, extract_values } from '../../../modules/get-form-elements';
 import { numberWithCommas } from '../../../modules/get-form-elements'
 
 import './SearchResults.scss';
@@ -19,7 +19,7 @@ class SearchResults extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFilters = this.handleFilters.bind(this);
     this.state = {
-      filter_object: _extractParams(props.history),
+      filter_object: _extractParams(props),
     }
   }
 
@@ -43,14 +43,14 @@ class SearchResults extends React.Component {
     const svcs_insert = _searchparameter('service', this.form);
     history.push(`results?q=${search}${d_levels_insert}${a_types_insert}${ctrys_insert}${t_grps_insert}${svcs_insert}`);
     nextState = this.state;
-    nextState.filter_object = _extractParams(history),
+    nextState.filter_object = _extractParams(this.props);
     this.setState(nextState);
   }
 
   render() {
     const { arts, rpts, svcs, ctrys, t_grps, d_levels, a_types, history, match } = this.props;
     const type = rpts? 'report' : 'article';
-    const filter_object = this.state.filter_object
+    const filter_object = this.state.filter_object;
     const rpts_filtered = rpts? _objectfilter(filter_object, rpts, 'report'): undefined;
     const arts_filtered = arts? _objectfilter(filter_object, arts, 'article'): undefined;
     return (
@@ -165,8 +165,19 @@ function _objectfilter(filter_object, object_to_filter, type){
   return object_filtered;
 }
 
-function _extractParams(history){
-  const search = history.location.search.substring(1);
+function _extractParams(props){
+  const search_param = props.history.location.search;
+  if(!search_param){
+    const { svcs, ctrys, t_grps, d_levels, a_types } = props;
+    search_object = {'article_type': [], 'detail_level': [], 'country': [], 'target_group': [], 'service': [] };
+    search_object.article_type = a_types? extract_values(a_types, '_id'): [];
+    search_object.detail_level = d_levels? extract_values(d_levels, '_id'): [];
+    search_object.country = ctrys? extract_values(ctrys, '_id'): [];
+    search_object.target_group = t_grps? extract_values(t_grps, '_id'): [];
+    search_object.service = svcs? extract_values(svcs, '_id'): [];
+    return search_object;
+  };
+  const search = search_param.substring(1);
   let search_object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
 
   const {detail_level, article_type, country, target_group, service} = search_object;
@@ -175,5 +186,5 @@ function _extractParams(history){
   search_object.country = country? country.split(','): [];
   search_object.target_group = target_group? target_group.split(','): [];
   search_object.service = service? service.split(','): [];
-  return search_object
+  return search_object;
 }

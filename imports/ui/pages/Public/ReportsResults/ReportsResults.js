@@ -57,7 +57,11 @@ export default createContainer(({history}) => {
 
 //private function
 function _extractQuery(history){
-  const search = history.location.search.substring(1);
-  let search_object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-  return search_object.q
+  const search_param = history.location.search;
+  if(!search_param){
+    return "";
+  };
+  const search = search_param.substring(1);
+  let search_object = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+  return search_object.q;
 }

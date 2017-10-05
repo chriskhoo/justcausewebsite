@@ -5,7 +5,6 @@
 
 ### Priorities
 - use D3 to convert the tables to graphs
-
 - Docs: write documentation
 - Styleguide: create better style guide for to group css
 - TDD: write tests
@@ -22,7 +21,13 @@
 - is there a way of conducting a weighted search in mongo (without ORM)?
 - best ways of backup?
 
+### To do
+
+
 ### Done
+- Public: Change search result page to search for all if no params are available 
+- Public: Extend search for reports to tags
+- Public: Extend search for articles to tags
 - Admin : opening a charity for edit causes the donation link to revert to website link
 - Public : revenue model for program is not program but charity
 - Income and expenditure to show, if data exists
