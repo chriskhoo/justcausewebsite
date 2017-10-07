@@ -21,7 +21,7 @@ Meteor.publish('reports.public', function reports() {
 Meteor.publish('reports.search', function (searchTerm) {
   check(searchTerm, Match.OneOf(String, null, undefined));
   let query = { completed: true };
-  const projection = { sort: {title: 1} };
+  const projection = { sort: {updatedAt: -1} };
 
   if (searchTerm){
     const regex = new RegExp(searchTerm, 'i');

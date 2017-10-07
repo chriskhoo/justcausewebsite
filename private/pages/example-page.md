@@ -25,7 +25,8 @@
 
 
 ### Done
-- Public: Change search result page to search for all if no params are available 
+- Public: Search results to be sorted by updatedAt
+- Public: Change search result page to search for all if no params are available
 - Public: Extend search for reports to tags
 - Public: Extend search for articles to tags
 - Admin : opening a charity for edit causes the donation link to revert to website link

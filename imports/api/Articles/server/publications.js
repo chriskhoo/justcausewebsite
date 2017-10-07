@@ -9,14 +9,14 @@ Meteor.publish('articles', function articles() {
 // Note: articles.view is also used when editing an existing article.
 Meteor.publish('articles.view', function articlesView(articleId) {
   check(articleId, String);
-  return Articles.find({ _id: articleId });
+  return Articles.find({ _id: articleId }, {sort: {updatedAt: -1}});
 });
 
 // Note: used by public, publishes only completed reports
 Meteor.publish('articles.search', function (searchTerm) {
   check(searchTerm, Match.OneOf(String, null, undefined));
   let query = {};
-  const projection = { limit: 10, sort: {title: 1} };
+  const projection = { sort: {updatedAt: -1} };
 
   if (searchTerm){
     const regex = new RegExp(searchTerm, 'i');
