@@ -13,7 +13,6 @@
 - Filters: Search filter - select / unselect all
 
 ### For client
-- Extend search to other fields? if so which?
 
 ### Outstanding questions
 - is there a safe way to parse the markdown data vs using the code in components > Page?
@@ -25,9 +24,11 @@
 
 
 ### Done
+- Public: Update blue box & yellow box fills to a lighter colour
+- Public: Update nav link to reports/results
 - Public: Search results to be sorted by updatedAt
 - Public: Change search result page to search for all if no params are available
-- Public: Extend search for reports to tags
+- Public: Extend search for reports (and articles) to tags
 - Public: Extend search for articles to tags
 - Admin : opening a charity for edit causes the donation link to revert to website link
 - Public : revenue model for program is not program but charity
